@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DownloadTestActivity">
+
+
+    <Button
+        android:id="@+id/btn_down"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_clean"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Clean"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_down"
+        app:layout_constraintTop_toBottomOf="@+id/btn_down" />
+
+    <Button
+        android:id="@+id/btn_big"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Big Image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_clean"
+        app:layout_constraintTop_toBottomOf="@+id/btn_clean" />
+
+    <ImageView
+        android:id="@+id/image_big"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@+id/btn_big"
+        app:layout_constraintStart_toStartOf="@+id/btn_big"
+        app:layout_constraintTop_toBottomOf="@+id/btn_big"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/image_big_2"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="2dp"
+        app:actualImageScaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/image_big"
+        app:layout_constraintTop_toBottomOf="@+id/image_big"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

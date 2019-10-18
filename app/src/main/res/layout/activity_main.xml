@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ConstaintActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_go_to_thread"
+            android:text="Go To Thread Learning" />
+
+        <Button
+            android:id="@+id/btn_go_to_b"
+            android:text="Go To ConstraintLayout" />
+
+        <Button
+            android:id="@+id/btn_start_service"
+            android:text="Start Service" />
+
+        <Button
+            android:id="@+id/btn_thread_test"
+            android:text="Start Thread Test" />
+
+        <Button
+            android:id="@+id/btn_start_download"
+            android:text="Download Image Demo" />
+
+        <Button
+            android:id="@+id/btn_test_mvp"
+            android:text="Test MVP" />
+
+        <Button
+            android:id="@+id/btn_test_mvp_wrap"
+            android:text="Test MVP with Base" />
+
+        <Button
+            android:id="@+id/btn_test_mvp_dagger"
+            android:text="Test MVP with Dagger2" />
+
+        <Button
+            android:id="@+id/btn_data_binding"
+            android:text="Data Binding Demo" />
+
+        <Button
+            android:id="@+id/btn_view_model"
+            android:text="ViewModel Demo" />
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

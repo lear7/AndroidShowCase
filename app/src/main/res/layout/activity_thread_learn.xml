@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ThreadLearnActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Weather Info" />
+    </ScrollView>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_get_weather_loader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By AsyncTaskLoader" />
+
+        <Button
+            android:id="@+id/btn_get_weather_async"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By AsyncTask"
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_loader"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_loader" />
+
+        <Button
+            android:id="@+id/btn_get_weather_handlethread"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By HandlerThread"
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_rx_okhttp"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_rx_okhttp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_rx_okhttp" />
+
+        <Button
+            android:id="@+id/btn_get_weather_intentservice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By IntentService"
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_handlethread"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_handlethread"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_handlethread" />
+
+        <Button
+            android:id="@+id/btn_get_weather_service"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By Service"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_intentservice" />
+
+        <Button
+            android:id="@+id/btn_get_weather_rx_okhttp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By Rx+OkHttp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_loader"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_async" />
+
+        <Button
+            android:id="@+id/btn_get_weather_retrofit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By Retrofit"
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_loader"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_async" />
+
+        <Button
+            android:id="@+id/btn_get_weather_rxretrofit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="By Rx+Retrofit"
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_loader"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_async" />
+
+        <Button
+            android:id="@+id/btn_get_viewmodel_data"
+            android:text="Get View Model Data" />
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

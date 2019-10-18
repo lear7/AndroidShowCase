@@ -1,0 +1,189 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.lear7.showcase"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    // 谨慎开启，debug可以关闭，默认是true
+    lintOptions {
+        tasks.lint.enabled = false
+    }
+
+    flavorDimensions "market"
+    // 多渠道使用不同包名
+    productFlavors {
+        local {
+            applicationId 'com.lear7.showcase_test'
+            flavorDimensions "market"
+        }
+        wandoujia {
+            applicationId 'com.lear7.showcase'
+            flavorDimensions "market"
+        }
+        _360 {
+            applicationId 'com.lear7.showcase'
+            flavorDimensions "market"
+        }
+
+        // 把名字加进去
+        productFlavors.all { flavor ->
+            manifestPlaceholders.put("market_key", name)
+        }
+
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'tkt'
+            keyPassword 'tkt2018tkt'
+            storeFile file('../tkt-sign.keystore')
+            storePassword 'tkt2018tkt'
+        }
+
+        debug {
+            keyAlias 'tkt'
+            keyPassword 'tkt2018tkt'
+            storeFile file('../tkt-sign.keystore')
+            storePassword 'tkt2018tkt'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    app_version_key: "release"
+            ]
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    app_version_key: "test"
+            ]
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // 重命名apk
+    applicationVariants.all { variant ->
+        if (variant.buildType.name.equals('release')) {
+            variant.outputs.all { output ->
+                def buildName = "LearnAndroidAgain"
+                def releaseApkName = buildName + '_' + "${variant.flavorName}_${variant.buildType.name}" + "_" + versionName + '_' + releaseTime() + '.apk'
+                outputFileName = releaseApkName
+            }
+        } else {
+            variant.outputs.all { output ->
+                def buildName = "LearnAndroidAgain"
+                def releaseApkName = buildName + '_' + "${variant.flavorName}_${variant.buildType.name}" + "_" + versionName + '_' + releaseTime() + '.apk'
+                outputFileName = releaseApkName
+            }
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+
+    // lifecycle扩展
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
+    // butter knife, 10.2 is latest
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.0'
+
+    // leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
+
+    //  glide 4.9 is latest
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    kapt 'com.github.bumptech.glide:compiler:4.10.0'
+
+    // fresco 2.0 is latest
+    implementation 'com.facebook.fresco:fresco:2.0.0'
+    // 支持 GIF 动图，需要添加
+    implementation 'com.facebook.fresco:animated-gif:2.0.0'
+    // 支持 WebP （静态图+动图），需要添加
+    implementation 'com.facebook.fresco:animated-webp:2.0.0'
+    implementation 'com.facebook.fresco:webpsupport:2.0.0'
+    // 仅支持 WebP 静态图，需要添加
+    implementation 'com.facebook.fresco:webpsupport:2.0.0'
+
+    // rxjava, 3.0 is latest
+    // implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC3"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
+
+    // okhttp, 4.0 is latest
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+
+    // event bus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    // Arouter
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+
+    // dagger2
+    api 'com.google.dagger:dagger:2.24'
+    kapt 'com.google.dagger:dagger-compiler:2.24'
+}
+
+// butterknife
+kapt {
+    generateStubs = true
+}
