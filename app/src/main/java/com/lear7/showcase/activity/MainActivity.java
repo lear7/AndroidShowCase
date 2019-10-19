@@ -63,6 +63,9 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.btn_view_model)
     Button btnViewModel;
 
+    @BindView(R.id.btn_recycleview)
+    Button btnRecycleView;
+
     private int share = 0;
 
     @Override
@@ -180,7 +183,8 @@ public class MainActivity extends BaseActivity {
             R.id.btn_test_mvp_wrap,
             R.id.btn_test_mvp_dagger,
             R.id.btn_data_binding,
-            R.id.btn_view_model})
+            R.id.btn_view_model,
+            R.id.btn_recycleview})
     public void onClick(View view) {
         if (view == btnGoToB) {
             startActivity(new Intent(this, ConstaintActivity.class));
@@ -205,6 +209,8 @@ public class MainActivity extends BaseActivity {
             goTo(Routers.Act_DataBinding);
         } else if (view == btnViewModel) {
             goTo(Routers.Act_ViewModel);
+        } else if (view == btnRecycleView) {
+            goTo(Routers.Act_RecyclerView);
         }
     }
 

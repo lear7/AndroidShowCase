@@ -42,12 +42,17 @@
             android:text="Test MVP with Dagger2" />
 
         <Button
+            android:id="@+id/btn_recycleview"
+            android:text="RecycleView" />
+
+        <Button
             android:id="@+id/btn_data_binding"
             android:text="Data Binding Demo" />
 
         <Button
             android:id="@+id/btn_view_model"
             android:text="ViewModel Demo" />
+
 
     </TableLayout>
 
