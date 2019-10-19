@@ -11,11 +11,25 @@ import kotlinx.android.synthetic.main.activity_recycle_view.*
 import org.jetbrains.anko.toast
 
 @Route(path = Act_RecyclerView)
-class RecycleViewActivity : BaseActivity() {
-    override fun getLayoutId(): Int {
-        return R.layout.activity_recycle_view;
+class RecycleViewActivity : BaseActivity(), MyAdapter.ItemClick {
+    var data = ArrayList<String>()
+    var heights = ArrayList<Int>()
+    lateinit var myAdapter: MyAdapter
+
+    override fun onItemClick(position: Int) {
+        toast("Click item $position")
     }
 
+    override fun onItemLongClick(position: Int): Boolean {
+        data.removeAt(position)
+        myAdapter.notifyItemRemoved(position)
+        toast("Item $position removed")
+        return true
+    }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_recycle_view
+    }
 
     override fun initView() {
         super.initView()
@@ -25,18 +39,17 @@ class RecycleViewActivity : BaseActivity() {
         }
 
 
-        var data = ArrayList<String>()
-        var heights = ArrayList<Int>()
-        for (i in 1..20) {
+        for (i in 1..40) {
             data.add("Title $i")
-            heights.add((100 + Math.random() * 300).toInt())
+            heights.add((200 + Math.random() * 500).toInt())
         }
 
-        var myAdapter = MyAdapter(data, heights)
+        myAdapter = MyAdapter(data, heights)
         var layoutManager = LinearLayoutManager(RecycleViewActivity@ this, RecyclerView.VERTICAL, false)
-        var gridViewManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
+        var gridViewManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         recycleView1.layoutManager = gridViewManager
         recycleView1.adapter = myAdapter
+        myAdapter.clickListener = this
     }
 
 }

@@ -9,6 +9,7 @@ public class Routers {
     public static final String Act_DataBinding = "/activity/databinding";
     public static final String Act_ViewModel = "/activity/viewmodel";
     public static final String Act_RecyclerView = "/activity/recyclerview";
+    public static final String Act_Video = "/activity/video";
 }
 
 
