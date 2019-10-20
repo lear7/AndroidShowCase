@@ -3,14 +3,14 @@ package com.lear7.showcase.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.lear7.showcase.R.id
 import com.lear7.showcase.R.layout
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_recyclerview.*
 import java.util.*
 
-class MyAdapter(private val mData: ArrayList<String>, private val mHeights: ArrayList<Int>) : Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private val mData: ArrayList<String>, private val mHeights: ArrayList<Int>) : Adapter<ViewHolder>() {
 
     interface ItemClick {
         fun onItemClick(position: Int)
@@ -19,7 +19,7 @@ class MyAdapter(private val mData: ArrayList<String>, private val mHeights: Arra
 
     lateinit var clickListener: ItemClick;
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //将我们自定义的item布局R.layout.item_one转换为View
 
         val view: View = LayoutInflater.from(parent.context)
@@ -29,18 +29,19 @@ class MyAdapter(private val mData: ArrayList<String>, private val mHeights: Arra
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.mText.text = mData[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var vh = holder as MyViewHolder
+        vh.item_recycler_title.text = mData[position]
 
-        var lp = holder.mText.layoutParams
+        var lp = vh.item_recycler_title.layoutParams
         lp.height = mHeights[position]
-        holder.mText.layoutParams = lp
+        vh.item_recycler_title.layoutParams = lp
 
         if (clickListener != null) {
-            holder.mText.setOnClickListener {
+            vh.item_recycler_title.setOnClickListener {
                 clickListener.onItemClick(position)
             }
-            holder.mText.setOnLongClickListener { clickListener.onItemLongClick(position) }
+            vh.item_recycler_title.setOnLongClickListener { clickListener.onItemLongClick(position) }
         }
     }
 
@@ -48,8 +49,6 @@ class MyAdapter(private val mData: ArrayList<String>, private val mHeights: Arra
         return mData.size
     }
 
-    class MyViewHolder(itemView: View) : ViewHolder(itemView) {
-        internal var mText: TextView = itemView.findViewById(id.item_recycler_title)
-    }
+    class MyViewHolder(override val containerView: View) : ViewHolder(containerView), LayoutContainer {}
 
 }

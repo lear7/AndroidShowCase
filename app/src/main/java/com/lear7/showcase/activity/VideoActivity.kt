@@ -2,17 +2,17 @@ package com.lear7.showcase.activity
 
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.os.Build
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.LinearLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.jaeger.library.StatusBarUtil
 import com.lear7.showcase.App
 import com.lear7.showcase.R
+import com.lear7.showcase.beans.AnimalMain
 import com.lear7.showcase.constants.Routers.Act_Video
 import com.lear7.showcase.constants.Urls
 import com.shuyu.gsyvideoplayer.GSYVideoManager
@@ -33,6 +33,9 @@ class VideoActivity : BaseActivity() {
     override fun initView() {
         super.initView()
         Log.e(App.TAG, "initialing")
+
+        var animal = AnimalMain(this, "Duck", AnimalMain.FEMALE)
+        AnimalMain.getSex(animal.name)
 
 //        video_player.post {
 //            var width = video_player.layoutParams.width
@@ -75,7 +78,10 @@ class VideoActivity : BaseActivity() {
 
     override fun onPause() {
         super.onPause()
-        video_player.onVideoPause()
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !isInMultiWindowMode) {
+            video_player.onVideoPause()
+        }
     }
 
     override fun onResume() {

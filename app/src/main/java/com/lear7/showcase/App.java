@@ -39,7 +39,7 @@ public class App extends Application {
         Fresco.initialize(this);
 
         // ARouter
-        // These two lines must be written before init, otherwise these configurations will be invalid in the init process
+        // These two lines must be written before binding, otherwise these configurations will be invalid in the binding process
         if (BuildConfig.DEBUG) {
             // Print log
             ARouter.openLog();
