@@ -69,6 +69,9 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.btn_video_demo)
     Button btnVideoDemo;
 
+    @BindView(R.id.btn_listview)
+    Button btnListView;
+
     private int share = 0;
 
     @Override
@@ -188,7 +191,8 @@ public class MainActivity extends BaseActivity {
             R.id.btn_data_binding,
             R.id.btn_view_model,
             R.id.btn_recycleview,
-            R.id.btn_video_demo})
+            R.id.btn_video_demo,
+            R.id.btn_listview})
     public void onClick(View view) {
         if (view == btnGoToB) {
             startActivity(new Intent(this, ConstaintActivity.class));
@@ -217,6 +221,8 @@ public class MainActivity extends BaseActivity {
             goTo(Routers.Act_RecyclerView);
         } else if (view == btnVideoDemo) {
             goTo(Routers.Act_Video);
+        } else if (view == btnListView) {
+            goTo(Routers.Act_ListView);
         }
     }
 

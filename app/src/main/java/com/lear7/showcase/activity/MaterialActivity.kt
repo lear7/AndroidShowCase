@@ -13,10 +13,8 @@ import com.lear7.showcase.R
 import com.lear7.showcase.adapter.CommonAdapter
 import com.lear7.showcase.constants.Routers.Act_RecyclerView
 import kotlinx.android.synthetic.main.activity_material.*
-import kotlinx.android.synthetic.main.activity_material.collapse_toolbar_layout
 import kotlinx.android.synthetic.main.item_recyclerview.view.*
 import kotlinx.android.synthetic.main.life_pay.*
-import kotlinx.android.synthetic.main.toolbar_collapse.*
 import kotlinx.android.synthetic.main.toolbar_expand.*
 import org.jetbrains.anko.px2dip
 import org.jetbrains.anko.toast
@@ -83,6 +81,7 @@ class MaterialActivity : BaseActivity(), CommonAdapter.ItemClick, AppBarLayout.O
         v_pay_mask.setBackgroundColor(maskColorIn)
 
     }
+
 
     fun setToolbar() {
         mMaskColor = resources.getColor(R.color.colorPrimary)

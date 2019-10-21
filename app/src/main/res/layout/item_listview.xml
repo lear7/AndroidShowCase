@@ -7,10 +7,11 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/item_recycler_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/item_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:text="Title 1" />
 
 </FrameLayout>
