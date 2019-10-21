@@ -6,7 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
-class CommonAdapter<T>(private val layoutId: Int, private val datas: List<T>, val binding: (View, T) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CommonAdapter<T>(private val layoutId: Int,  private val datas: List<T>,private val binding: (View, T, Int) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    interface ItemClick {
+        fun onItemClick(position: Int)
+        fun onItemLongClick(position: Int): Boolean
+    }
 
     override fun getItemCount(): Int = datas.size
 
@@ -18,7 +23,7 @@ class CommonAdapter<T>(private val layoutId: Int, private val datas: List<T>, va
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val vh = holder as ItemHolder
-        binding(vh.containerView, datas[position])
+        binding(vh.containerView, datas[position], position)
     }
 
     internal class ItemHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {

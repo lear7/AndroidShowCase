@@ -37,14 +37,14 @@ android {
             applicationId 'com.lear7.showcase_test'
             flavorDimensions "market"
         }
-        wandoujia {
-            applicationId 'com.lear7.showcase'
-            flavorDimensions "market"
-        }
-        _360 {
-            applicationId 'com.lear7.showcase'
-            flavorDimensions "market"
-        }
+//        wandoujia {
+//            applicationId 'com.lear7.showcase'
+//            flavorDimensions "market"
+//        }
+//        _360 {
+//            applicationId 'com.lear7.showcase'
+//            flavorDimensions "market"
+//        }
 
         // 把名字加进去
         productFlavors.all { flavor ->

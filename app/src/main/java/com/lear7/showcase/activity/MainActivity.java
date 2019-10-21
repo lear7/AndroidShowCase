@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
     Button btnViewModel;
 
     @BindView(R.id.btn_recycleview)
-    Button btnRecycleView;
+    Button btnMaterial;
 
     @BindView(R.id.btn_video_demo)
     Button btnVideoDemo;
@@ -213,7 +213,7 @@ public class MainActivity extends BaseActivity {
             goTo(Routers.Act_DataBinding);
         } else if (view == btnViewModel) {
             goTo(Routers.Act_ViewModel);
-        } else if (view == btnRecycleView) {
+        } else if (view == btnMaterial) {
             goTo(Routers.Act_RecyclerView);
         } else if (view == btnVideoDemo) {
             goTo(Routers.Act_Video);

@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/btn_recycleview"
-            android:text="RecycleView" />
+            android:text="Material and RecyclerView" />
 
         <Button
             android:id="@+id/btn_video_demo"
