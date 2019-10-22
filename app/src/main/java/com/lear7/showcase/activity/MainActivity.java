@@ -6,13 +6,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.bumptech.glide.Glide;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.lear7.showcase.App;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
+import com.lear7.showcase.constants.Urls;
 import com.lear7.showcase.lifecycle.observer.MyObserver;
 import com.lear7.showcase.lifecycle.viewmodel.UserModel;
 import com.lear7.showcase.service.WeatherService;
@@ -32,6 +38,8 @@ import butterknife.OnClick;
 @Route(path = Routers.Act_Main)
 public class MainActivity extends BaseActivity {
 
+    @BindView(R.id.app_toolbar)
+    Toolbar toolbar;
 
     @BindView(R.id.btn_go_to_b)
     Button btnGoToB;
@@ -63,14 +71,21 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.btn_view_model)
     Button btnViewModel;
 
-    @BindView(R.id.btn_recycleview)
-    Button btnMaterial;
 
     @BindView(R.id.btn_video_demo)
     Button btnVideoDemo;
 
     @BindView(R.id.btn_listview)
     Button btnListView;
+
+    @BindView(R.id.btn_material)
+    Button btnMaterialSimple;
+
+    @BindView(R.id.btn_material_alipay)
+    Button btnMaterial;
+
+    @BindView(R.id.main_imageview)
+    ImageView imageView;
 
     private int share = 0;
 
@@ -137,6 +152,12 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Glide.with(this).load(Urls.SMALL_IMAGE).into(imageView);
+    }
+
     private int testString() {
         Log.e(App.TAG, "Begin");
         runOnUiThread(new Thread1());
@@ -162,6 +183,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
+
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsing_title);
+        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));
+
+        setSupportActionBar(toolbar);
+
         UserModel model = ViewModelProviders.of(this).get(UserModel.class);
         model.setAge("29");
         model.setName("Lihua");
@@ -190,9 +217,11 @@ public class MainActivity extends BaseActivity {
             R.id.btn_test_mvp_dagger,
             R.id.btn_data_binding,
             R.id.btn_view_model,
-            R.id.btn_recycleview,
+            R.id.btn_material_alipay,
             R.id.btn_video_demo,
-            R.id.btn_listview})
+            R.id.btn_listview,
+            R.id.btn_material
+    })
     public void onClick(View view) {
         if (view == btnGoToB) {
             startActivity(new Intent(this, ConstaintActivity.class));
@@ -218,11 +247,13 @@ public class MainActivity extends BaseActivity {
         } else if (view == btnViewModel) {
             goTo(Routers.Act_ViewModel);
         } else if (view == btnMaterial) {
-            goTo(Routers.Act_RecyclerView);
+            goTo(Routers.Act_MaterialAlipay);
         } else if (view == btnVideoDemo) {
             goTo(Routers.Act_Video);
         } else if (view == btnListView) {
             goTo(Routers.Act_ListView);
+        } else if (view == btnMaterialSimple) {
+            goTo(Routers.Act_Material);
         }
     }
 

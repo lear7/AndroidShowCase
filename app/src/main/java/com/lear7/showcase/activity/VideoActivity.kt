@@ -52,7 +52,7 @@ class VideoActivity : BaseActivity() {
         //增加封面
         val imageView = ImageView(this)
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP)
-        Glide.with(this).load(ConstaintActivity.imageUrl).into(imageView)
+        Glide.with(this).load(Urls.SMALL_IMAGE).into(imageView)
         video_player.setThumbImageView(imageView)
         //增加title
         video_player.getTitleTextView().setVisibility(View.VISIBLE)

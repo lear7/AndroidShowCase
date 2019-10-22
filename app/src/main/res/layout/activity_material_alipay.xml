@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.MaterialActivity">
+    tools:context=".activity.MaterialAlipayActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView1"
@@ -17,27 +17,52 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_title"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            app:contentScrim="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <include
+                layout="@layout/life_pay"
+                android:id="@+id/big_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/app_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="parallax"
-                app:titleTextColor="@android:color/white">
+                android:background="@color/colorPrimary"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="parallax">
+
+                <include
+                    android:id="@+id/expand_toolbar_layout"
+                    layout="@layout/toolbar_expand"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <include
+                    android:id="@+id/collapse_toolbar_layout"
+                    layout="@layout/toolbar_collapse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
