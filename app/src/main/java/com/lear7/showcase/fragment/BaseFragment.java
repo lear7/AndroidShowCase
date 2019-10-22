@@ -50,7 +50,6 @@ public abstract class BaseFragment extends Fragment {
 
         View view = inflater.inflate(getLayoutId(), container, false);
         ButterKnife.bind(this, view);
-        initView();
 
         return view;
     }
@@ -58,13 +57,10 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initData();
+        initView();
     }
 
     protected void initView() {
     }
 
-    protected void initData() {
-
-    }
 }

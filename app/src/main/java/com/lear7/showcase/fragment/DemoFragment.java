@@ -34,7 +34,7 @@ RecyclerView recyclerView;
     }
 
     @Override
-    protected void initData() {
+    protected void initView() {
         datas = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             datas.add("Item " + i);

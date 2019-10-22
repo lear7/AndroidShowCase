@@ -1,13 +1,13 @@
 package com.lear7.showcase.fragment
 
-import com.lear7.showcase.R.layout
+import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.fragment_mvp.*
 
 class MvpFragment : BaseFragment() {
 
     override fun getLayoutId(): Int {
-        return layout.fragment_jetpack
+        return R.layout.fragment_mvp
     }
 
     override fun initView() {

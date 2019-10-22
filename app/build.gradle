@@ -3,6 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+// butterknife and dagger
+kapt {
+    generateStubs = true
+}
+
+
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
@@ -149,11 +155,11 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta05'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // kotlin
@@ -208,15 +214,16 @@ dependencies {
 
     // dagger2
     implementation 'com.google.dagger:dagger:2.24'
-    implementation 'com.google.dagger:dagger-android-support:2.24'
     kapt 'com.google.dagger:dagger-compiler:2.24'
+
+    implementation 'com.google.dagger:dagger-android-support:2.24'
     kapt 'com.google.dagger:dagger-android-processor:2.24'
 
     // for kotlin with dagger2
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     // Anko
-    implementation "org.jetbrains.anko:anko:$anko_version"
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
 
     // video
     implementation 'com.shuyu:GSYVideoPlayer:7.1.1'
@@ -226,11 +233,6 @@ dependencies {
 
     // icons
     implementation 'com.google.android.material:material:1.2.0-alpha01'
-}
-
-// butterknife
-kapt {
-    generateStubs = true
 }
 
 androidExtensions {

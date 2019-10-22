@@ -10,7 +10,10 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
-//import com.lear7.showcase.injection.base.component.DaggerApplicationComponent;
+//import com.lear7.showcase.mvpdagger.base.component.DaggerApplicationComponent;
+import com.lear7.showcase.mvpdagger.base.module.ApiModule;
+import com.lear7.showcase.mvpdagger.base.module.ApplicationModule;
+import com.lear7.showcase.net.helper.RxRetrofit;
 
 
 public class App extends Application {

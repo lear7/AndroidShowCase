@@ -173,7 +173,7 @@ public class ThreadLearnActivity extends BaseActivity {
                     showWeatherInfo(aBinder.getService().getTempData());
                 }
                 // 这里才是绑定成功的操作
-                // textView.setText(aBinder.getService().getWeatherInfo());
+                // textHint.setText(aBinder.getService().getWeatherInfo());
             }
 
             @Override

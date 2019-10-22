@@ -1,12 +1,12 @@
 package com.lear7.showcase.fragment
 
-import com.lear7.showcase.R.layout
+import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.fragment_ui.*
 
 class UiFragment : BaseFragment() {
     override fun getLayoutId(): Int {
-        return layout.fragment_ui
+        return R.layout.fragment_ui
     }
 
     override fun initView() {
