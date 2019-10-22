@@ -1,12 +1,14 @@
 package com.lear7.showcase.activity;
 
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
-import com.lear7.showcase.dagger.DaggerDemoComponent;
+import com.lear7.showcase.dagger.DaggerTextViewComponent;
 import com.lear7.showcase.dagger.DemoUser;
+import com.lear7.showcase.dagger.TextViewModule;
 
 import javax.inject.Inject;
 
@@ -18,8 +20,17 @@ public class DaggerDemoActivity extends BaseActivity {
     @Inject
     DemoUser mUser;
 
+    @Inject
+    TextView mTextView;
+
     @BindView(R.id.text_hint)
     TextView textHint;
+
+    @BindView(R.id.dagger_frame)
+    FrameLayout frameLayout;
+
+    @Inject
+    TextView injectedTextView;
 
     @Override
     public int getLayoutId() {
@@ -31,7 +42,15 @@ public class DaggerDemoActivity extends BaseActivity {
         super.initView();
 
         // 注入
-        DaggerDemoComponent.builder().build().inject(this);
+        DaggerTextViewComponent.builder()
+                .textViewModule(new TextViewModule(this))
+                .build()
+                .inject(this);
+
+        // User可以可以直接使用了
         textHint.setText("Info retrieved through injection: " + mUser.getFirstName() + " " + mUser.getLastName());
+        // TextView可以直接使用了
+        mTextView.setText("A TextView through injection: " + mUser.getFirstName() + " " + mUser.getLastName());
+        frameLayout.addView(mTextView);
     }
 }

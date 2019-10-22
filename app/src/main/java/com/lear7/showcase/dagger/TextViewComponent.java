@@ -8,8 +8,8 @@ import dagger.Component;
 /**
  * @author lear7
  */
-@Component
-public interface DemoComponent {
+@Component(modules = TextViewModule.class)
+public interface TextViewComponent {
 
     /**
      * Component for DaggerActivity
