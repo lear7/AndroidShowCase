@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MvpDemo2Activity">
+
+    <Button
+        android:id="@+id/btn_succeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Request Succeed"
+        app:layout_constraintEnd_toEndOf="@+id/text_title"
+        app:layout_constraintStart_toStartOf="@+id/text_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+    <Button
+        android:id="@+id/btn_failed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Request Failed"
+        app:layout_constraintEnd_toEndOf="@+id/btn_succeed"
+        app:layout_constraintStart_toStartOf="@+id/btn_succeed"
+        app:layout_constraintTop_toBottomOf="@+id/btn_succeed" />
+
+    <Button
+        android:id="@+id/btn_complete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Request Complete"
+        app:layout_constraintEnd_toEndOf="@+id/btn_succeed"
+        app:layout_constraintStart_toStartOf="@+id/btn_succeed"
+        app:layout_constraintTop_toBottomOf="@+id/btn_failed" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="MVP Demo with Base"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

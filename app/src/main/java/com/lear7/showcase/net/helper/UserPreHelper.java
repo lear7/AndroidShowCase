@@ -3,7 +3,7 @@ package com.lear7.showcase.net.helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.lear7.showcase.injection.base.scope.ApplicationContext;
+import com.lear7.showcase.mvpdagger.base.scope.ApplicationContext;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

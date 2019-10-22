@@ -27,6 +27,7 @@ import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.constants.Urls;
 import com.lear7.showcase.fragment.JavaFragment;
 import com.lear7.showcase.fragment.JetpackFragment;
+import com.lear7.showcase.fragment.MvpFragment;
 import com.lear7.showcase.fragment.UiFragment;
 
 import java.util.ArrayList;
@@ -113,7 +114,8 @@ public class MainActivity extends BaseActivity {
 
         titles.add("Java");
         titles.add("Material Design");
-        titles.add("Google Jetpack");
+        titles.add("MVP");
+        titles.add("Jetpack");
 
         for (String title : titles) {
             tablayout.addTab(tablayout.newTab().setText(title));
@@ -121,6 +123,7 @@ public class MainActivity extends BaseActivity {
 
         fragments.add(new JavaFragment());
         fragments.add(new UiFragment());
+        fragments.add(new MvpFragment());
         fragments.add(new JetpackFragment());
 
         FragmentStatePagerAdapter pageAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
@@ -145,7 +148,6 @@ public class MainActivity extends BaseActivity {
         // binding
         viewPager.setAdapter(pageAdapter);
         tablayout.setupWithViewPager(viewPager);
-
     }
 
     @Override
@@ -159,6 +161,5 @@ public class MainActivity extends BaseActivity {
     public int getLayoutId() {
         return R.layout.activity_main;
     }
-
 
 }

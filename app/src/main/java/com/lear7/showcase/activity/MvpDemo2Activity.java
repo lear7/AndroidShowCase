@@ -7,14 +7,15 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
-import com.lear7.showcase.mvp.demo.MvpDemoPresenter;
-import com.lear7.showcase.mvp.demo.MvpDemoView;
+import com.lear7.showcase.mvp.demo2.base.BaseMvpActivity;
+import com.lear7.showcase.mvp.demo2.MvpPresenter;
+import com.lear7.showcase.mvp.demo2.MvpView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-@Route(path = Routers.Act_MvpDemo)
-public class MvpDemoActivity extends BaseActivity implements MvpDemoView {
+@Route(path = Routers.Act_MvpDemo2)
+public class MvpDemo2Activity extends BaseMvpActivity<MvpView, MvpPresenter> implements MvpView {
 
     @BindView(R.id.btn_succeed)
     Button btnSucceed;
@@ -25,30 +26,16 @@ public class MvpDemoActivity extends BaseActivity implements MvpDemoView {
     @BindView(R.id.btn_complete)
     Button btnComplete;
 
-    private MvpDemoPresenter mPresenter;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_mvp_demo;
+        return R.layout.activity_mvp_demo2;
     }
 
-    @Override
-    protected void initView() {
-        super.initView();
-        if (mPresenter == null) {
-            mPresenter = new MvpDemoPresenter();
-        }
-        if (mPresenter != null) {
-            mPresenter.setView(this);
-        }
-    }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mPresenter != null) {
-            mPresenter.detachView();
-        }
+    protected MvpPresenter createPresenter() {
+        return new MvpPresenter();
     }
 
     @OnClick({R.id.btn_succeed, R.id.btn_failed, R.id.btn_complete})

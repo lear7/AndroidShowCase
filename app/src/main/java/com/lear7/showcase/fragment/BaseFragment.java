@@ -21,6 +21,9 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
 
+    /**
+     * @return Layout Id
+     */
     public abstract @LayoutRes
     int getLayoutId();
 
@@ -62,5 +65,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void initData() {
+
     }
 }

@@ -1,5 +1,6 @@
 package com.lear7.showcase.activity;
 
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -17,6 +18,13 @@ import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.constants.Urls;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,16 +42,20 @@ public class ThreadTestActivity extends BaseActivity {
     @BindView(R.id.btn_test_handlerthread)
     Button btnHandlerThread;
 
+    @BindView(R.id.btn_test_pood)
+    Button btnTestPool;
+
     private HandlerThread mHandlerThread;
 
-    @OnClick({R.id.btn_test_runonui, R.id.btn_test_handlerthread})
+    @OnClick({R.id.btn_test_runonui, R.id.btn_test_handlerthread, R.id.btn_test_pood})
     public void onClick(View view) {
         if (view == btnRunOnUi) {
             testRunOnUI();
         } else if (view == btnHandlerThread) {
             testThreadHandler();
+        } else if (view == btnTestPool) {
+            testThreadPool();
         }
-
     }
 
     private void testRunOnUI() {
@@ -165,5 +177,111 @@ public class ThreadTestActivity extends BaseActivity {
         private UI() {
 
         }
+    }
+
+    public class MyAsyncTask extends AsyncTask {
+
+        private String taskName;
+
+        public MyAsyncTask(String taskName) {
+            this.taskName = taskName;
+        }
+
+        @Override
+        protected String doInBackground(Object[] objects) {
+            String time = new Date().toString();
+            System.out.println(taskName + " Start");
+            try {
+                share++;
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return time;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            System.out.println(taskName + " End");
+        }
+    }
+
+    private int share = 0;
+
+    // 声明ThreadLocal
+    private static ThreadLocal<Integer> result = new ThreadLocal<>();
+
+    public static final String A = "abcdeabcdef";
+    public static final String B = "aaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddabcdeabcdefaaddddaaddddaadddd";
+
+    static class Thread1 implements Runnable {
+
+        @Override
+        public void run() {
+            int lenA = A.length();
+            int lenB = B.length();
+            int i = 0;
+
+            while (result.get() == null && i < lenB) {
+                boolean isMatch = true;
+                for (int j = 0; j < lenA; j++) {
+                    if (A.charAt(j) != B.charAt(i + j)) {
+                        isMatch = false;
+                        break;
+                    }
+                }
+                if (isMatch) {
+                    result.set(i);
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+
+    static class Thread2 implements Runnable {
+
+        @Override
+        public void run() {
+            int lenA = A.length();
+            int lenB = B.length();
+            int i = lenB - lenA;
+
+            while (result.get() == null && i >= lenA) {
+                boolean isMatch = true;
+                for (int j = lenA - 1; j >= 0; j--) {
+                    if (A.charAt(j) != B.charAt(i - j)) {
+                        isMatch = false;
+                        break;
+                    }
+                }
+                if (isMatch) {
+                    result.set(i);
+                    break;
+                }
+                i--;
+            }
+        }
+    }
+
+    private void testThreadPool() {
+        // 这种方式不建议
+        // ExecutorService pool = Executors.newFixedThreadPool(5);
+        ExecutorService pool = new ThreadPoolExecutor(4, 20,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
+
+        List<MyAsyncTask> tasks = new ArrayList<>();
+        for (int i = 1; i <= 50; i++) {
+            MyAsyncTask task = new MyAsyncTask("task" + i);
+            tasks.add(task);
+        }
+
+        for (MyAsyncTask task : tasks) {
+            task.executeOnExecutor(pool);
+        }
+
+        pool.shutdown();
     }
 }

@@ -26,7 +26,6 @@ public class ListScrollView extends BaseActivity {
         return R.layout.activity_list_scroll_view;
     }
 
-
     @Override
     protected void initView() {
         super.initView();

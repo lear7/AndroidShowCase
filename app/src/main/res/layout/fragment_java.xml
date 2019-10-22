@@ -8,19 +8,15 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_go_to_thread"
-            android:text="Thread Testing" />
+            android:id="@+id/btn_thread_learning"
+            android:text="Get Weather in MultiThread" />
 
         <Button
             android:id="@+id/btn_thread_test"
             android:text="Start Thread Test" />
 
         <Button
-            android:id="@+id/btn_start_service"
-            android:text="Start Service" />
-
-        <Button
-            android:id="@+id/btn_start_download"
+            android:id="@+id/btn_download_test"
             android:text="Download Image Demo" />
 
         <Button

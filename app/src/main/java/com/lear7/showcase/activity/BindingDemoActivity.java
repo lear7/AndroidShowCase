@@ -25,8 +25,6 @@ public class BindingDemoActivity extends AppCompatActivity {
         public void onClick(View view) {
             user.getFirstName().set("Edvard");
             user.getLastName().set("Lee");
-//            User user = new User("Li", "Hua");
-//            binding.setUser(user);
         }
 
         public void onClick(View view, User user) {
@@ -43,6 +41,5 @@ public class BindingDemoActivity extends AppCompatActivity {
         binding.setUser(user);
         // 注意这一句一定要添加
         binding.setHandler(new Handler());
-
     }
 }
