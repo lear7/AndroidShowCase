@@ -2,23 +2,35 @@ package com.lear7.showcase.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.lear7.showcase.App;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.jaeger.library.StatusBarUtil;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.constants.Urls;
+import com.lear7.showcase.fragment.ListFragment;
 import com.lear7.showcase.lifecycle.observer.MyObserver;
 import com.lear7.showcase.lifecycle.viewmodel.UserModel;
 import com.lear7.showcase.service.WeatherService;
@@ -71,7 +83,6 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.btn_view_model)
     Button btnViewModel;
 
-
     @BindView(R.id.btn_video_demo)
     Button btnVideoDemo;
 
@@ -87,20 +98,27 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.main_imageview)
     ImageView imageView;
 
+    @BindView(R.id.main_tablayout)
+    TabLayout tablayout;
+
+    @BindView(R.id.main_viewpager)
+    ViewPager viewPager;
+
+    @BindView(R.id.main_nav)
+    NavigationView navigationView;
+
+    @BindView(R.id.main_drawer)
+    DrawerLayout drawerLayout;
+
     private int share = 0;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    public static final String A = "abcdeabcdef";
-    public static final String B = "aaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddabcdeabcdefaaddddaaddddaadddd";
 
     // 声明ThreadLocal
     private static ThreadLocal<Integer> result = new ThreadLocal<>();
 
-    // 在子线程中赋予自己的值
+
+    public static final String A = "abcdeabcdef";
+    public static final String B = "aaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddaaddddaaddddaaddddaadddddeffffaaabbddccdeeebbddadddaaddddabcdeabcdefaaddddaaddddaadddd";
+
     static class Thread1 implements Runnable {
 
         @Override
@@ -126,7 +144,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    // 在子线程中赋予自己的值
     static class Thread2 implements Runnable {
 
         @Override
@@ -158,42 +175,107 @@ public class MainActivity extends BaseActivity {
         Glide.with(this).load(Urls.SMALL_IMAGE).into(imageView);
     }
 
-    private int testString() {
-        Log.e(App.TAG, "Begin");
-        runOnUiThread(new Thread1());
-        Log.e(App.TAG, "Result from thread is: " + result.get() + "");
-
-        int lenA = A.length();
-        int lenB = B.length();
-        for (int i = 0; i < lenB; i++) {
-            boolean isMatch = true;
-            for (int j = 0; j < lenA; j++) {
-                if (A.charAt(j) != B.charAt(i + j)) {
-                    isMatch = false;
-                    break;
-                }
-            }
-            if (isMatch) {
-                return i;
-            }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
-        return -1;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setToolbar() {
+        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.white));
+
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsing_title);
+        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));
+        collapsingToolbarLayout.setCollapsedTitleGravity(GravityCompat.START);
+
+        toolbar.setTitle("Android Showcase");
+        toolbar.setSubtitle("github.com/lear7");
+
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        // actionBar.setHomeAsUpIndicator(ContextCompat.getDrawable(this, R.mipmap.ic_back));
+
+        ActionBarDrawerToggle toggle;
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener((item) -> {
+            if (toggle.onOptionsItemSelected(item)) {
+                return true;
+            } else if (item.getItemId() == R.id.menu_contact_me) {
+                Toast.makeText(this, "Contacting...", Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.menu_about) {
+                Toast.makeText(this, "This is a demo version", Toast.LENGTH_SHORT).show();
+            }
+            drawerLayout.closeDrawers();
+            return true;
+        });
+    }
+
+    private void setTabLayout() {
+        List<String> titles = new ArrayList<>();
+        List<Fragment> fragments = new ArrayList<>();
+
+        titles.add("Testing");
+        titles.add("Thread");
+        titles.add("Image");
+        titles.add("MVP");
+        titles.add("Jetpack");
+        titles.add("Material");
+
+        for (String title : titles) {
+            tablayout.addTab(tablayout.newTab().setText(title));
+            fragments.add(new ListFragment());
+        }
+
+
+        FragmentStatePagerAdapter pageAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                return fragments.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return fragments.size();
+            }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return titles.get(position);
+            }
+        };
+
+        // binding
+        viewPager.setAdapter(pageAdapter);
+        tablayout.setupWithViewPager(viewPager);
+
+    }
+
+    private void setViewModel() {
+        UserModel model = ViewModelProviders.of(this).get(UserModel.class);
+        model.setAge("29");
+        model.setName("Lihua");
+        getLifecycle().addObserver(new MyObserver());
     }
 
     @Override
     protected void initView() {
         super.initView();
 
-        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsing_title);
-        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));
-
-        setSupportActionBar(toolbar);
-
-        UserModel model = ViewModelProviders.of(this).get(UserModel.class);
-        model.setAge("29");
-        model.setName("Lihua");
-
-        getLifecycle().addObserver(new MyObserver());
+        setToolbar();
+        setTabLayout();
+        setViewModel();
     }
 
     @Override
@@ -257,12 +339,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private void testLizhiFM() {
-        long time1 = System.currentTimeMillis();
-        Log.e(App.TAG, "Result is: " + testString());
-        Log.e(App.TAG, "End");
-        Log.e(App.TAG, "Time elapse: " + (System.currentTimeMillis() - time1) + "ms");
-    }
 
     public class MyAsyncTask extends AsyncTask {
 

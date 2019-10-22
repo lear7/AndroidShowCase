@@ -218,6 +218,9 @@ dependencies {
 
     // statusbar
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    // icons
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
 }
 
 // butterknife

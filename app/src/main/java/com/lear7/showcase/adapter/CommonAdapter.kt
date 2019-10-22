@@ -3,10 +3,11 @@ package com.lear7.showcase.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
-class CommonAdapter<T>(private val layoutId: Int,  private val datas: List<T>,private val binding: (View, T, Int) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CommonAdapter<T>(@LayoutRes private val layoutId: Int, private val datas: List<T>, private val binding: (View, T, Int) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface ItemClick {
         fun onItemClick(position: Int)

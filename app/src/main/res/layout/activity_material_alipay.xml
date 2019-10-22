@@ -30,7 +30,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <include
-                layout="@layout/life_pay"
+                layout="@layout/layout_life_pay"
                 android:id="@+id/big_button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"

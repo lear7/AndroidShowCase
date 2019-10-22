@@ -14,7 +14,7 @@ import com.lear7.showcase.adapter.CommonAdapter
 import com.lear7.showcase.constants.Routers.Act_MaterialAlipay
 import kotlinx.android.synthetic.main.activity_material_alipay.*
 import kotlinx.android.synthetic.main.item_recyclerview.view.*
-import kotlinx.android.synthetic.main.life_pay.*
+import kotlinx.android.synthetic.main.layout_life_pay.*
 import kotlinx.android.synthetic.main.toolbar_expand.*
 import org.jetbrains.anko.px2dip
 import org.jetbrains.anko.toast
