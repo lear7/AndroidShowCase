@@ -25,8 +25,10 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.App;
 import com.lear7.showcase.R;
+import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.net.helper.DataHelper;
 import com.lear7.showcase.events.BaseEvent;
 import com.lear7.showcase.service.WeatherIntentService;
@@ -49,6 +51,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
+@Route(path = Routers.Act_ThreadLearning)
 public class ThreadLearnActivity extends BaseActivity {
 
     @BindView(R.id.textView)

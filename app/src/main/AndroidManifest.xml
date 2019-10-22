@@ -13,18 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MaterialActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ListScrollView" />
-        <activity
-            android:name=".activity.VideoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activity.MaterialAlipayActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -33,6 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.MaterialActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MaterialAlipayActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.ListScrollView" />
         <activity android:name=".activity.BindingDemoActivity" />
         <activity android:name=".activity.MvpDemoActivity" />
         <activity android:name=".activity.MvpWrapActivity" />
@@ -62,7 +62,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

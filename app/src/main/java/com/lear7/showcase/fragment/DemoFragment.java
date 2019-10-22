@@ -18,30 +18,27 @@ import com.lear7.showcase.adapter.CommonAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import kotlin.Unit;
 
-public class ListFragment extends Fragment {
+public class DemoFragment extends BaseFragment {
 
-    private View view;
+@BindView(R.id.list_fragment_recycler)
+RecyclerView recyclerView;
+
     private List<String> datas;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public int getLayoutId() {
+        return R.layout.list_fragment;
+    }
+
+    @Override
+    protected void initData() {
         datas = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             datas.add("Item " + i);
         }
-
-        view = inflater.inflate(R.layout.list_fragment, container, false);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        RecyclerView recyclerView = view.findViewById(R.id.list_fragment_recycler);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new CommonAdapter<String>(R.layout.item_recyclerview, datas, (view, data, position) -> {
@@ -49,4 +46,5 @@ public class ListFragment extends Fragment {
             return Unit.INSTANCE;
         }));
     }
+
 }

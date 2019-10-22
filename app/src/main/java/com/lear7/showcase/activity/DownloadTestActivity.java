@@ -7,16 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipeline;
 import com.lear7.showcase.R;
+import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.constants.Urls;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
+@Route(path = Routers.Act_DownloadTest)
 public class DownloadTestActivity extends BaseActivity {
 
     @BindView(R.id.btn_down)

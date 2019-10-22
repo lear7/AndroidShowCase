@@ -33,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     int getLayoutId();
 
     protected void initView() {
-
+        
     }
 
     @Override

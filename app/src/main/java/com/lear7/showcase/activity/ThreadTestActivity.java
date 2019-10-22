@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.App;
 import com.lear7.showcase.R;
+import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.constants.Urls;
 
 import java.io.IOException;
@@ -23,6 +25,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
+@Route(path = Routers.Act_ThreadTest)
 public class ThreadTestActivity extends BaseActivity {
 
     @BindView(R.id.btn_test_runonui)

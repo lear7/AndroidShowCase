@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_go_to_thread"
+            android:text="Thread Testing" />
+
+        <Button
+            android:id="@+id/btn_thread_test"
+            android:text="Start Thread Test" />
+
+        <Button
+            android:id="@+id/btn_start_service"
+            android:text="Start Service" />
+
+        <Button
+            android:id="@+id/btn_start_download"
+            android:text="Download Image Demo" />
+
+        <Button
+            android:id="@+id/btn_video_demo"
+            android:text="Video Demo" />
+
+
+    </TableLayout>
+</androidx.core.widget.NestedScrollView>

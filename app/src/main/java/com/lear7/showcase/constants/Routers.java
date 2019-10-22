@@ -12,6 +12,11 @@ public class Routers {
     public static final String Act_ListView = "/activity/listView";
     public static final String Act_Material = "/activity/material";
     public static final String Act_MaterialAlipay = "/activity/materialalipay";
+
+    public static final String Act_Constaint = "/activity/constraint";
+    public static final String Act_ThreadLearning = "/activity/treadlearning";
+    public static final String Act_ThreadTest = "/activity/threadtest";
+    public static final String Act_DownloadTest = "/activity/download";
 }
 
 

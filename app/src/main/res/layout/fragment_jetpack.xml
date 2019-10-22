@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_test_mvp"
+            android:text="MVP Demo" />
+
+        <Button
+            android:id="@+id/btn_test_mvp_wrap"
+            android:text="MVP demo with base" />
+
+        <Button
+            android:id="@+id/btn_test_mvp_dagger"
+            android:text="MVP demo with Dagger2" />
+
+        <Button
+            android:id="@+id/btn_view_model"
+            android:text="ViewModel Demo" />
+
+        <Button
+            android:id="@+id/btn_data_binding"
+            android:text="Data Binding Demo" />
+
+    </TableLayout>
+</androidx.core.widget.NestedScrollView>
