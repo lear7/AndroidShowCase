@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 @Route(path = Routers.Act_DaggerDemo)
-public class DemoDaggerActivity extends BaseActivity {
+public class DaggerDemoActivity extends BaseActivity {
 
     @Inject
     DemoUser mUser;

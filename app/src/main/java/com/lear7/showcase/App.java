@@ -21,6 +21,18 @@ public class App extends Application {
     public static final String TAG = "LEAR";
     private ApplicationComponent component;
 
+    private void initializeInjector() {
+//        component = DaggerApplicationComponent.builder()
+//                .applicationModule(new ApplicationModule(this))
+//                .apiModule(new ApiModule(RxRetrofit.getInstance()))
+//                .build();
+//        component.inject(this);
+
+    }
+
+    public ApplicationComponent getComponent() {
+        return component;
+    }
 
     @Override
     public void onCreate() {
@@ -71,19 +83,6 @@ public class App extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private void initializeInjector() {
-//        component = DaggerApplicationComponent.builder()
-//                .applicationModule(new ApplicationModule(this))
-//                .apiModule(new ApiModule(RxRetrofit.getInstance()))
-//                .build();
-//        component.inject(this);
-
-    }
-
-    public ApplicationComponent component() {
-        return component;
     }
 
 }

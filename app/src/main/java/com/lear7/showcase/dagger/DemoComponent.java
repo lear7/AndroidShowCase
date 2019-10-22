@@ -1,7 +1,7 @@
 package com.lear7.showcase.dagger;
 
 
-import com.lear7.showcase.activity.DemoDaggerActivity;
+import com.lear7.showcase.activity.DaggerDemoActivity;
 
 import dagger.Component;
 
@@ -16,5 +16,5 @@ public interface DemoComponent {
      *
      * @param activity 表示可以被DaggerActivity注入
      */
-    void inject(DemoDaggerActivity activity);
+    void inject(DaggerDemoActivity activity);
 }

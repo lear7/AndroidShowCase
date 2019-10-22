@@ -1,4 +1,4 @@
-package com.lear7.showcase.net.helper;
+package com.lear7.showcase.net.api;
 
 import com.lear7.showcase.net.api.ApiService;
 
@@ -11,7 +11,8 @@ public class DataManager {
     private final ApiService apiService;
 
     @Inject
-    public DataManager(ApiService service) {
-        this.apiService = service;
+    public DataManager(ApiService apiService) {
+        this.apiService = apiService;
     }
+
 }

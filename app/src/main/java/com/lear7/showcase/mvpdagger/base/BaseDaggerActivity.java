@@ -4,7 +4,7 @@ import com.lear7.showcase.App;
 import com.lear7.showcase.activity.BaseActivity;
 import com.lear7.showcase.mvpdagger.base.component.ActivityComponent;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
-//import com.lear7.showcase.injection.base.component.DaggerActivityComponent;
+//import com.lear7.showcase.injection.base.getComponent.DaggerActivityComponent;
 import com.lear7.showcase.mvpdagger.base.component.DaggerActivityComponent;
 import com.lear7.showcase.mvpdagger.base.module.ActivityModule;
 import com.lear7.showcase.mvp.demo2.base.BasePresenter;
@@ -52,7 +52,7 @@ public abstract class BaseDaggerActivity<V extends BaseView, P extends BasePrese
     }
 
     public ApplicationComponent getApplicationComponent() {
-        return ((App) getApplication()).component();
+        return ((App) getApplication()).getComponent();
     }
 
     protected ActivityModule getActivityModule() {
