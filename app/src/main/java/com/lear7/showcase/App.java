@@ -10,10 +10,11 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
+
+import cn.leancloud.AVLogger;
+import cn.leancloud.AVOSCloud;
+
 //import com.lear7.showcase.mvpdagger.base.component.DaggerApplicationComponent;
-import com.lear7.showcase.mvpdagger.base.module.ApiModule;
-import com.lear7.showcase.mvpdagger.base.module.ApplicationModule;
-import com.lear7.showcase.net.helper.RxRetrofit;
 
 
 public class App extends Application {
@@ -64,7 +65,22 @@ public class App extends Application {
         // dagger2
         initializeInjector();
 
+        // init leancloud
+        initLeanCloud();
+
 //        initVersion();
+    }
+
+    private void initLeanCloud() {
+        AVOSCloud.initialize(this,
+                "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",
+                "OJGURyEenUmSzSyciKGSWG89",
+                "https://e8v5scdo.lc-cn-e1-shared.com");
+
+        if(BuildConfig.DEBUG){
+            // 在 AVOSCloud.initialize() 之前调用
+            AVOSCloud.setLogLevel(AVLogger.Level.DEBUG);
+        }
     }
 
     private void initVersion() {

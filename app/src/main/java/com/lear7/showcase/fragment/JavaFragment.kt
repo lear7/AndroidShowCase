@@ -1,8 +1,11 @@
 package com.lear7.showcase.fragment
 
+import cn.leancloud.AVObject
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.fragment_java.*
+import org.jetbrains.anko.doAsync
+
 
 class JavaFragment : BaseFragment() {
 
@@ -16,5 +19,15 @@ class JavaFragment : BaseFragment() {
         btn_thread_test.setOnClickListener { goTo(Routers.Act_ThreadTest) }
         btn_download_test.setOnClickListener { goTo(Routers.Act_DownloadTest) }
         btn_video_demo.setOnClickListener { goTo(Routers.Act_Video) }
+
+
+        doAsync {
+            val testObject = AVObject("TestObject")
+            testObject.put("First","Hello World!")
+            testObject.saveInBackground().blockingSubscribe()
+        }
+
     }
+
+
 }

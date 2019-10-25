@@ -15,5 +15,9 @@
             android:id="@+id/btn_data_binding"
             android:text="Data Binding Demo" />
 
+        <Button
+            android:id="@+id/btn_lifecycle"
+            android:text="Lifecycle Demo" />
+
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

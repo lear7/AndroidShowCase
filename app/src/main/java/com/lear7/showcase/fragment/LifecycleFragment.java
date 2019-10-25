@@ -1,0 +1,61 @@
+package com.lear7.showcase.fragment;
+
+import android.util.Log;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleRegistry;
+import androidx.lifecycle.OnLifecycleEvent;
+
+import com.lear7.showcase.R;
+
+import java.util.concurrent.TimeUnit;
+
+import butterknife.BindView;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
+public class LifecycleFragment extends BaseFragment {
+
+    @BindView(R.id.lifecycle_hint)
+    TextView textHint;
+
+    public class TaskObserver implements androidx.lifecycle.LifecycleObserver {
+
+        private Disposable disposable;
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        public void onResume() {
+            Log.e("TAG", "onCreate");
+            // 每隔1s执行一次事件
+            disposable = Observable.interval(1, TimeUnit.SECONDS)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(aLong -> {
+                        textHint.setText("Data is: " + String.valueOf(aLong));
+                    });
+        }
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+        public void onPause() {
+            Log.e("TAG", "onPause");
+            if (!disposable.isDisposed()) {
+                disposable.dispose();
+            }
+        }
+    }
+
+    public LifecycleFragment() {
+        // 要在构造函数中注册
+        getLifecycle().addObserver(new TaskObserver());
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_lifecycle;
+    }
+
+}

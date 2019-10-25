@@ -18,6 +18,7 @@ public class Routers {
     public static final String Act_ThreadLearning = "/activity/treadlearning";
     public static final String Act_ThreadTest = "/activity/threadtest";
     public static final String Act_DownloadTest = "/activity/download";
+    public static final String Act_Lifecycle = "/activity/lifecycle";
 }
 
 

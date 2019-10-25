@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
@@ -29,11 +28,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.App;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
-import com.lear7.showcase.net.helper.DataHelper;
 import com.lear7.showcase.events.BaseEvent;
+import com.lear7.showcase.net.helper.DataHelper;
 import com.lear7.showcase.service.WeatherIntentService;
 import com.lear7.showcase.service.WeatherService;
-import com.lear7.showcase.lifecycle.viewmodel.UserModel;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -81,9 +79,6 @@ public class ThreadLearnActivity extends BaseActivity {
     @BindView(R.id.btn_get_weather_rxretrofit)
     Button btnGetWeatherRxRetrofit;
 
-    @BindView(R.id.btn_get_viewmodel_data)
-    Button btnGetViewModelData;
-
     private WeatherService.ServiceBinder aBinder;
 
     @OnClick({R.id.btn_get_weather_loader,
@@ -93,7 +88,7 @@ public class ThreadLearnActivity extends BaseActivity {
             R.id.btn_get_weather_service,
             R.id.btn_get_weather_rx_okhttp,
             R.id.btn_get_weather_retrofit,
-            R.id.btn_get_weather_rxretrofit, R.id.btn_get_viewmodel_data})
+            R.id.btn_get_weather_rxretrofit})
     public void onClick(View view) {
         if (view == btnGetWeatherLoader) {
             textView.setText("");
@@ -121,11 +116,6 @@ public class ThreadLearnActivity extends BaseActivity {
         } else if (view == btnGetWeatherRxRetrofit) {
             textView.setText("");
             getWeatherByRxRetrofit();
-        } else if (view == btnGetViewModelData) {
-            UserModel model = ViewModelProviders.of(this).get(UserModel.class);
-            if (model != null) {
-                textView.setText("Data from UserModel: " + model.getName() + " " + model.getAge());
-            }
         }
     }
 
