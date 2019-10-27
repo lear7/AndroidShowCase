@@ -36,16 +36,18 @@ import com.lear7.showcase.service.WeatherService;
 import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -70,14 +72,17 @@ public class ThreadLearnActivity extends BaseActivity {
     @BindView(R.id.btn_get_weather_service)
     Button btnGetWeatherByService;
 
-    @BindView(R.id.btn_get_weather_rx_okhttp)
-    Button btnGetWeatherRxOkhttp;
+    @BindView(R.id.btn_get_weather_okhttp)
+    Button btnGetWeatherOkhttp;
 
     @BindView(R.id.btn_get_weather_retrofit)
     Button btnGetWeatherRetrofit;
 
     @BindView(R.id.btn_get_weather_rxretrofit)
     Button btnGetWeatherRxRetrofit;
+
+    @BindView(R.id.btn_get_by_callable)
+    Button btnGetByCallable;
 
     private WeatherService.ServiceBinder aBinder;
 
@@ -86,9 +91,10 @@ public class ThreadLearnActivity extends BaseActivity {
             R.id.btn_get_weather_handlethread,
             R.id.btn_get_weather_intentservice,
             R.id.btn_get_weather_service,
-            R.id.btn_get_weather_rx_okhttp,
+            R.id.btn_get_weather_okhttp,
             R.id.btn_get_weather_retrofit,
-            R.id.btn_get_weather_rxretrofit})
+            R.id.btn_get_weather_rxretrofit,
+            R.id.btn_get_by_callable})
     public void onClick(View view) {
         if (view == btnGetWeatherLoader) {
             textView.setText("");
@@ -107,16 +113,48 @@ public class ThreadLearnActivity extends BaseActivity {
         } else if (view == btnGetWeatherByService) {
             textView.setText("");
             getWeatherByService();
-        } else if (view == btnGetWeatherRxOkhttp) {
-            textView.setText("");
-            testRxJava3();
         } else if (view == btnGetWeatherRetrofit) {
             textView.setText("");
             getWeatherByRetrofit();
         } else if (view == btnGetWeatherRxRetrofit) {
             textView.setText("");
             getWeatherByRxRetrofit();
+        } else if (view == btnGetWeatherOkhttp) {
+            textView.setText("");
+            getWeatherByOkhttp();
+        } else if (view == btnGetByCallable) {
+            textView.setText("");
+            getByCallable();
         }
+    }
+
+    private void getWeatherByOkhttp() {
+        //创建被观察者，创建一个发射器，并发射一个事件
+        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                emitter.onNext(DataHelper.getWeatherByOkHttp("From RxJava\n"));
+            }
+        });
+
+        //创建观察者
+        Consumer<String> consumer = new Consumer<String>() {
+            @Override
+            public void accept(String mResponse) throws Exception {
+                setWeatherInfo(mResponse);
+            }
+        };
+
+        // 之后，订阅
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(consumer);
+
+        // 简单写法
+        Observable.create(emitter -> emitter.onNext(DataHelper.getWeatherByOkHttp("From RxJava\n")))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> setWeatherInfo((String) response));
     }
 
     private void getWeatherByRetrofit() {
@@ -135,14 +173,14 @@ public class ThreadLearnActivity extends BaseActivity {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
-                showWeatherInfo((String) msg.obj);
+                setWeatherInfo((String) msg.obj);
             }
         };
 
         handler.post(() -> {
             String weather = DataHelper.getWeatherByOkHttp("From HandlerThread\n");
             // 这里是另一个线程，不能直接与UI线程进行交互
-            // * showWeatherInfo(weather);
+            // * setWeatherInfo(weather);
             EventBus.getDefault().post(new BaseEvent(weather));
         });
 
@@ -160,7 +198,7 @@ public class ThreadLearnActivity extends BaseActivity {
                 Log.e(App.TAG, "Service connected");
                 aBinder = (WeatherService.ServiceBinder) iBinder;
                 if (aBinder != null) {
-                    showWeatherInfo(aBinder.getService().getTempData());
+                    setWeatherInfo(aBinder.getService().getTempData());
                 }
                 // 这里才是绑定成功的操作
                 // textHint.setText(aBinder.getService().getWeatherInfo());
@@ -219,10 +257,10 @@ public class ThreadLearnActivity extends BaseActivity {
     @Override
     public void handleEvent(BaseEvent event) {
         super.handleEvent(event);
-        showWeatherInfo(event.getData());
+        setWeatherInfo(event.getData());
     }
 
-    private void showWeatherInfo(String s) {
+    private void setWeatherInfo(String s) {
         textView.setText(s);
     }
 
@@ -351,7 +389,7 @@ public class ThreadLearnActivity extends BaseActivity {
             public void onLoadFinished(@NonNull Loader loader, Object data) {
                 // Loader结束
                 if (data instanceof String) {
-                    showWeatherInfo((String) data);
+                    setWeatherInfo((String) data);
                 }
             }
 
@@ -366,97 +404,55 @@ public class ThreadLearnActivity extends BaseActivity {
 //        LoaderManager.getInstance(this).restartLoader(1, null, callbacks);
         // 强制启动
         LoaderManager.getInstance(this).initLoader(1, null, callbacks).forceLoad();
-
     }
 
-    private void testRxJava1() {
-        Flowable.just("Hello World").subscribe(new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                Toast.makeText(ThreadLearnActivity.this, s, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Flowable.fromCallable(() -> {
-            Thread.sleep(1000); //  imitate expensive computation
-            return "Done";
-        })
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(System.out::println, Throwable::printStackTrace);
-
+    public class GetWeatherCallable implements Callable<String> {
+        @Override
+        public String call() {
+            return DataHelper.getWeatherByOkHttp("From Callable:\n");
+        }
     }
 
-    private void testRxJava2() {
-        //创建被观察者
-        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> emitter) {
-                //调用观察者的回调
-                emitter.onNext("我是");
-                emitter.onNext("RxJava");
-                emitter.onNext("简单示例");
-                emitter.onError(new Throwable("出错了"));
-                emitter.onComplete();
-            }
-        });
+    private void getByCallable() {
+        Callable<String> task = () -> DataHelper.getWeatherByOkHttp("From Callable:\n");
 
-        //创建观察者
-        Observer<String> observer = new Observer<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                Log.d(App.TAG, "onSubscribe");
-            }
+        //  1. 通过线程池+Callable+Future接口
+        ExecutorService executor1 = Executors.newCachedThreadPool();
+        Future<String> result = executor1.submit(task);
+        executor1.shutdown();
 
-            @Override
-            public void onNext(String s) {
-                Toast.makeText(ThreadLearnActivity.this, s, Toast.LENGTH_SHORT).show();
+//        // 2. 通过线程池+Callable+FutureTask
+//        ExecutorService executor2 = Executors.newCachedThreadPool();
+//        FutureTask<String> result = new FutureTask<>(task);
+//        executor2.submit(result);
+//        executor2.shutdown();
+//
+//        // 3.通过新线程+FutureTask
+//        FutureTask<String> result = new FutureTask<>(task);
+//        Thread thread = new Thread(result);
+//        thread.start();
+//
+//        // 展示结果
+        new Thread(() -> {
+            while (true) {
+                if (result.isDone()) {
+                    String resultStr = "not ready";
+                    try {
+                        resultStr = result.get();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    String finalResultStr = resultStr;
+                    runOnUiThread(() -> {
+                        setWeatherInfo(finalResultStr);
+                    });
+                    break;
+                }
             }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.d(App.TAG, "onError");
-            }
-
-            @Override
-            public void onComplete() {
-                Log.d(App.TAG, "onComplete");
-            }
-        };
-
-        //注册，将观察者和被观察者关联，将会触发OnSubscribe.call方法
-        observable.subscribe(observer);
+        }).start();
     }
 
-    private void testRxJava3() {
-        //创建被观察者
-//        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
-//            @Override
-//            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-//                emitter.onNext(Apis.getWeatherByOkHttp());
-//            }
-//        });
-        Observable<String> observable = Observable.create(emitter -> emitter.onNext(DataHelper.getWeatherByOkHttp("From RxJava\n")));
-
-        //创建观察者
-        Consumer<String> consumer = new Consumer<String>() {
-            @Override
-            public void accept(String mResponse) throws Exception {
-                showWeatherInfo(mResponse);
-            }
-        };
-//        Consumer<String> consumer = response -> showWeatherInfo(response);
-
-        //subscribeOn() 指定的是发送事件的线程, observeOn() 指定的是接收事件的线程.
-//        observable.subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(consumer);
-
-//        // 简单写法
-        Observable.create(emitter -> emitter.onNext(DataHelper.getWeatherByOkHttp("From RxJava\n")))
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> showWeatherInfo((String) response));
-    }
 
 }

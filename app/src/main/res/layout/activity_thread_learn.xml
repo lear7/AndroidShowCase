@@ -51,9 +51,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="By HandlerThread"
-            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_rx_okhttp"
-            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_rx_okhttp"
-            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_rx_okhttp" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_okhttp"
+            app:layout_constraintStart_toStartOf="@+id/btn_get_weather_okhttp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_okhttp" />
 
         <Button
             android:id="@+id/btn_get_weather_intentservice"
@@ -73,11 +73,12 @@
             app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
             app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_intentservice" />
 
+
         <Button
-            android:id="@+id/btn_get_weather_rx_okhttp"
+            android:id="@+id/btn_get_weather_okhttp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="By Rx+OkHttp"
+            android:text="By OkHttp(Rx Style)"
             app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_loader"
             app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
             app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_async" />
@@ -99,6 +100,11 @@
             app:layout_constraintEnd_toEndOf="@+id/btn_get_weather_loader"
             app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
             app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_async" />
+
+
+        <Button
+            android:id="@+id/btn_get_by_callable"
+            android:text="By Callable/FutureTask" />
 
     </TableLayout>
 

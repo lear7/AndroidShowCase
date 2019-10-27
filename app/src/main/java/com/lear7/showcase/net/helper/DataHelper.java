@@ -67,6 +67,12 @@ public class DataHelper {
 
     //使用okhttp访问网上提供的接口，由于是同步get请求，需要在子线程进行
     public static final String getWeatherByOkHttp(String header) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(Urls.Weather_URL)

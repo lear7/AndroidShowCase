@@ -11,6 +11,13 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+
 import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
 
@@ -68,19 +75,17 @@ public class App extends Application {
         // init leancloud
         initLeanCloud();
 
-//        initVersion();
+        // callableTest();
+        // initVersion();
     }
 
-    private void initLeanCloud() {
-        AVOSCloud.initialize(this,
+    private void initLeanCloud(){
+        Log.e(TAG, "LeanCloud initialling...");
+        AVOSCloud.initialize(App.this,
                 "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",
                 "OJGURyEenUmSzSyciKGSWG89",
                 "https://e8v5scdo.lc-cn-e1-shared.com");
-
-        if(BuildConfig.DEBUG){
-            // 在 AVOSCloud.initialize() 之前调用
-            AVOSCloud.setLogLevel(AVLogger.Level.DEBUG);
-        }
+        Log.e(TAG, "LeanCloud initialized!");
     }
 
     private void initVersion() {

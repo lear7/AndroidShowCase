@@ -23,6 +23,10 @@
             android:id="@+id/btn_video_demo"
             android:text="Video Demo" />
 
+        <Button
+            android:id="@+id/btn_rx_java"
+            android:text="RxJava Demo" />
+
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

@@ -9,6 +9,9 @@ import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.activity_view_model.*
 import viewmodel.TimeViewModel
 import java.util.*
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.timerTask
 
 
@@ -30,15 +33,24 @@ class ViewModelActivity : BaseActivity() {
 
     private fun updateByTimer() {
         var startTime = SystemClock.elapsedRealtime()
-        val timer = Timer()
-        timer.scheduleAtFixedRate(timerTask {
+
+//        val timer = Timer()
+//        timer.scheduleAtFixedRate(timerTask {
+//            val newValue: Long = (SystemClock.elapsedRealtime() - startTime) / 1000
+//            // setValue要在主线程中执行
+//            // setValue() cannot be called from a background thread so post to main thread.
+//            runOnUiThread {
+//                view_model_textview.text = "Value from timer: ${newValue.toString()}"
+//            }
+//        }, 1000, 1000)
+
+        val mScheduledExecutorService: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
+        mScheduledExecutorService.scheduleAtFixedRate({
             val newValue: Long = (SystemClock.elapsedRealtime() - startTime) / 1000
             // setValue要在主线程中执行
             // setValue() cannot be called from a background thread so post to main thread.
-            runOnUiThread {
-                view_model_textview.text = "Value from timer: ${newValue.toString()}"
-            }
-        }, 1000, 1000)
+            view_model_textview.text = "Value from timer: ${newValue.toString()}"
+        }, 1, 1, TimeUnit.SECONDS)
     }
 
     private fun updateByViewModel() {

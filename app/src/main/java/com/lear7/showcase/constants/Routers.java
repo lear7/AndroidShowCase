@@ -19,6 +19,8 @@ public class Routers {
     public static final String Act_ThreadTest = "/activity/threadtest";
     public static final String Act_DownloadTest = "/activity/download";
     public static final String Act_Lifecycle = "/activity/lifecycle";
+    public static final String Act_CustomerView = "/activity/customerview";
+    public static final String Act_RxJava = "/activity/rxjava";
 }
 
 
