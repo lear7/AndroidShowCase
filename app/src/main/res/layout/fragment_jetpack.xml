@@ -19,5 +19,9 @@
             android:id="@+id/btn_lifecycle"
             android:text="Lifecycle Demo" />
 
+        <Button
+            android:id="@+id/btn_movie_app"
+            android:text="Movie App" />
+
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

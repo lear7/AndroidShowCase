@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RxJavaActivity"></activity>
+        <activity android:name=".activity.MoviewAppActivity"></activity>
+        <activity android:name=".activity.RxJavaActivity" />
         <activity android:name=".activity.CustomerViewActivity" />
         <activity android:name=".activity.LifecycleActivity" />
         <activity android:name=".activity.ViewModelActivity" />

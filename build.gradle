@@ -4,36 +4,52 @@ buildscript {
     // Define versions in a single place
     ext {
         // Sdk and tools
-        compileSdkVersion = 28
-        minSdkVersion = 19
-        targetSdkVersion = 28
+        compileSdkVersion = 29
+        minSdkVersion = 16
+        targetSdkVersion = 29
 
-        // App dependencies
+        // build tool
+        gradleBuildTool = '3.5.1'
+
+        // support library
         appCompatVersion = '1.1.0'
-        constraintLayoutVersion = '2.0.0-beta2'
-        coreTestingVersion = '2.1.0'
-        coroutinesVersion = "1.3.2"
-        espressoVersion = '3.2.0'
-        fragmentVersion = '1.2.0-beta01'
-        glideVersion = '4.10.0'
-        gradleVersion = '3.5.1'
-        gsonVersion = '2.8.6'
-        junitVersion = '4.12'
-        kotlinVersion = '1.3.50'
-        ktlintVersion = '0.33.0'
-        ktxVersion = '1.1.0'
-        lifecycleVersion = '2.2.0-beta01'
+        androidxVersion = '1.0.0'
+
+        // ui support
         materialVersion = '1.1.0-beta01'
         navigationVersion = '2.1.0'
         recyclerViewVersion = '1.1.0-beta05'
-        roomVersion = '2.2.0'
-        runnerVersion = '1.0.1'
-        truthVersion = '1.0'
-        testExtJunit = '1.1.1'
-        uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0-beta05'
-        workVersion = '2.2.0'
+        fragmentVersion = '1.2.0-beta01'
+        constraintLayoutVersion = '2.0.0-beta2'
+
+        // test tool
+        junitVersion = '4.12'
+        espressoVersion = '3.2.0'
+        androidJunitVersion = '1.1.1'
+        runnerVersion = '1.2.0'
+
+        // architecture components
+        archCompomentVersion = '2.0.0'
+        lifecycleVersion = '2.2.0-beta01'
+        roomVersion = '2.2.0'
+
+        // kotlin
+        kotlinVersion = '1.3.50'
         ankoVersion = '0.10.8'
+        ktlintVersion = '0.33.0'
+        ktxVersion = '1.1.0'
+
+        // koin
+        koinVersion = '2.0.1'
+
+        // coroutines
+        coroutinesVersion = '1.3.0'
+
+        // glide
+        glideVersion = '4.10.0'
+
+        // dagger2
         androidAptVersion = '1.8'
     }
 
@@ -43,7 +59,7 @@ buildscript {
 
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:${gradleVersion}"
+        classpath "com.android.tools.build:gradle:$gradleBuildTool"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 

@@ -6,7 +6,7 @@ import com.lear7.showcase.App;
 
 import io.reactivex.observers.DisposableObserver;
 
-public class BaseSubscriber<T> extends DisposableObserver<T> {
+public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
 
 
     public BaseSubscriber() {
@@ -14,9 +14,7 @@ public class BaseSubscriber<T> extends DisposableObserver<T> {
     }
 
     @Override
-    public void onNext(T o) {
-        Log.e(App.TAG, o.toString());
-    }
+    public abstract void onNext(T o);
 
 
     @Override

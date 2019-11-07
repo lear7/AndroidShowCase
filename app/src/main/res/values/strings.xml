@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Android Showcase</string>
+    <string name="app_name_movie">My Movie</string>
     <string name="city_name">Singapore</string>
     <string name="btn_upload">Upload</string>
     <string name="btn_discard">Discard</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="menu_movie">Movie</string>
+    <string name="menu_tv">Tv</string>
+    <string name="menu_star">Star</string>
     <string name="city_desc">"Singapore (/ˈsɪŋ(ɡ)əpɔːr/ (About this soundlisten)), officially the Republic of Singapore, is a city-state in Southeast Asia. The country is situated one degree (137 kilometres or 85 miles) north of the equator, at the southern tip of the Malay Peninsula, with Indonesia's Riau Islands to the south and Peninsular Malaysia to the north. Singapore's territory consists of one main island along with 62 other islets. Since independence, the sovereign state extensive land reclamation has increased its total size by 23% (130 square kilometres or 50 square miles)1、当一个Android应用程序第一次启动时,Android框架为应用程序的主线程创建一个Looper对象。一个Looper实现了一个简单的消息队列,在一个循环中处理Message对象。所有主要的应用程序框架事件(如活动生命周期方法调用,单击按钮,等等)都包含在Message对象,它被添加到Looper的消息队列然后一个个被处理。主线程的Looper在应用程序的整个生命周期中存在。2、当一个Handle在主线程被实例化,它就被关联到Looper的消息队列。被发送到消息队列的消息会持有一个Handler的引用,以便Android框架可以在Looper最终处理这个消息的时候，调用Handler#handleMessage(Message)。"</string>
 </resources>

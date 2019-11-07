@@ -21,6 +21,7 @@ public class Routers {
     public static final String Act_Lifecycle = "/activity/lifecycle";
     public static final String Act_CustomerView = "/activity/customerview";
     public static final String Act_RxJava = "/activity/rxjava";
+    public static final String Act_MoviewApp = "/activity/movieapp";
 }
 
 

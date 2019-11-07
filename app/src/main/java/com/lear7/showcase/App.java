@@ -11,15 +11,10 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadPoolExecutor;
 
-import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
+import io.reactivex.Single;
 
 //import com.lear7.showcase.mvpdagger.base.component.DaggerApplicationComponent;
 
@@ -37,6 +32,7 @@ public class App extends Application {
 //        component.inject(this);
 
     }
+
 
     public ApplicationComponent getComponent() {
         return component;
@@ -79,7 +75,7 @@ public class App extends Application {
         // initVersion();
     }
 
-    private void initLeanCloud(){
+    private void initLeanCloud() {
         Log.e(TAG, "LeanCloud initialling...");
         AVOSCloud.initialize(App.this,
                 "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",

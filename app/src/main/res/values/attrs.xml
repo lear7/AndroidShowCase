@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomView">
+        <attr name="LayoutType" format="integer">
+            <enum name="byLayout" value="0" />
+            <enum name="byOffset" value="1" />
+            <enum name="byLp" value="2" />
+        </attr>
+        <attr name="Hint" format="string" />
+    </declare-styleable>
+</resources>

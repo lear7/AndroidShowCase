@@ -8,7 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.App;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
-import com.lear7.showcase.net.helper.DataHelper;
+import com.lear7.showcase.net.helper.DataUtils;
 
 import butterknife.BindView;
 import io.reactivex.Flowable;
@@ -113,7 +113,7 @@ public class RxJavaActivity extends BaseActivity {
         Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                emitter.onNext(DataHelper.getWeatherByOkHttp("From RxJava 4\n"));
+                emitter.onNext(DataUtils.getWeatherByOkHttp("From RxJava 4\n"));
             }
         });
 
@@ -133,7 +133,7 @@ public class RxJavaActivity extends BaseActivity {
 
     private void testRxJava5() {
         // 简单写法
-        Observable.create(emitter -> emitter.onNext(DataHelper.getWeatherByOkHttp("From RxJava 5\n")))
+        Observable.create(emitter -> emitter.onNext(DataUtils.getWeatherByOkHttp("From RxJava 5\n")))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> setText((String) response));

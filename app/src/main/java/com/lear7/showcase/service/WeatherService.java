@@ -9,7 +9,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.lear7.showcase.App;
-import com.lear7.showcase.net.helper.DataHelper;
+import com.lear7.showcase.net.helper.DataUtils;
 import com.lear7.showcase.events.BaseEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -48,7 +48,7 @@ public class WeatherService extends Service {
 
     private void getWeatherInThread() {
         thread = new Thread(() -> {
-            tempData = DataHelper.getWeatherByOkHttp("From Service\n");
+            tempData = DataUtils.getWeatherByOkHttp("From Service\n");
             EventBus.getDefault().post(new BaseEvent(tempData));
         });
         thread.start();

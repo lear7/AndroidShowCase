@@ -7,22 +7,60 @@
     tools:context="com.lear7.showcase.activity.CustomerViewActivity">
 
     <Button
+        android:id="@+id/custom_run_anim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/custom_run_anim"
         android:text="Run Animation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/custom_run_smooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scroll Smooth"
+        app:layout_constraintStart_toEndOf="@+id/custom_run_anim"
+        app:layout_constraintTop_toBottomOf="@+id/custom_run_anim" />
+
     <com.lear7.showcase.widget.CustomView
         android:id="@+id/custom_view"
         android:layout_width="50dp"
-        android:background="@color/colorPrimary"
         android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="100dp"
         android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorPrimary"
+        app:Hint="By Layout"
+        app:LayoutType="byLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.lear7.showcase.widget.CustomView
+        android:id="@+id/custom_view_2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginRight="200dp"
+        android:background="@color/colorPrimaryDark"
+        app:Hint="By Offset"
+        app:LayoutType="byOffset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.lear7.showcase.widget.CustomView
+        android:id="@+id/custom_view_4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="100dp"
+        android:background="@color/black"
+        app:Hint="By LayoutParams"
+        app:LayoutType="byLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

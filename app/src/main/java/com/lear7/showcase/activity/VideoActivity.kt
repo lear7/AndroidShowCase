@@ -46,8 +46,12 @@ class VideoActivity : BaseActivity() {
 //        }
 
         StatusBarUtil.setColor(VideoAcivity@ this, Color.BLACK);
+        video_edittext.setText(Urls.VIDEO_URL3)
+        btn_refresh.setOnClickListener {
+            resetPlayer()
+            video_player.setUp(video_edittext.text.toString(), true, "Good Video")
+        }
 
-        video_player.setUp(Urls.VIDEO_URL2, true, "Good Video")
 
         //增加封面
         val imageView = ImageView(this)
@@ -96,6 +100,11 @@ class VideoActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
+        resetPlayer()
+        super.onBackPressed()
+    }
+
+    fun resetPlayer(){
         //先返回正常状态
         if (orientationUtils.screenType == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             video_player.fullscreenButton.performClick()
@@ -103,7 +112,6 @@ class VideoActivity : BaseActivity() {
         }
         //释放所有
         video_player.setVideoAllCallBack(null)
-        super.onBackPressed()
     }
 
 }

@@ -17,7 +17,10 @@ class CustomerViewActivity : BaseActivity() {
         super.initView()
         custom_run_anim.setOnClickListener {
             // 设置动画
-            custom_view.animation = AnimationUtils.loadAnimation(this, R.anim.translate)
+            custom_view_4.animation = AnimationUtils.loadAnimation(this, R.anim.translate)
+            // 执行动画
+            custom_view_4.animation.startNow()
         }
+        custom_run_smooth.setOnClickListener { custom_view_2.smoothScrollTo(-50, -50) }
     }
 }

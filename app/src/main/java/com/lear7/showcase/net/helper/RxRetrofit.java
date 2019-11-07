@@ -19,7 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Singleton
 public class RxRetrofit {
 
-    private static Retrofit instance;
+    // 使用双重检查
+    private volatile static Retrofit instance;
 
     /**
      * 不需要在请求头添加东西,可以做成单例模式
@@ -28,7 +29,9 @@ public class RxRetrofit {
      */
     public static Retrofit getInstance() {
         if (instance == null) {
+            // 加锁
             synchronized (RxRetrofit.class) {
+                // 双重检查
                 if (instance == null) {
                     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor((string) ->
                             Log.e("OKHttp", string));
