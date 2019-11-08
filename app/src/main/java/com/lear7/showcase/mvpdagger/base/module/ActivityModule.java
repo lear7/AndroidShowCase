@@ -1,6 +1,6 @@
 package com.lear7.showcase.mvpdagger.base.module;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lear7.showcase.mvpdagger.base.scope.PerActivity;
 
@@ -9,15 +9,15 @@ import dagger.Provides;
 
 @Module
 public class ActivityModule {
-    private final Activity activity;
+    private final AppCompatActivity activity;
 
-    public ActivityModule(Activity activity) {
+    public ActivityModule(AppCompatActivity activity) {
         this.activity = activity;
     }
 
     @Provides
     @PerActivity
-    Activity provideActivity() {
+    AppCompatActivity provideActivity() {
         return this.activity;
     }
 }

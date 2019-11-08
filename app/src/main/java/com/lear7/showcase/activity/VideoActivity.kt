@@ -46,7 +46,7 @@ class VideoActivity : BaseActivity() {
 //        }
 
         StatusBarUtil.setColor(VideoAcivity@ this, Color.BLACK);
-        video_edittext.setText(Urls.VIDEO_URL3)
+        video_edittext.setText(Urls.VIDEO_URL2)
         btn_refresh.setOnClickListener {
             resetPlayer()
             video_player.setUp(video_edittext.text.toString(), true, "Good Video")

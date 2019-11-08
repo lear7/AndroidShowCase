@@ -27,6 +27,9 @@
             android:id="@+id/btn_rx_java"
             android:text="RxJava Demo" />
 
+        <Button
+            android:id="@+id/btn_aidl_service"
+            android:text="Start AIDL Service" />
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

@@ -7,12 +7,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.activity_view_model.*
-import viewmodel.TimeViewModel
-import java.util.*
+import com.lear7.showcase.viewmodel.TimeViewModel
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
-import kotlin.concurrent.timerTask
 
 
 @Route(path = Routers.Act_ViewModel)

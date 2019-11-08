@@ -1,4 +1,4 @@
-package viewmodel;
+package com.lear7.showcase.viewmodel;
 
 import android.os.SystemClock;
 

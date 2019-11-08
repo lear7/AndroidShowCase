@@ -9,7 +9,7 @@ buildscript {
         targetSdkVersion = 29
 
         // build tool
-        gradleBuildTool = '3.5.1'
+        gradleBuildTool = '3.5.2'
 
         // support library
         appCompatVersion = '1.1.0'
@@ -59,7 +59,7 @@ buildscript {
 
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradleBuildTool"
+        classpath "com.android.tools.build:gradle:${gradleBuildTool}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 
