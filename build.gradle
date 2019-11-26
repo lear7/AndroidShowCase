@@ -11,7 +11,6 @@ buildscript {
         targetSdkVersion = 22
         //build tools的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于你的sdk目录/build-tools/下
         buildToolsVersion = '29.0.2'
-
         // build tool
         gradleBuildTool = '3.5.2'
 
@@ -60,7 +59,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-
     }
 
     dependencies {
@@ -86,7 +84,11 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-//// 解决中文问题
-//tasks.withType(JavaCompile) {
-//    options.encoding = "UTF-8"
-//}
+def releaseTime() {
+    return new Date().format("YYMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+// 解决中文问题
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

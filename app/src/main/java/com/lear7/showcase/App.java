@@ -1,11 +1,14 @@
 package com.lear7.showcase;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -23,6 +26,12 @@ public class App extends Application {
 
     public static final String TAG = "LEAR";
     private ApplicationComponent component;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     private void initializeInjector() {
 //        component = DaggerApplicationComponent.builder()
