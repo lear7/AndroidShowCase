@@ -20,6 +20,8 @@ class JavaFragment : BaseFragment() {
         btn_download_test.setOnClickListener { goTo(Routers.Act_DownloadTest) }
         btn_video_demo.setOnClickListener { goTo(Routers.Act_Video) }
         btn_rx_java.setOnClickListener { goTo(Routers.Act_RxJava) }
+        btn_printer.setOnClickListener { goTo(Routers.Act_Printer) }
+        video_call.setOnClickListener { goTo(Routers.Act_VideoCall) }
 
         doAsync {
             val testObject = AVObject("TestObject")

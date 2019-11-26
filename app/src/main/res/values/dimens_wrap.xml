@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_small_24">@dimen/px_24</dimen>
+    <dimen name="font_normal_32">@dimen/px_32</dimen>
+    <dimen name="font_middle_36">@dimen/px_36</dimen>
+    <dimen name="font_large_40">@dimen/px_40</dimen>
+    <dimen name="font_title_56">@dimen/px_56</dimen>
+    <dimen name="font_huge_72">@dimen/px_72</dimen>
+
+    <dimen name="margin_small_12">@dimen/px_12</dimen>
+    <dimen name="margin_normal_24">@dimen/px_24</dimen>
+    <dimen name="margin_large_32">@dimen/px_32</dimen>
+    <dimen name="margin_huge_40">@dimen/px_40</dimen>
+    <dimen name="margin_super_64">@dimen/px_64</dimen>
+
+    <dimen name="window_normal_width_640">@dimen/px_640</dimen>
+    <dimen name="window_normal_height_480">@dimen/px_480</dimen>
+    <dimen name="window_small_width_160">@dimen/px_160</dimen>
+    <dimen name="window_small_height_120">@dimen/px_120</dimen>
+    <dimen name="window_land_small_width_480">@dimen/px_480</dimen>
+    <dimen name="window_land_small_height_320">@dimen/px_320</dimen>
+    <dimen name="window_land_big_width_720">@dimen/px_720</dimen>
+    <dimen name="window_land_big_height_540">@dimen/px_540</dimen>
+
+    <dimen name="setting_header_240">@dimen/px_240</dimen>
+    <dimen name="setting_header_360">@dimen/px_360</dimen>
+    <dimen name="setting_content_480">@dimen/px_480</dimen>
+
+    <dimen name="btn_check_width_48">@dimen/px_48</dimen>
+    <dimen name="btn_round_width_96">@dimen/px_96</dimen>
+    <dimen name="btn_normal_width_240">@dimen/px_240</dimen>
+    <dimen name="btn_big_width_300">@dimen/px_320</dimen>
+
+    <dimen name="bed_width_240">@dimen/px_240</dimen>
+    <dimen name="bed_height_160">@dimen/px_160</dimen>
+
+</resources>

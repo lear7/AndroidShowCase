@@ -21,6 +21,8 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
 
+    protected String TAG = this.getClass().getName();
+
     /**
      * @return Layout Id
      */

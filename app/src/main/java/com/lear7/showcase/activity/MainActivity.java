@@ -35,7 +35,6 @@ import java.util.List;
 
 import butterknife.BindView;
 
-
 @Route(path = Routers.Act_Main)
 public class MainActivity extends BaseActivity {
 

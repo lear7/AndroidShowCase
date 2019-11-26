@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/activity_server_main_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/main_time_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_super_64"
+        android:gravity="center_horizontal"
+        android:text="可视对讲机"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/px_80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_call"
+        android:layout_width="@dimen/px_217"
+        android:layout_height="@dimen/px_216"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="@drawable/main_call_btn_bg"
+        android:gravity="center_horizontal|bottom"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/x40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/video_parent" />
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal_24"
+        android:text="推流/拉流测试"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_time_tv" />
+
+    <Button
+        android:id="@+id/btn_setting"
+        android:layout_width="@dimen/btn_round_width_96"
+        android:layout_height="@dimen/btn_round_width_96"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/margin_huge_40"
+        android:layout_marginBottom="@dimen/margin_huge_40"
+        android:background="@drawable/main_setting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/video_parent"
+        android:layout_width="@dimen/window_normal_width_640"
+        android:layout_height="@dimen/window_normal_height_480"
+        android:layout_marginTop="@dimen/px_240"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_time_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

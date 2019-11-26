@@ -31,5 +31,13 @@
             android:id="@+id/btn_aidl_service"
             android:text="Start AIDL Service" />
 
+        <Button
+            android:id="@+id/btn_printer"
+            android:text="Start Printer" />
+
+        <Button
+            android:id="@+id/video_call"
+            android:text="Make Call" />
+
     </TableLayout>
 </androidx.core.widget.NestedScrollView>
