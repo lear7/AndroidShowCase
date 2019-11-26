@@ -82,10 +82,13 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
-.gitignore
-.gradle/5.4.1/fileContent/
-.gradle/5.4.1/fileHashes/resourceHashesCache.bin
-.gradle/5.4.1/javaCompile/
-.gradle/5.4.1/vcsMetadata-1/
-app/libs/
-build/kotlin/
+
+.gradle
+/local.properties
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/caches
+.DS_Store
+/build
+/captures

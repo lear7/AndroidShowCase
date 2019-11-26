@@ -3,10 +3,14 @@
 buildscript {
     // Define versions in a single place
     ext {
-        // Sdk and tools
+        // 编译sdk的版本，也就是API Level，例如API-19、API-20、API-21等等。
         compileSdkVersion = 29
-        minSdkVersion = 16
-        targetSdkVersion = 29
+        //最小sdk版本，如果设备小于这个版本或者大于 maxSdkVersion(一般不用)将无法安装这个应用
+        minSdkVersion = 19
+        //目标sdk版本，如果设备等于这个版本那么android平台，就不进行兼容性检查，运行效率会高一点
+        targetSdkVersion = 22
+        //build tools的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于你的sdk目录/build-tools/下
+        buildToolsVersion = '29.0.2'
 
         // build tool
         gradleBuildTool = '3.5.2'
@@ -58,6 +62,7 @@ buildscript {
         jcenter()
 
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:${gradleBuildTool}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -74,7 +79,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-
     }
 }
 

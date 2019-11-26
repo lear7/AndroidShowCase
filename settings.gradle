@@ -1,2 +1,2 @@
-include ':app', ':AidlClient'
+include ':app', ':aidl_client'
 rootProject.name = 'AndroidShowCase'
