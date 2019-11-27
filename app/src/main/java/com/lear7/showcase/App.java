@@ -85,12 +85,12 @@ public class App extends Application {
     }
 
     private void initLeanCloud() {
-        Log.e(TAG, "LeanCloud initialling...");
-        AVOSCloud.initialize(App.this,
-                "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",
-                "OJGURyEenUmSzSyciKGSWG89",
-                "https://e8v5scdo.lc-cn-e1-shared.com");
-        Log.e(TAG, "LeanCloud initialized!");
+//        Log.e(TAG, "LeanCloud initialling...");
+//        AVOSCloud.initialize(App.this,
+//                "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",
+//                "OJGURyEenUmSzSyciKGSWG89",
+//                "https://e8v5scdo.lc-cn-e1-shared.com");
+//        Log.e(TAG, "LeanCloud initialized!");
     }
 
     private void initVersion() {

@@ -11,7 +11,6 @@ import android.print.PrintDocumentInfo;
 import android.util.Log;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,11 +19,11 @@ import java.io.OutputStream;
 public class PdfDocumentAdapter extends PrintDocumentAdapter {
 
     Context context = null;
-    String pathName = "";
+    String relPath = "";
 
-    public PdfDocumentAdapter(Context ctxt, String pathName) {
+    public PdfDocumentAdapter(Context ctxt, String relPath) {
         context = ctxt;
-        this.pathName = pathName;
+        this.relPath = relPath;
     }
 
     @Override
@@ -47,8 +46,7 @@ public class PdfDocumentAdapter extends PrintDocumentAdapter {
         InputStream in = null;
         OutputStream out = null;
         try {
-            File file = new File(pathName);
-            in = new FileInputStream(file);
+            in = context.getResources().getAssets().open(relPath);
             out = new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
 
             byte[] buf = new byte[16384];

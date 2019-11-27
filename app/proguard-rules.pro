@@ -116,27 +116,6 @@ public static ** valueOf(java.lang.String);
 
 ##---------------End: proguard configuration for Gson  ----------
 
-# video chat
--keep public class com.demo.video_library.** { *; }
--keep public class com.demo.li.vc_room_out.** { *; }
--keep public enum com.demo.video_library.entity** {
-  **[] $VALUES;
-  public *;
-}
-
-# litepal
--keep class org.litepal.** { *; }
--keep class * extends org.litepal.crud.DataSupport { *; }
-
-# qiniu
--keep class com.pili.pldroid.player.** { *; }
--keep class com.qiniu.qplayer.mediaEngine.MediaPlayer{*;}
-
-# rtmp
--dontwarn com.pedro.rtplibrary.*
--keep class com.pedro.rtplibrary.** { *;}
--keep enum com.pedro.rtplibrary.** { *;}
-
 # glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
@@ -180,3 +159,23 @@ public static ** valueOf(java.lang.String);
     public <init>(android.content.Context, android.util.AttributeSet);
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
+
+# video chat start
+-keep class com.demo.video_library.** { *; }
+-keep class com.demo.li.vc_room_out.** { *; }
+-keep class * extends com.demo.video_library.ui.VideoBase { *; }
+-keep class * extends com.demo.video_library.ui.VideoBaseFragment { *; }
+-keep enum com.demo.video_library.entity** {
+  **[] $VALUES;
+  public *;
+}
+-keep class org.litepal.** { *; }
+-keep class * extends org.litepal.crud.DataSupport { *; }
+-keep class com.pili.pldroid.player.** { *; }
+-keep class com.qiniu.qplayer.mediaEngine.MediaPlayer{*;}
+-dontwarn com.pedro.rtplibrary.*
+-keep class com.pedro.rtplibrary.** { *;}
+-keep enum com.pedro.rtplibrary.** { *;}
+-keep class net.ossrs.rtmp.** {*;}
+-keep class com.github.faucamp.simplertmp.** {*;}
+# video chat end

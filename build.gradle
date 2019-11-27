@@ -6,7 +6,7 @@ buildscript {
         // 编译sdk的版本，也就是API Level，例如API-19、API-20、API-21等等。
         compileSdkVersion = 29
         //最小sdk版本，如果设备小于这个版本或者大于 maxSdkVersion(一般不用)将无法安装这个应用
-        minSdkVersion = 19
+        minSdkVersion = 22
         //目标sdk版本，如果设备等于这个版本那么android平台，就不进行兼容性检查，运行效率会高一点
         targetSdkVersion = 22
         //build tools的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于你的sdk目录/build-tools/下
@@ -19,12 +19,12 @@ buildscript {
         androidxVersion = '1.0.0'
 
         // ui support
-        materialVersion = '1.1.0-beta01'
+        materialVersion = '1.2.0-alpha02'
         navigationVersion = '2.1.0'
-        recyclerViewVersion = '1.1.0-beta05'
+        recyclerViewVersion = '1.1.0-rc01'
         viewPagerVersion = '1.0.0-beta05'
         fragmentVersion = '1.2.0-beta01'
-        constraintLayoutVersion = '2.0.0-beta2'
+        constraintLayoutVersion = '2.0.0-beta3'
 
         // test tool
         junitVersion = '4.12'
@@ -33,12 +33,12 @@ buildscript {
         runnerVersion = '1.2.0'
 
         // architecture components
-        archCompomentVersion = '2.0.0'
-        lifecycleVersion = '2.2.0-beta01'
-        roomVersion = '2.2.0'
+        archCompomentVersion = '2.1.0'
+        lifecycleVersion = '2.2.0-rc02'
+        roomVersion = '2.2.1'
 
         // kotlin
-        kotlinVersion = '1.3.50'
+        kotlinVersion = '1.3.61'
         ankoVersion = '0.10.8'
         ktlintVersion = '0.33.0'
         ktxVersion = '1.1.0'

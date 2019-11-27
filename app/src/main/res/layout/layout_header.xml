@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/px_500"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/bg"
+        android:src="@drawable/bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
