@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static com.lear7.showcase.App.TAG;
+
 public class PdfDocumentAdapter extends PrintDocumentAdapter {
 
     Context context = null;
@@ -64,13 +66,13 @@ public class PdfDocumentAdapter extends PrintDocumentAdapter {
             }
         } catch (Exception e) {
             writeResultCallback.onWriteFailed(e.getMessage());
-            Log.e("TAG", e.getMessage());
+            Log.e(TAG, e.getMessage());
         } finally {
             try {
                 in.close();
                 out.close();
             } catch (IOException e) {
-                Log.e("TAG", e.getMessage());
+                Log.e(TAG, e.getMessage());
             }
         }
     }

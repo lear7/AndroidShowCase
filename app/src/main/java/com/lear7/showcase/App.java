@@ -13,6 +13,14 @@ import androidx.multidex.MultiDex;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
+import com.lear7.showcase.utils.CrashHandler;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.CsvFormatStrategy;
+import com.orhanobut.logger.DiskLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.LogcatLogStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -42,7 +50,6 @@ public class App extends Application {
 
     }
 
-
     public ApplicationComponent getComponent() {
         return component;
     }
@@ -60,6 +67,22 @@ public class App extends Application {
 
             StrictMode.setThreadPolicy(policy);
         }
+        CrashHandler.getInstance(this);
+
+        FormatStrategy diskFormatStrategy = CsvFormatStrategy.newBuilder()
+                .tag("AndroidShowcase")
+                .build();
+
+        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(true)  // (Optional) Whether to show thread info or not. Default true
+                .methodCount(2)         // (Optional) How many method line to show. Default 2
+                .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
+                .logStrategy(new LogcatLogStrategy()) // (Optional) Changes the log strategy to print out. Default LogCat
+                .tag("AndroidShowcase")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+                .build();
+
+        Logger.addLogAdapter(new DiskLogAdapter(diskFormatStrategy));
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
         // Fresco
         Fresco.initialize(this);
@@ -85,12 +108,12 @@ public class App extends Application {
     }
 
     private void initLeanCloud() {
-//        Log.e(TAG, "LeanCloud initialling...");
-//        AVOSCloud.initialize(App.this,
-//                "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",
-//                "OJGURyEenUmSzSyciKGSWG89",
-//                "https://e8v5scdo.lc-cn-e1-shared.com");
-//        Log.e(TAG, "LeanCloud initialized!");
+        Log.e(TAG, "LeanCloud initialling...");
+        AVOSCloud.initialize(App.this,
+                "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va",
+                "OJGURyEenUmSzSyciKGSWG89",
+                "https://api.lear7.cc");
+        Log.e(TAG, "LeanCloud initialized!");
     }
 
     private void initVersion() {

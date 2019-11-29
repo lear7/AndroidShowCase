@@ -16,6 +16,10 @@
             android:text="Start Thread Test" />
 
         <Button
+            android:id="@+id/btn_crash_handler"
+            android:text="Crash Handler" />
+
+        <Button
             android:id="@+id/btn_download_test"
             android:text="Download Image Demo" />
 
@@ -28,16 +32,13 @@
             android:text="RxJava Demo" />
 
         <Button
-            android:id="@+id/btn_aidl_service"
-            android:text="Start AIDL Service" />
+            android:id="@+id/btn_video_call"
+            android:text="Make Call" />
 
         <Button
             android:id="@+id/btn_printer"
             android:text="Start Printer" />
 
-        <Button
-            android:id="@+id/video_call"
-            android:text="Make Call" />
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>
