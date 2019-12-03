@@ -240,7 +240,7 @@ dependencies {
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
 
     // leancloud
-    implementation ('cn.leancloud:storage-android:6.0.5'){
+    implementation('cn.leancloud:storage-android:6.0.5') {
         exclude group: 'com.alibaba', module: 'fastjson'
         exclude group: 'org.ligboy.retrofit2', module: 'converter-fastjson'
     }
@@ -253,6 +253,10 @@ dependencies {
 
     // logger
     implementation 'com.orhanobut:logger:2.2.0'
+
+    // pdf
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.github.barteksc:pdfium-android:1.9.0'
 }
 
 androidExtensions {

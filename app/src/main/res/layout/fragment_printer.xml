@@ -2,12 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/margin_normal_24">
 
     <Button
-        android:id="@+id/btn_print"
+        android:id="@+id/btn_print0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="马上打印" />
+        android:text="系统打印" />
+
+    <Button
+        android:id="@+id/btn_print1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="静默打印" />
+
+    <ImageView
+        android:id="@+id/image_pdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
