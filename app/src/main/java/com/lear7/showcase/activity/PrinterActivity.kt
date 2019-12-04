@@ -6,12 +6,11 @@ import android.graphics.BitmapFactory
 import android.print.PrintManager
 import androidx.print.PrintHelper
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.bumptech.glide.Glide
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers.Act_Printer
 import com.lear7.showcase.utils.FileUtils
 import com.lear7.showcase.utils.PdfDocumentAdapter
-import com.lear7.showcase.utils.PdfUtil
+import com.lear7.showcase.utils.PrintUtils
 import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.fragment_printer.*
 import java.io.BufferedReader
@@ -32,14 +31,12 @@ class PrinterActivity : BaseActivity() {
         super.initView()
         pdfFile = FileUtils.getFileFromAsset(this, "guide.pdf")
         btn_print0.setOnClickListener {
-            var pdfFile = FileUtils.getFileFromAsset(this, "guide.pdf")
-            val imageFile = PdfUtil.getBitmapFile(this, pdfFile, true)
-            Glide.with(this).load(imageFile).into(image_pdf)
+            val imageFile = PrintUtils.getBitmapFile(this, pdfFile, true)
             printImage(BitmapFactory.decodeFile(imageFile.absolutePath))
         }
 
         btn_print1.setOnClickListener {
-            PdfUtil.print(this, pdfFile!!.absolutePath, 1)
+            PrintUtils.print(this, pdfFile!!.absolutePath, 1)
         }
     }
 
