@@ -8,6 +8,10 @@
         android:layout_height="match_parent">
 
         <Button
+            android:id="@+id/btn_fragment"
+            android:text="Fragment Demo" />
+
+        <Button
             android:id="@+id/btn_constraint"
             android:text="ConstraintLayout" />
 
@@ -22,10 +26,6 @@
         <Button
             android:id="@+id/btn_listview"
             android:text="ListView in ScrollView" />
-
-        <Button
-            android:id="@+id/btn_customview"
-            android:text="Custom View" />
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

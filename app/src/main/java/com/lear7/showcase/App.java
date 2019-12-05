@@ -29,7 +29,6 @@ import io.reactivex.Single;
 
 //import com.lear7.showcase.mvpdagger.base.component.DaggerApplicationComponent;
 
-
 public class App extends Application {
 
     public static final String TAG = "LEAR";
@@ -47,7 +46,6 @@ public class App extends Application {
 //                .apiModule(new ApiModule(RxRetrofit.getInstance()))
 //                .build();
 //        component.inject(this);
-
     }
 
     public ApplicationComponent getComponent() {
@@ -69,10 +67,10 @@ public class App extends Application {
         }
         CrashHandler.getInstance(this);
 
+        // disk log
         FormatStrategy diskFormatStrategy = CsvFormatStrategy.newBuilder()
                 .tag("AndroidShowcase")
                 .build();
-
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(true)  // (Optional) Whether to show thread info or not. Default true
                 .methodCount(2)         // (Optional) How many method line to show. Default 2
@@ -104,7 +102,7 @@ public class App extends Application {
         initLeanCloud();
 
         // callableTest();
-        // initVersion();
+        initVersion();
     }
 
     private void initLeanCloud() {
@@ -119,8 +117,13 @@ public class App extends Application {
     private void initVersion() {
         try {
             ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            // read data from meta data
             String app_version = info.metaData.getString("app_version");
             String market = info.metaData.getString("market");
+
+            // build.gradle文件里自动生成
+            Logger.e("String from auto generated" + BuildConfig.API_URL);
+
             if (app_version.equals("test")) {
                 //测试版
                 Log.e(App.TAG, "test version");

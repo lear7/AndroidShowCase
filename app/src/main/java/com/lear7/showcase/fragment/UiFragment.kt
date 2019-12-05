@@ -11,10 +11,10 @@ class UiFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        btn_fragment.setOnClickListener { goTo(Routers.Act_Fragment) }
         btn_constraint.setOnClickListener { goTo(Routers.Act_Constaint) }
         btn_material.setOnClickListener { goTo(Routers.Act_Material) }
         btn_material_alipay.setOnClickListener { goTo(Routers.Act_MaterialAlipay) }
         btn_listview.setOnClickListener { goTo(Routers.Act_ListView) }
-        btn_customview.setOnClickListener{goTo(Routers.Act_Printer)}
     }
 }

@@ -44,7 +44,7 @@ public class PrintUtils {
     static String PDFCommand = "@PJL ENTER LANGUAGE=PDF\r\n";
 
     public static void write(String path, File pdf) {
-        Logger.i(JOBStart + PJLCommand1 + "\"PDF Priting Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
+        Logger.i(JOBStart + PJLCommand1 + "\"PDF Printing Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
 
         try {
             FileInputStream fis = new FileInputStream(path);

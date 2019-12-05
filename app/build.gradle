@@ -8,7 +8,6 @@ kapt {
     generateStubs = true
 }
 
-
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
@@ -40,42 +39,38 @@ android {
         tasks.lint.enabled = false
     }
 
+    signingConfigs {
+        release {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+        }
+    }
+
     flavorDimensions "market"
     // 多渠道使用不同包名
     productFlavors {
-        local {
-            applicationId 'com.lear7.showcase_test'
+        // product name like _360
+        product {
+            // 定义一些可以读的字段
+            buildConfigField "String", "API_URL", "\"http://www.lear7.cc/api\""
             flavorDimensions "market"
         }
-//        wandoujia {
-//            applicationId 'com.lear7.showcase'
-//            flavorDimensions "market"
-//        }
-//        _360 {
-//            applicationId 'com.lear7.showcase'
-//            flavorDimensions "market"
-//        }
+
+        // product name like _360
+        debuging {
+            applicationIdSuffix ".test"
+            // 与buildType里的参数可以叠加，flavor在前，buildType在后
+            versionNameSuffix "-test"
+            // 定义一些可以读的字段
+            buildConfigField "String", "API_URL", "\"http://test.lear7.cc/api\""
+            flavorDimensions "market"
+        }
 
         // 把名字加进去
         productFlavors.all { flavor ->
             manifestPlaceholders.put("market_key", name)
-        }
-
-    }
-
-    signingConfigs {
-        release {
-            keyAlias 'tkt'
-            keyPassword 'tkt2018tkt'
-            storeFile file('../tkt-sign.keystore')
-            storePassword 'tkt2018tkt'
-        }
-
-        debug {
-            keyAlias 'tkt'
-            keyPassword 'tkt2018tkt'
-            storeFile file('../tkt-sign.keystore')
-            storePassword 'tkt2018tkt'
         }
     }
 
@@ -90,17 +85,23 @@ android {
             ]
         }
 
+        // initial a new build type with existed config
+        debug.initWith(buildTypes.release)
         debug {
-            signingConfig signingConfigs.debug
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources false
             manifestPlaceholders = [
                     app_version_key: "test"
             ]
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
         }
     }
-    dataBinding {
-        enabled = true
+
+    sourceSets {
+        // specific the resource folder of different flavor
+        productDebug.res.srcDir 'src/v2/res'
+        productRelease.res.srcDir 'src/v2/res'
     }
 
     compileOptions {
@@ -117,22 +118,28 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
     }
+
     // 重命名apk
     applicationVariants.all { variant ->
         if (variant.buildType.name.equals('release')) {
             variant.outputs.all { output ->
                 def buildName = "AndroidShowcase"
-                def releaseApkName = buildName + '_' + "${variant.flavorName}_${variant.buildType.name}" + "_" + versionName + '_' + releaseTime() + '.apk'
+                def releaseApkName = buildName + '_' + "${variant.flavorName}_${variant.buildType.name}" + "_${versionName}.apk"
                 outputFileName = releaseApkName
             }
         } else {
             variant.outputs.all { output ->
                 def buildName = "AndroidShowcase"
-                def releaseApkName = buildName + '_' + "${variant.flavorName}_${variant.buildType.name}" + "_" + versionName + '_' + releaseTime() + '.apk'
+                def releaseApkName = buildName + '_' + "${variant.flavorName}_${variant.buildType.name}" + "_${versionName}.apk"
                 outputFileName = releaseApkName
             }
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
+
 }
 
 kapt {
@@ -150,6 +157,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
@@ -179,7 +188,6 @@ dependencies {
 
     // Anko
     implementation "org.jetbrains.anko:anko:$ankoVersion"
-
 
     // butter knife, 10.2 is latest
     implementation 'com.jakewharton:butterknife:10.2.0'

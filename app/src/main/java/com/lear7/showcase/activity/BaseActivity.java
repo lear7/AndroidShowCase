@@ -1,8 +1,12 @@
 package com.lear7.showcase.activity;
 
 import android.os.Bundle;
+import android.os.Looper;
+import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -62,5 +66,27 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void handleEvent(BaseEvent event) {
 
     }
+
+    private Toast mToast;
+
+    protected void showToast(final String text) {
+        if (mToast == null) {
+            mToast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+            // Show Toast Message Above Soft Keyboard，不生效
+            View root = findViewById(android.R.id.content);
+            int yOffset = Math.max(0, root.getHeight() - mToast.getYOffset());
+            mToast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, yOffset);
+        }
+        if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+            runOnUiThread(() -> {
+                mToast.setText(text);
+                mToast.show();
+            });
+        } else {
+            mToast.setText(text);
+            mToast.show();
+        }
+    }
+
 }
 

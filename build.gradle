@@ -92,3 +92,6 @@ def releaseTime() {
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
+
+// 默认任务
+defaultTasks 'clean','assembleDebug'

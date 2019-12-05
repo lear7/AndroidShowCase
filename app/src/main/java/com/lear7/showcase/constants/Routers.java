@@ -24,6 +24,7 @@ public class Routers {
     public static final String Act_MoviewApp = "/activity/movieapp";
     public static final String Act_Printer = "/activity/printer";
     public static final String Act_VideoCall = "/activity/video";
+    public static final String Act_Fragment = "/activity/fragment";
 }
 
 
