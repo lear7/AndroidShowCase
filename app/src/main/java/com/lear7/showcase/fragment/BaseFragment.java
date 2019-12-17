@@ -66,4 +66,8 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    public boolean isNeedToAddBackStack() {
+        return true;
+    }
+
 }

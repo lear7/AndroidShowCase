@@ -27,5 +27,8 @@
             android:id="@+id/btn_listview"
             android:text="ListView in ScrollView" />
 
+        <Button
+            android:id="@+id/btn_ui_adaption"
+            android:text="UI Adaption" />
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

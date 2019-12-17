@@ -10,6 +10,9 @@ import android.print.PrintDocumentAdapter;
 import android.print.PrintDocumentInfo;
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,12 +23,12 @@ import static com.lear7.showcase.App.TAG;
 
 public class PdfDocumentAdapter extends PrintDocumentAdapter {
 
-    private Context context = null;
-    private String filePath = "";
+    Context context = null;
+    String pathName = "";
 
-    public PdfDocumentAdapter(Context ctxt, String filePath) {
+    public PdfDocumentAdapter(Context ctxt, String pathName) {
         context = ctxt;
-        this.filePath = filePath;
+        this.pathName = pathName;
     }
 
     @Override
@@ -48,7 +51,8 @@ public class PdfDocumentAdapter extends PrintDocumentAdapter {
         InputStream in = null;
         OutputStream out = null;
         try {
-            in = new FileInputStream(filePath);
+            File file = new File(pathName);
+            in = new FileInputStream(file);
             out = new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
 
             byte[] buf = new byte[16384];
@@ -66,13 +70,13 @@ public class PdfDocumentAdapter extends PrintDocumentAdapter {
             }
         } catch (Exception e) {
             writeResultCallback.onWriteFailed(e.getMessage());
-            Log.e(TAG, e.getMessage());
+            Logger.e(e.getMessage());
         } finally {
             try {
                 in.close();
                 out.close();
             } catch (IOException e) {
-                Log.e(TAG, e.getMessage());
+                Logger.e(e.getMessage());
             }
         }
     }

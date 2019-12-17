@@ -28,6 +28,10 @@
             android:text="Video Demo" />
 
         <Button
+            android:id="@+id/btn_video_demo2"
+            android:text="Video Demo 2" />
+
+        <Button
             android:id="@+id/btn_rx_java"
             android:text="RxJava Demo" />
 

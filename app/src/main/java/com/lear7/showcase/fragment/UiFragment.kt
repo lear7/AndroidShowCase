@@ -16,5 +16,6 @@ class UiFragment : BaseFragment() {
         btn_material.setOnClickListener { goTo(Routers.Act_Material) }
         btn_material_alipay.setOnClickListener { goTo(Routers.Act_MaterialAlipay) }
         btn_listview.setOnClickListener { goTo(Routers.Act_ListView) }
+        btn_ui_adaption.setOnClickListener { goTo(Routers.Act_UIAdaption) }
     }
 }

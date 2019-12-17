@@ -33,7 +33,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FragmentDemoActivity"></activity>
+        <activity android:name=".activity.VideoPlayer2Activity"></activity>
+        <activity android:name=".activity.FragmentDemoActivity" />
         <activity android:name=".activity.VideoCallActivity" />
 
         <service
@@ -94,6 +95,7 @@
             android:name=".activity.ThreadLearnActivity"
             android:persistableMode="persistAcrossReboots" />
         <activity android:name=".activity.ConstaintActivity" />
+        <activity android:name=".activity.UIAdaptionActivity" />
 
         <meta-data
             android:name="app_version"

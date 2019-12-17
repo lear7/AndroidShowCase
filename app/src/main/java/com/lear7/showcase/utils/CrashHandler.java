@@ -5,14 +5,15 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.orhanobut.logger.Logger;
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -23,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.os.Environment.DIRECTORY_DOCUMENTS;
 
 /**
  * UncaughtException处理类,当程序发生Uncaught异常的时候,有该类来接管程序,并记录发送错误报告.
@@ -58,6 +61,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         //设置该CrashHandler为程序的默认处理器
         Thread.setDefaultUncaughtExceptionHandler(this);
+        saveFileOld("Test content at 16:59 2019.12.17");
     }
 
     /**
@@ -163,16 +167,17 @@ public class CrashHandler implements UncaughtExceptionHandler {
         printWriter.close();
         String result = writer.toString();
         sb.append(result);
+        Log.e(TAG, result);
+        // 保存文件
+        return saveFileOld(result);
+    }
+
+    private String saveFile(String content) {
         long timestamp = System.currentTimeMillis();
         String time = formatter.format(new Date());
         String fileName = "crash-" + time + "-" + timestamp + ".log";
-        Logger.e(result);
-        saveFile(result, fileName);
-        return fileName;
-    }
 
-    private void saveFile(String content, String fileName) {
-        File file = new File(mContext.getFilesDir(), fileName);
+        File file = new File(mContext.getExternalFilesDir(DIRECTORY_DOCUMENTS), fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);
             byte[] data = content.getBytes();
@@ -181,6 +186,34 @@ public class CrashHandler implements UncaughtExceptionHandler {
             e.printStackTrace();
             Log.e(TAG, "error occured while writing file...", e);
         }
-
+        return fileName;
     }
+
+    private String saveFileOld(String content) {
+        long timeStamp = System.currentTimeMillis();
+        String time = formatter.format(new Date());
+        String fileName = "crash-" + time + "-" + timeStamp + ".log";
+        if (Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) {
+            try {
+                // 保存到SD卡根目录或内部存储的Lear_crash目录， /storage/emulated/0/Lear_crash
+                File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Lear_crash");
+                Log.i("CrashHandler", dir.toString());
+                if (!dir.exists()) {
+                    dir.mkdir();
+                }
+                FileOutputStream fos = new FileOutputStream(new File(dir,
+                        fileName));
+                fos.write(content.getBytes());
+                fos.close();
+                return fileName;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return fileName;
+    }
+
 }

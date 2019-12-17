@@ -22,6 +22,7 @@ class JavaFragment : BaseFragment() {
         btn_thread_test.setOnClickListener { goTo(Routers.Act_ThreadTest) }
         btn_download_test.setOnClickListener { goTo(Routers.Act_DownloadTest) }
         btn_video_demo.setOnClickListener { goTo(Routers.Act_Video) }
+        btn_video_demo2.setOnClickListener { goTo(Routers.Act_Video2) }
         btn_rx_java.setOnClickListener { goTo(Routers.Act_RxJava) }
         btn_printer.setOnClickListener { goTo(Routers.Act_Printer) }
         btn_video_call.setOnClickListener { goTo(Routers.Act_VideoCall) }

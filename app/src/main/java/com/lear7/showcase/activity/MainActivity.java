@@ -1,5 +1,9 @@
 package com.lear7.showcase.activity;
 
+import android.app.Activity;
+import android.app.Application;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,7 +33,9 @@ import com.lear7.showcase.fragment.JavaFragment;
 import com.lear7.showcase.fragment.JetpackFragment;
 import com.lear7.showcase.fragment.MvpFragment;
 import com.lear7.showcase.fragment.UiFragment;
+import com.lear7.showcase.utils.FileUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

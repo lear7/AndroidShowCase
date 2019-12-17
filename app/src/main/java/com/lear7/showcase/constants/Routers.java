@@ -10,6 +10,7 @@ public class Routers {
     public static final String Act_DataBinding = "/activity/databinding";
     public static final String Act_ViewModel = "/activity/viewmodel";
     public static final String Act_Video = "/activity/video";
+    public static final String Act_Video2 = "/activity/video2";
     public static final String Act_ListView = "/activity/listView";
     public static final String Act_Material = "/activity/material";
     public static final String Act_MaterialAlipay = "/activity/materialalipay";
@@ -25,6 +26,7 @@ public class Routers {
     public static final String Act_Printer = "/activity/printer";
     public static final String Act_VideoCall = "/activity/video";
     public static final String Act_Fragment = "/activity/fragment";
+    public static final String Act_UIAdaption = "/activity/uiadaption";
 }
 
 

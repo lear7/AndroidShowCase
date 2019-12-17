@@ -1,5 +1,6 @@
 package com.lear7.showcase.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,7 +10,15 @@ import android.graphics.Rect;
 import android.graphics.pdf.PdfRenderer;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+import android.print.PrintAttributes;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.hp.mss.hpprint.model.PDFPrintItem;
+import com.hp.mss.hpprint.model.PrintItem;
+import com.hp.mss.hpprint.model.PrintJobData;
+import com.hp.mss.hpprint.model.asset.PDFAsset;
+import com.hp.mss.hpprint.util.PrintUtil;
 import com.orhanobut.logger.Logger;
 import com.shockwave.pdfium.PdfiumCore;
 
@@ -28,23 +37,32 @@ public class PrintUtils {
     static String JOBStart = UEL + "@PJL \r\n";
     static String JOBEnd = "@PJL RESET\r\n" + "@PJL EOJ\r\n";
 
-    static String PJLCommand1 = "@PJL COMMENT PJL Start\r\n" +
-            "@PJL JOB NAME=";
+    static String PJLCommand1 = "@PJL JOB NAME=";
 
     static String PJLCommand2 = "@PJL SET COPIES=1\r\n" +
+            "@PJL SET HOLD=OFF\r\n" +
+            "@PJL SET ORIENTATION=PORTRAIT\r\n" +
+            "@PJL SET IMAGEADAPT=ON\r\n" +
+            "@PJL SET MEDIASOURCE=TRAY1\r\n" +
+            "@PJL SET LANG=CHINESE\r\n" +
+            "@PJL SET PRINTAREA=FULLSIZE\r\n" +
+            "@PJL SET PRINTAREA=INKEDAREA\r\n" +
+            "@PJL SET PAGEPROTECT=OFF\r\n" +
             "@PJL SET PAPER=A5\r\n" +
+            "@PJL SET PAPERLENGTH=4400\r\n" +
+            "@PJL SET PAPERWIDTH=3200\r\n" +
             UEL;
 
     static String PCLCommand = "@PJL COMMENT PCL Start\r\n" +
             "@PJL ENTER LANGUAGE = PCL\r\n" +
-            "@PJL SET LPARM : PCL SYMSET = DESKTOP\r\n" +
-            "\u001BE . . . . PCL job . . . .\u001BE" +
-            UEL;
+            "\u001BE\u001B%0BIN;SP1;PA1010,1010;PW2.2;PD5310,1010,5310,5310,1010,5310,1010,1010;PU;PA2280,3040;SD1,277,2,1,4,20,5,0,6,0,7,4148;DT*;SS;LBPCL Print Job*;\u001B%0A<FF>\u001BE\u001B%-12345X@PJL \r\n";
 
+    static String INFOCommand = "@PJL INFO VARIABLES\r\n";
     static String PDFCommand = "@PJL ENTER LANGUAGE=PDF\r\n";
 
     public static void write(String path, File pdf) {
-        Logger.i(JOBStart + PJLCommand1 + "\"PDF Printing Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
+//        Logger.i(JOBStart + PJLCommand1 + "\"PDF Printing Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
+//        Logger.i(JOBStart + PJLCommand1 + "\"PDF Printing Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
 
         try {
             FileInputStream fis = new FileInputStream(path);
@@ -52,7 +70,7 @@ public class PrintUtils {
             fos.write(JOBStart.getBytes());
             fos.write((PJLCommand1 + "\"" + pdf.getName() + "\"" + "\r\n").getBytes());
             fos.write((PJLCommand2).getBytes());
-            fos.write((PCLCommand).getBytes());
+//            fos.write((PCLCommand).getBytes());
 
             // writing pdf content
             fos.write((PDFCommand).getBytes());
@@ -61,31 +79,34 @@ public class PrintUtils {
             while ((len = fis.read(b)) > 0) {
                 fos.write(b, 0, len);
             }
+            fos.write((INFOCommand).getBytes());
             fos.write(UEL.getBytes());
             // writing pdf end
-
             fos.write(JOBEnd.getBytes());
             fos.flush();
             fos.close();
             fis.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Logger.e(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
+            Logger.e(e.getMessage());
         }
 
     }
 
     public static void print(Context context, String sourcePath, int mode) {
         if (mode == 1 || mode == 2) {
-            File tempPdf = new File(context.getFilesDir(), "temp.pdf");
-            if (tempPdf.exists()) {
-                tempPdf.delete();
+            File printFile = new File(context.getFilesDir(), "temp.pdf");
+            if (printFile.exists()) {
+                printFile.delete();
+                printFile = new File(context.getFilesDir(), "temp.pdf");
             }
-            PrintUtils.write(sourcePath, tempPdf);
+            PrintUtils.write(sourcePath, printFile);
 
             try {
-                String execStr = "cp " + tempPdf + " /dev/usblp0";
+                String execStr = "cp " + printFile + " /dev/usblp0";
                 new ExeCommand(true).run(execStr, 10000);
             } catch (Exception e) {
                 Logger.e(e.getMessage());
@@ -93,7 +114,14 @@ public class PrintUtils {
             }
 
         } else if (mode == 3 || mode == 4) {
-            File imageFile = PrintUtils.getBitmapFile(context, new File(sourcePath), false);
+            File imageFile = PrintUtils.getBitmapFile(context, new File(sourcePath), true);
+//            File printFile = new File(context.getFilesDir(), "printfile.png");
+//            if (printFile.exists()) {
+//                printFile.delete();
+//                printFile = new File(context.getFilesDir(), "printpng.png");
+//            }
+//            PrintUtils.write(imageFile.getAbsolutePath(), printFile);
+
             try {
                 String execStr = "cp " + imageFile + " /dev/usblp0";
                 new ExeCommand(true).run(execStr, 10000);
@@ -190,5 +218,19 @@ public class PrintUtils {
         }
         origin.recycle();
         return newBM;
+    }
+
+    public static void adobePrint(Context context, String filePath) {
+
+    }
+
+    public static void newHpPrint(AppCompatActivity activity) {
+        PDFAsset invoice = new PDFAsset("invoice.pdf", true);
+        PrintItem.ScaleType scaleType = PrintItem.ScaleType.FIT;
+        PrintAttributes.Margins margins = new PrintAttributes.Margins(0, 0, 0, 0);
+        PrintItem printItem = new PDFPrintItem(PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE, margins, scaleType, invoice);
+        PrintJobData printJobData = new PrintJobData(activity, printItem);
+        PrintUtil.setPrintJobData(printJobData);
+        PrintUtil.print(activity);
     }
 }

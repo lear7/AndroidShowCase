@@ -10,7 +10,6 @@ class FileUtils() {
     companion object {
         // 从Asset目录拷贝文件到内部存储File
         fun getFileFromAsset(context: Context, filename: String): File? {
-            Log.e(TAG, "Begin to save")
             val assetManager = context.assets
             var inputStream: InputStream? = null
             var out: OutputStream? = null
@@ -35,7 +34,6 @@ class FileUtils() {
                     }
                 }
             }
-            Log.e(TAG, "Save succeed!")
             return outFile
         }
 

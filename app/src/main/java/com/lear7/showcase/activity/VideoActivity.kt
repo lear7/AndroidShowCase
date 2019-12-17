@@ -3,6 +3,7 @@ package com.lear7.showcase.activity
 import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -15,6 +16,7 @@ import com.lear7.showcase.R
 import com.lear7.showcase.beans.AnimalMain
 import com.lear7.showcase.constants.Routers.Act_Video
 import com.lear7.showcase.constants.Urls
+import com.lear7.showcase.utils.FileUtils
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import kotlinx.android.synthetic.main.activity_video.*
@@ -46,7 +48,13 @@ class VideoActivity : BaseActivity() {
 //        }
 
         StatusBarUtil.setColor(VideoAcivity@ this, Color.BLACK);
-        video_edittext.setText(Urls.VIDEO_URL2)
+
+        var videoFile = FileUtils.getFileFromAsset(this, "disco.mp4")
+        var video_url = Urls.VIDEO_URL2
+//        var video_url = "file://" + videoFile!!.absolutePath
+//        var video_url = "file://" + Environment.getExternalStorageDirectory().getPath() + "disco.mp4"
+        video_edittext.setText(video_url)
+        GSYVideoManager.instance().enableRawPlay(getApplicationContext());
         btn_refresh.setOnClickListener {
             resetPlayer()
             video_player.setUp(video_edittext.text.toString(), true, "Good Video")
@@ -104,7 +112,7 @@ class VideoActivity : BaseActivity() {
         super.onBackPressed()
     }
 
-    fun resetPlayer(){
+    fun resetPlayer() {
         //先返回正常状态
         if (orientationUtils.screenType == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             video_player.fullscreenButton.performClick()

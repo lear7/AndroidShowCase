@@ -13,5 +13,6 @@ public class Urls {
     public static final String VIDEO_URL = "https://www.radiantmediaplayer.com/media/bbb-360p.mp4";
     public static final String VIDEO_URL2 = "https://learnmagicstore.com/image/video/home_video.mp4";
     public static final String VIDEO_URL3 = "rtmp://192.168.1.153:1935/app/001";
+    public static final String VIDEO_URL4 = "file:///android_asset/disco.mp4";
 
 }
