@@ -186,7 +186,7 @@ public class App extends Application {
         }
         CommandResult cmd2 = Shell.SH.run(BOARD2_CMD);
         if (cmd2.isSuccessful()) {
-            String res = cmd1.getStdout();
+            String res = cmd2.getStdout();
             if (TextUtils.equals(res, BOARD2_TOKEN)) {
                 return true;
             }
@@ -197,7 +197,7 @@ public class App extends Application {
 
     private void initVersion() {
         if (isAuthorizedDevice()) {
-            Toast.makeText(this, "授权设备", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "授权设备", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "非授权设备", Toast.LENGTH_SHORT).show();
         }

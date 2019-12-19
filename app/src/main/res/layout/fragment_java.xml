@@ -25,11 +25,11 @@
 
         <Button
             android:id="@+id/btn_video_demo"
-            android:text="Video Demo" />
+            android:text="Video Demo Online" />
 
         <Button
             android:id="@+id/btn_video_demo2"
-            android:text="Video Demo 2" />
+            android:text="Video Demo Local" />
 
         <Button
             android:id="@+id/btn_rx_java"

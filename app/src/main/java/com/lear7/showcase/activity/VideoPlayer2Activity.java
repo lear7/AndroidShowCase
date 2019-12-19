@@ -1,6 +1,7 @@
 package com.lear7.showcase.activity;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,26 +29,15 @@ import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.Util;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
-import com.lear7.showcase.constants.Urls;
-import com.lear7.showcase.utils.FileUtils;
+import com.lear7.showcase.utils.FileUtilsJ;
 
 import java.io.File;
 
-import butterknife.BindView;
-
 @Route(path = Routers.Act_Video2)
-public class VideoPlayer2Activity extends BaseActivity {
+public class VideoPlayer2Activity extends AppCompatActivity {
 
-    @BindView(R.id.simpleExoPlayerView)
-    PlayerView playerView;
-
-    @BindView(R.id.button9)
-    Button button9;
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_video_player2;
-    }
+    private PlayerView playerView;
+    private Button button9;
 
     static Handler mainHandler = new Handler();
     // step1. 创建一个默认的TrackSelector
@@ -67,6 +57,7 @@ public class VideoPlayer2Activity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_video_player2);
         initView();
         initExoplayer();
     }
@@ -81,7 +72,7 @@ public class VideoPlayer2Activity extends BaseActivity {
         // 创建解析数据的工厂
         ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
         // 传入Uri、加载数据的工厂、解析数据的工厂，就能创建出MediaSource
-        File videoFile = FileUtils.Companion.getFileFromAsset(this, "disco.mp4");
+        File videoFile = FileUtilsJ.getFileFromAsset(this, "disco.mp4");
         Uri mp4VideoUri = Uri.parse(videoFile.getAbsolutePath());
         MediaSource videoSource = new ExtractorMediaSource(mp4VideoUri,
                 dataSourceFactory, extractorsFactory, null, null);
@@ -90,8 +81,9 @@ public class VideoPlayer2Activity extends BaseActivity {
     }
 
 
-    @Override
     public void initView() {
+        playerView = findViewById(R.id.simpleExoPlayerView);
+        button9 = findViewById(R.id.button9);
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +101,6 @@ public class VideoPlayer2Activity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (player != null && player.getCurrentPosition() > 0) {
-
             player.setPlayWhenReady(true);
             player.seekTo(resumePosition);
         }

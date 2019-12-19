@@ -41,7 +41,13 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private Context mContext;
     private UncaughtExceptionHandler mDefaultHandler;
     private Map<String, String> infos = new HashMap<String, String>();
-    private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+    private static DateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+
+    public class CustomException extends Exception {
+        public CustomException(String message) {
+            super(message);
+        }
+    }
 
     /**
      * 获取CrashHandler实例 ,单例模式
@@ -61,7 +67,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         //设置该CrashHandler为程序的默认处理器
         Thread.setDefaultUncaughtExceptionHandler(this);
-        saveFileOld("Test content at 16:59 2019.12.17");
     }
 
     /**
@@ -100,7 +105,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(mContext, "很抱歉，程序出现异常，即将退出。", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "很抱歉，程序出现异常，即将退出", Toast.LENGTH_LONG).show();
                 Looper.loop();
             }
         }.start();
@@ -142,13 +147,22 @@ public class CrashHandler implements UncaughtExceptionHandler {
     }
 
     /**
+     * 手动保存一条Log到文件
+     *
+     * @param context
+     * @param content
+     */
+    public static void logToFile(Context context, String content) {
+        saveFileOld(content + "\n");
+    }
+
+    /**
      * 保存错误信息到文件中
      *
      * @param ex
      * @return 返回文件名称, 便于将文件传送到服务器
      */
     private String saveCrashInfo2File(Throwable ex) {
-
         StringBuffer sb = new StringBuffer();
         for (Map.Entry<String, String> entry : infos.entrySet()) {
             String key = entry.getKey();
@@ -172,12 +186,12 @@ public class CrashHandler implements UncaughtExceptionHandler {
         return saveFileOld(result);
     }
 
-    private String saveFile(String content) {
+    private static String saveFile(Context context, String content) {
         long timestamp = System.currentTimeMillis();
-        String time = formatter.format(new Date());
+        String time = FORMATTER.format(new Date());
         String fileName = "crash-" + time + "-" + timestamp + ".log";
 
-        File file = new File(mContext.getExternalFilesDir(DIRECTORY_DOCUMENTS), fileName);
+        File file = new File(context.getExternalFilesDir(DIRECTORY_DOCUMENTS), fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);
             byte[] data = content.getBytes();
@@ -189,15 +203,15 @@ public class CrashHandler implements UncaughtExceptionHandler {
         return fileName;
     }
 
-    private String saveFileOld(String content) {
+    private static String saveFileOld(String content) {
         long timeStamp = System.currentTimeMillis();
-        String time = formatter.format(new Date());
+        String time = FORMATTER.format(new Date());
         String fileName = "crash-" + time + "-" + timeStamp + ".log";
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
             try {
-                // 保存到SD卡根目录或内部存储的Lear_crash目录， /storage/emulated/0/Lear_crash
-                File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Lear_crash");
+                // 保存到SD卡根目录或内部存储的qj_crash目录， /storage/emulated/0/qj_crash
+                File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "qj_crash");
                 Log.i("CrashHandler", dir.toString());
                 if (!dir.exists()) {
                     dir.mkdir();

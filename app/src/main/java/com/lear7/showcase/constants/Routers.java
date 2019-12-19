@@ -24,7 +24,7 @@ public class Routers {
     public static final String Act_RxJava = "/activity/rxjava";
     public static final String Act_MoviewApp = "/activity/movieapp";
     public static final String Act_Printer = "/activity/printer";
-    public static final String Act_VideoCall = "/activity/video";
+    public static final String Act_VideoCall = "/activity/video_call";
     public static final String Act_Fragment = "/activity/fragment";
     public static final String Act_UIAdaption = "/activity/uiadaption";
 }

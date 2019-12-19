@@ -52,7 +52,7 @@ public class VideoCallActivity extends AppCompatActivity implements VisitReceive
         setContentView(R.layout.activity_video_call);
 
         // Start 启动与室内机通讯线程
-        Global.currentActivity = this;
+        Global.getInstance().setActivity(this);
         SocketHelper.getInstance().start();//连接室内端的socket并且开始监听回来的数据
         HeartbeatThread.getInstance().start();// 心跳线程
         VisitReceiver.setListener(this);

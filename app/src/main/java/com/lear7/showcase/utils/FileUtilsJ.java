@@ -12,7 +12,7 @@ import java.io.OutputStream;
 
 public class FileUtilsJ {
 
-    public static File readFileFromAsset(Context context, String fileName) {
+    public static File getFileFromAsset(Context context, String fileName) {
         return writeFile(context, fileName, readStream(context, fileName));
     }
 
