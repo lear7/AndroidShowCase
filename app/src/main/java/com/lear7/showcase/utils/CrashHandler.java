@@ -10,6 +10,9 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.lear7.showcase.utils.shell.CommandResult;
+import com.lear7.showcase.utils.shell.Shell;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,6 +27,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 
@@ -42,6 +48,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private UncaughtExceptionHandler mDefaultHandler;
     private Map<String, String> infos = new HashMap<String, String>();
     private static DateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+    private static final String LOG_PATH = "qj_crash";
 
     public class CustomException extends Exception {
         public CustomException(String message) {
@@ -67,6 +74,9 @@ public class CrashHandler implements UncaughtExceptionHandler {
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         //设置该CrashHandler为程序的默认处理器
         Thread.setDefaultUncaughtExceptionHandler(this);
+        // 清理30天前的旧log，且每隔10天执行一次，以防APP永远不关闭
+        ScheduledExecutorService mScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        mScheduledExecutorService.scheduleAtFixedRate(() -> cleanHistoryLog(30),10, 10 * 24 * 60 * 60 * 1000,TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -149,10 +159,9 @@ public class CrashHandler implements UncaughtExceptionHandler {
     /**
      * 手动保存一条Log到文件
      *
-     * @param context
      * @param content
      */
-    public static void logToFile(Context context, String content) {
+    public static void logToFile(String content) {
         saveFileOld(content + "\n");
     }
 
@@ -211,7 +220,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 Environment.MEDIA_MOUNTED)) {
             try {
                 // 保存到SD卡根目录或内部存储的qj_crash目录， /storage/emulated/0/qj_crash
-                File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "qj_crash");
+                File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + LOG_PATH);
                 Log.i("CrashHandler", dir.toString());
                 if (!dir.exists()) {
                     dir.mkdir();
@@ -228,6 +237,21 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
         }
         return fileName;
+    }
+
+    // 删除一个月前的log
+
+    private void cleanHistoryLog(int day) {
+        new Thread(() -> {
+            String cmd =
+                    "find " + Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + LOG_PATH + " -mtime +" + day + " -type f -name \"*.log\" | xargs rm -rf";
+            Log.d(TAG, cmd);
+
+            CommandResult result2 = Shell.SH.run(cmd);
+            if (result2.isSuccessful()) {
+                Log.d(TAG, day + "天前的旧日志清理成功");
+            }
+        }).start();
     }
 
 }

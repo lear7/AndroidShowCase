@@ -2,6 +2,7 @@ package com.lear7.showcase.activity
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.print.PrintAttributes
 import android.print.PrintManager
 import androidx.print.PrintHelper
@@ -32,9 +33,9 @@ class PrinterActivity : BaseActivity() {
         pdfFile = FileUtils.getFileFromAsset(this, "invoice.pdf")
         btn_print0.setOnClickListener {
             val imageFile = PrintUtils.getBitmapFile(this, pdfFile, true)
-//            printImage(BitmapFactory.decodeFile(imageFile.absolutePath))
-//            printPdf(pdfFile!!.absolutePath)
-            PrintUtils.newHpPrint(this)
+            printImage(BitmapFactory.decodeFile(imageFile.absolutePath))
+//            printPdf()
+//            PrintUtils.newHpPrint(this)
         }
 
         btn_print1.setOnClickListener {
@@ -68,24 +69,16 @@ class PrinterActivity : BaseActivity() {
         }
     }
 
-    private fun printPdf(filePath: String) {
+    private fun printPdf() {
         this?.also { context ->
             val printManager = context.getSystemService(Context.PRINT_SERVICE) as PrintManager
             val jobName = "${context.getString(R.string.app_name)} PDF Document"
-
-//            var printFile = File(context.filesDir, "temp.pdf")
-//            if (printFile.exists()) {
-//                printFile.delete()
-//                printFile = File(context.filesDir, "temp.pdf")
-//            }
-//            PrintUtils.write(filePath, printFile)
 
             var attributes = PrintAttributes.Builder()
                     .setMediaSize(PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE)
                     .setResolution(PrintAttributes.Resolution("1", "print", 2150, 1390))
                     .setMinMargins(PrintAttributes.Margins(0, 0, 0, 0))
                     .setColorMode(PrintAttributes.COLOR_MODE_MONOCHROME)
-                    //.setDuplexMode(PrintAttributes.DUPLEX_MODE_NONE)  // API小于23会报错，可以不传
                     .build();
 
             var pdfFile = FileUtils.getFileFromAsset(this, "invoice.pdf")

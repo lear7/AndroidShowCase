@@ -220,10 +220,6 @@ public class PrintUtils {
         return newBM;
     }
 
-    public static void adobePrint(Context context, String filePath) {
-
-    }
-
     public static void newHpPrint(AppCompatActivity activity) {
         PDFAsset invoice = new PDFAsset("invoice.pdf", true);
         PrintItem.ScaleType scaleType = PrintItem.ScaleType.FIT;
