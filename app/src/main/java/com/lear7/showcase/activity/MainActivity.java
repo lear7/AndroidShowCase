@@ -91,7 +91,8 @@ public class MainActivity extends BaseActivity {
         collapsingToolbarLayout.setCollapsedTitleGravity(GravityCompat.START);
 
         toolbar.setTitle("Android Showcase");
-        toolbar.setSubtitle("github.com/lear7");
+        // doesn't work
+        // toolbar.setSubtitle("github.com/lear7");
 
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();

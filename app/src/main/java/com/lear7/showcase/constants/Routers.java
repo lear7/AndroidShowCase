@@ -27,6 +27,7 @@ public class Routers {
     public static final String Act_VideoCall = "/activity/video_call";
     public static final String Act_Fragment = "/activity/fragment";
     public static final String Act_UIAdaption = "/activity/uiadaption";
+    public static final String Act_KOIN_STOP_WATCH = "/activity/koin_stop_watch";
 }
 
 

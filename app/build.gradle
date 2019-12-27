@@ -208,9 +208,9 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$archCompomentVersion"
 
     // kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
     // koin
     implementation "org.koin:koin-android:$koinVersion"
@@ -221,8 +221,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$ankoVersion"
 
     // butter knife, 10.2 is latest
-    implementation 'com.jakewharton:butterknife:10.2.0'
-    kapt 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.1'
 
     // leakcanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
@@ -280,7 +280,7 @@ dependencies {
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
 
     // leancloud
-    implementation('cn.leancloud:storage-android:6.1.1') {
+    implementation('cn.leancloud:storage-android:6.1.6') {
         exclude group: 'com.alibaba', module: 'fastjson'
         exclude group: 'org.ligboy.retrofit2', module: 'converter-fastjson'
     }
@@ -300,6 +300,12 @@ dependencies {
 
     // blockcanary
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
 }
 
 androidExtensions {
