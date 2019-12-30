@@ -8,25 +8,23 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.lear7.showcase.R
-import kotlinx.android.synthetic.main.fragment_playing.*
-import kotlinx.android.synthetic.main.fragment_reply.*
 
 /**
 @author Lear
 @description
 @date 2019/12/30 14:39
  */
-class PlayingFragment : Fragment() {
+class StartFragment : Fragment() {
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_playing, container, false)
+        val view = inflater.inflate(R.layout.fragment_nav_start, container, false)
 
-        view.findViewById<Button>(R.id.btn_go_home).setOnClickListener({
-            val action = PlayingFragmentDirections.actionPlayingFragmentToHomeFragment();
+        view.findViewById<Button>(R.id.btn_login_in).setOnClickListener({
+            val action = StartFragmentDirections.actionStartFragmentToLoginFragment()
             view.findNavController().navigate(action)
         })
 
