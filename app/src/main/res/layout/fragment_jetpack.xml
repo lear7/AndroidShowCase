@@ -23,5 +23,9 @@
             android:id="@+id/btn_movie_app"
             android:text="Movie App" />
 
+        <Button
+            android:id="@+id/btn_nav_demo"
+            android:text="Navigation Demo" />
+
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

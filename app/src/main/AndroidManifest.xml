@@ -33,7 +33,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.KoinStopwatchActivity"></activity>
+        <activity android:name=".activity.NavDemoActivity"/>
         <activity android:name=".activity.VideoPlayer2Activity" />
         <activity android:name=".activity.FragmentDemoActivity" />
         <activity android:name=".activity.VideoCallActivity" />
@@ -48,7 +48,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.MoviewAppActivity" />
+        <activity android:name=".activity.MovieAppActivity" />
         <activity android:name=".activity.RxJavaActivity" />
         <activity android:name=".activity.CustomerViewActivity" />
         <activity android:name=".activity.LifecycleActivity" />

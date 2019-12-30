@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
 
 // butterknife and dagger
 kapt {
@@ -300,6 +301,10 @@ dependencies {
 
     // blockcanary
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+    // navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
 }
 
 kotlin {

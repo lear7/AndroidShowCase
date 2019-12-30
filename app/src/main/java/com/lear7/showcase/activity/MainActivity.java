@@ -123,8 +123,8 @@ public class MainActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
 
         titles.add("Java");
-        titles.add("Material Design");
-        titles.add("MVP");
+        titles.add("MD");
+        titles.add("Pattern");
         titles.add("Jetpack");
 
         for (String title : titles) {

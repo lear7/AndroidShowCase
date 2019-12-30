@@ -6,8 +6,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 
-@Route(path = Routers.Act_MoviewApp)
-class MoviewAppActivity : AppCompatActivity() {
+@Route(path = Routers.Act_MovieApp)
+class MovieAppActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

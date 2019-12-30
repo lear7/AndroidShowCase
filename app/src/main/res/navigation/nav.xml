@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.lear7.showcase.nav.HomeFragment"
+        tools:layout="@layout/fragment_nav_home">
+
+        <action
+            android:id="@+id/action_home_fragment_to_reply_fragment"
+            app:destination="@id/reply_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/reply_fragment"
+        android:name="com.lear7.showcase.nav.ReplyFragment"
+        tools:layout="@layout/fragment_reply">
+        <argument
+            android:name="greeting_content"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_reply_fragment_to_playingFragment"
+            app:destination="@id/playing_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/playing_fragment"
+        android:name="com.lear7.showcase.nav.PlayingFragment"
+        android:label="fragment_playing"
+        tools:layout="@layout/fragment_playing">
+        <action
+            android:id="@+id/action_playingFragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
+    </fragment>
+
+</navigation>
