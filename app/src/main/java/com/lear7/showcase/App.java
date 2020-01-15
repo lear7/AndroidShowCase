@@ -111,7 +111,7 @@ public class App extends Application {
         initializeInjector();
 
         // init leancloud
-        initLeanCloud();
+        // initLeanCloud();
 
         // callableTest();
         initVersion();

@@ -8,6 +8,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.lear7.showcase.R
+import kotlinx.android.synthetic.main.fragment_nav_home.*
+import kotlinx.android.synthetic.main.fragment_nav_start.*
 
 /**
 @author Lear
@@ -21,13 +23,13 @@ class StartFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_nav_start, container, false)
-
-        view.findViewById<Button>(R.id.btn_login_in).setOnClickListener({
+        val root = inflater.inflate(R.layout.fragment_nav_start, container, false)
+        val navController = root.findNavController()
+        btn_login_in.setOnClickListener {
             val action = StartFragmentDirections.actionStartFragmentToLoginFragment()
-            view.findNavController().navigate(action)
-        })
+            navController.navigate(action)
+        }
 
-        return view
+        return root
     }
 }

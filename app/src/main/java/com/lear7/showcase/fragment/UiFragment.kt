@@ -1,8 +1,12 @@
 package com.lear7.showcase.fragment
 
+import android.util.Log
+import android.view.View
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.fragment_ui.*
+import kotlinx.android.synthetic.main.layout_bottom.*
 
 class UiFragment : BaseFragment() {
     override fun getLayoutId(): Int {
@@ -17,5 +21,40 @@ class UiFragment : BaseFragment() {
         btn_material_alipay.setOnClickListener { goTo(Routers.Act_MaterialAlipay) }
         btn_listview.setOnClickListener { goTo(Routers.Act_ListView) }
         btn_ui_adaption.setOnClickListener { goTo(Routers.Act_UIAdaption) }
+
+        var bottomSheetBehavior = BottomSheetBehavior.from(layout_bottom_sheet)
+        btn_bottom_sheet1.setOnClickListener {
+            bottomSheetBehavior.apply {
+                if (this.state != BottomSheetBehavior.STATE_EXPANDED) {
+                    this.setState(BottomSheetBehavior.STATE_EXPANDED)
+                } else {
+                    this.setState(BottomSheetBehavior.STATE_COLLAPSED)
+                }
+            }
+        }
+
+        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                // React to state change
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                        Log.d(TAG, "BottomSheet Hidden")
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                        Log.d(TAG, "BottomSheet Expanded")
+                    }
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                    }
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                // React to dragging events
+            }
+        })
     }
 }

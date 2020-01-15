@@ -59,6 +59,7 @@ class LoginFragment : Fragment() {
         runOnUiThread {
             toast("登录成功")
         }
+
         val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment(mAccountEd.text.toString())
         findNavController().navigate(action)
     }
