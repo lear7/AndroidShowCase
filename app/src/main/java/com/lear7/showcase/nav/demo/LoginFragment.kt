@@ -1,4 +1,4 @@
-package com.lear7.showcase.nav
+package com.lear7.showcase.nav.demo
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.lear7.showcase.R
 import kotlinx.coroutines.GlobalScope

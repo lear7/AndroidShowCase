@@ -80,6 +80,7 @@
         <activity android:name=".activity.MvpDemoActivity" />
         <activity android:name=".activity.MvpDemo2Activity" />
         <activity android:name=".activity.MvpDaggerActivity" />
+        <activity android:name=".activity.BottomNavActivity" />
         <activity android:name=".activity.PrinterActivity">
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"

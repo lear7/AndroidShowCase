@@ -1,4 +1,4 @@
-package com.lear7.showcase.nav
+package com.lear7.showcase.nav.demo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.lear7.showcase.R
-import kotlinx.android.synthetic.main.fragment_nav_home.*
 import kotlinx.android.synthetic.main.fragment_nav_start.*
 
 /**
@@ -23,13 +22,16 @@ class StartFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_nav_start, container, false)
-        val navController = root.findNavController()
+        return inflater.inflate(R.layout.fragment_nav_start, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val navController = view.findNavController()
         btn_login_in.setOnClickListener {
             val action = StartFragmentDirections.actionStartFragmentToLoginFragment()
             navController.navigate(action)
         }
-
-        return root
     }
 }

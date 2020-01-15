@@ -38,6 +38,7 @@ public class Routers {
     public static final String Act_Lifecycle = "/activity/lifecycle";
     public static final String Act_MovieApp = "/activity/movieapp";
     public static final String Act_NAV = "/activity/navdemo";
+    public static final String Act_BottomNav = "/activity/bottomnavdemo";
 
 }
 

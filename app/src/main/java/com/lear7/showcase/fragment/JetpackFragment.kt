@@ -17,5 +17,6 @@ class JetpackFragment : BaseFragment() {
         btn_lifecycle.setOnClickListener { goTo(Routers.Act_Lifecycle) }
         btn_movie_app.setOnClickListener { goTo(Routers.Act_MovieApp) }
         btn_nav_demo.setOnClickListener { goTo(Routers.Act_NAV) }
+        btn_bottom_nav.setOnClickListener { goTo(Routers.Act_BottomNav) }
     }
 }

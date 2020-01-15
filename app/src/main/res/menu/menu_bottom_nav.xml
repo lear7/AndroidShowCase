@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_bar_chart"
+        android:orderInCategory="1"
+        android:title="Home"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/explore"
+        android:icon="@drawable/ic_favorite_border_black_24dp"
+        android:orderInCategory="2"
+        android:title="Explore"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_more_horizontal"
+        android:orderInCategory="2"
+        android:title="More"
+        app:showAsAction="always" />
+
+</menu>
