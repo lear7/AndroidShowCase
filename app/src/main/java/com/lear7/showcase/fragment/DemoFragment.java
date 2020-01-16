@@ -16,8 +16,8 @@ import kotlin.Unit;
 
 public class DemoFragment extends BaseFragment {
 
-@BindView(R.id.list_fragment_recycler)
-RecyclerView recyclerView;
+    @BindView(R.id.list_fragment_recycler)
+    RecyclerView recyclerView;
 
     private List<String> datas;
 

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.lear7.showcase.R
-import com.lear7.showcase.nav.demo.StartFragmentDirections
 import kotlinx.android.synthetic.main.fragment_bottom_nav_more.*
 
 /**

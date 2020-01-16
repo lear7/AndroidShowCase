@@ -1,8 +1,7 @@
 package com.lear7.showcase.utils
 
 import android.content.Context
-import android.util.Log
-import com.lear7.showcase.App.TAG
+import timber.log.Timber
 import java.io.*
 
 class FileUtils() {
@@ -19,7 +18,7 @@ class FileUtils() {
                 out = FileOutputStream(outFile)
                 copyFile(inputStream, out)
             } catch (e: IOException) {
-                Log.e(TAG, "Failed to copy asset file: $filename", e)
+                Timber.d("Failed to copy asset file: $filename", e)
             } finally {
                 if (inputStream != null) {
                     try {

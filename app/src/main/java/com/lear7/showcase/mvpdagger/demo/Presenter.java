@@ -1,8 +1,8 @@
 package com.lear7.showcase.mvpdagger.demo;
 
-import android.util.Log;
-
 import javax.inject.Inject;
+
+import timber.log.Timber;
 
 public class Presenter {
 
@@ -11,7 +11,7 @@ public class Presenter {
         // Presenter use @Inject to finish inject in constructor
     }
 
-    public void log(){
-        Log.e("Dagger","Injected");
+    public void log() {
+        Timber.d("Injected");
     }
 }

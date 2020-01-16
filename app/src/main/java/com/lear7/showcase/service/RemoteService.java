@@ -15,9 +15,10 @@ public class RemoteService extends Service {
 
     private final IRemoteService.Stub binder = new IRemoteService.Stub() {
 
-        public int getPid(){
+        public int getPid() {
             return myPid();
         }
+
         @Override
         public void basicTypes(int anInt, long aLong, boolean aBoolean,
                                float aFloat, double aDouble, String aString) {

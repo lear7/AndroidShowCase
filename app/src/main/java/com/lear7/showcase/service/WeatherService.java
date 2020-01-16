@@ -4,15 +4,15 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.lear7.showcase.App;
-import com.lear7.showcase.net.helper.DataUtils;
 import com.lear7.showcase.events.BaseEvent;
+import com.lear7.showcase.net.helper.DataUtils;
 
 import org.greenrobot.eventbus.EventBus;
+
+import timber.log.Timber;
 
 public class WeatherService extends Service {
 
@@ -32,7 +32,7 @@ public class WeatherService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.e(App.TAG, "onBind");
+        Timber.d("onBind");
         getWeatherInThread();
         return binder;
     }
@@ -40,7 +40,7 @@ public class WeatherService extends Service {
     // start service 时候调用
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e(App.TAG, "onStartCommand");
+        Timber.d("onStartCommand");
         getWeatherInThread();
         return START_STICKY;
     }

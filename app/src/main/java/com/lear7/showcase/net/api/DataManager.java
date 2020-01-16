@@ -1,7 +1,5 @@
 package com.lear7.showcase.net.api;
 
-import com.lear7.showcase.net.api.ApiService;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 

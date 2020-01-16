@@ -1,18 +1,15 @@
 package com.lear7.showcase.lifecycle.observer;
 
-import android.util.Log;
-
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class ActivityObserver implements androidx.lifecycle.LifecycleObserver {
 
@@ -25,7 +22,7 @@ public class ActivityObserver implements androidx.lifecycle.LifecycleObserver {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
-                    Log.i("接收数据", String.valueOf(aLong));
+                    Timber.i(String.valueOf(aLong));
                 });
     }
 

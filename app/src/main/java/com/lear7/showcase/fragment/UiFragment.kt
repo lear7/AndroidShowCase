@@ -1,12 +1,12 @@
 package com.lear7.showcase.fragment
 
-import android.util.Log
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.fragment_ui.*
 import kotlinx.android.synthetic.main.layout_bottom.*
+import timber.log.Timber
 
 class UiFragment : BaseFragment() {
     override fun getLayoutId(): Int {
@@ -38,10 +38,10 @@ class UiFragment : BaseFragment() {
                 // React to state change
                 when (newState) {
                     BottomSheetBehavior.STATE_HIDDEN -> {
-                        Log.d(TAG, "BottomSheet Hidden")
+                        Timber.d("BottomSheet Hidden")
                     }
                     BottomSheetBehavior.STATE_EXPANDED -> {
-                        Log.d(TAG, "BottomSheet Expanded")
+                        Timber.d("BottomSheet Expanded")
                     }
                     BottomSheetBehavior.STATE_COLLAPSED -> {
                     }

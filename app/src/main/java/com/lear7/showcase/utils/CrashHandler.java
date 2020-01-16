@@ -7,7 +7,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Looper;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.lear7.showcase.utils.shell.CommandResult;
@@ -30,6 +29,8 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import timber.log.Timber;
 
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 
@@ -76,7 +77,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
         Thread.setDefaultUncaughtExceptionHandler(this);
         // 清理30天前的旧log，且每隔10天执行一次，以防APP永远不关闭
         ScheduledExecutorService mScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        mScheduledExecutorService.scheduleAtFixedRate(() -> cleanHistoryLog(30),10, 10 * 24 * 60 * 60 * 1000,TimeUnit.MILLISECONDS);
+        mScheduledExecutorService.scheduleAtFixedRate(() -> cleanHistoryLog(30), 10, 10 * 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -92,7 +93,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                Log.e(TAG, "error : ", e);
+                Timber.d("error : ", e);
             }
             //退出程序
             System.exit(1);
@@ -142,16 +143,16 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 infos.put("versionCode", versionCode);
             }
         } catch (NameNotFoundException e) {
-            Log.e(TAG, "an error occured when collect package info", e);
+            Timber.d("an error occured when collect package info", e);
         }
         Field[] fields = Build.class.getDeclaredFields();
         for (Field field : fields) {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                Log.d(TAG, field.getName() + " : " + field.get(null));
+                Timber.d(field.getName() + " : " + field.get(null));
             } catch (Exception e) {
-                Log.e(TAG, "an error occured when collect crash info", e);
+                Timber.e("an error occured when collect crash info", e);
             }
         }
     }
@@ -190,7 +191,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
         printWriter.close();
         String result = writer.toString();
         sb.append(result);
-        Log.e(TAG, result);
+        Timber.d(result);
         // 保存文件
         return saveFileOld(result);
     }
@@ -207,7 +208,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             fos.write(data);
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e(TAG, "error occured while writing file...", e);
+            Timber.e("error occured while writing file...", e);
         }
         return fileName;
     }
@@ -221,7 +222,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 // 保存到SD卡根目录或内部存储的qj_crash目录， /storage/emulated/0/qj_crash
                 File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + LOG_PATH);
-                Log.i("CrashHandler", dir.toString());
+                Timber.d(dir.toString());
                 if (!dir.exists()) {
                     dir.mkdir();
                 }
@@ -245,11 +246,11 @@ public class CrashHandler implements UncaughtExceptionHandler {
         new Thread(() -> {
             String cmd =
                     "find " + Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + LOG_PATH + " -mtime +" + day + " -type f -name \"*.log\" | xargs rm -rf";
-            Log.d(TAG, cmd);
+            Timber.d(cmd);
 
             CommandResult result2 = Shell.SH.run(cmd);
             if (result2.isSuccessful()) {
-                Log.d(TAG, day + "天前的旧日志清理成功");
+                Timber.d(day + "天前的旧日志清理成功");
             }
         }).start();
     }

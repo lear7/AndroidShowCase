@@ -1,7 +1,5 @@
 package com.lear7.showcase.utils;
 
-import android.util.Log;
-
 import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
@@ -10,6 +8,8 @@ import java.io.InputStreamReader;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import timber.log.Timber;
 
 import static java.lang.Runtime.getRuntime;
 
@@ -70,7 +70,7 @@ public class ExeCommand {
         Lock readLock = lock.readLock();
         readLock.lock();
         try {
-            Log.i("auto", "getResult");
+            Timber.d("getResult");
             return new String(result);
         } finally {
             readLock.unlock();
@@ -87,7 +87,7 @@ public class ExeCommand {
      * @return this
      */
     public ExeCommand run(String command, final int maxTime) {
-        Log.i("auto", "run command:" + command + ",maxtime:" + maxTime);
+        Timber.d("run command:" + command + ",maxtime:" + maxTime);
         if (command == null || command.length() == 0) {
             return this;
         }
@@ -125,9 +125,9 @@ public class ExeCommand {
                         }
                         try {
                             int ret = process.exitValue();
-                            Log.i("auto", "exitValue Stream over " + ret);
+                            Timber.d("exitValue Stream over " + ret);
                         } catch (IllegalThreadStateException e) {
-                            Log.i("auto", "take maxTime,forced to destroy process");
+                            Timber.d("take maxTime,forced to destroy process");
                             process.destroy();
                         }
                     }
@@ -148,13 +148,13 @@ public class ExeCommand {
                             writeLock.unlock();
                         }
                     } catch (Exception e) {
-                        Log.i("auto", "read InputStream exception:" + e.toString());
+                        Timber.d("read InputStream exception:" + e.toString());
                     } finally {
                         try {
                             successResult.close();
-                            Log.i("auto", "read InputStream over");
+                            Timber.d("read InputStream over");
                         } catch (Exception e) {
-                            Log.i("auto", "close InputStream exception:" + e.toString());
+                            Timber.d("close InputStream exception:" + e.toString());
                         }
                     }
                 }
@@ -175,13 +175,13 @@ public class ExeCommand {
                             writeLock.unlock();
                         }
                     } catch (Exception e) {
-                        Log.i("auto", "read ErrorStream exception:" + e.toString());
+                        Timber.d("read ErrorStream exception:" + e.toString());
                     } finally {
                         try {
                             errorResult.close();
-                            Log.i("auto", "read ErrorStream over");
+                            Timber.d("read ErrorStream over");
                         } catch (Exception e) {
-                            Log.i("auto", "read ErrorStream exception:" + e.toString());
+                            Timber.d("read ErrorStream exception:" + e.toString());
                         }
                     }
                 }
@@ -200,19 +200,19 @@ public class ExeCommand {
 
                     } finally {
                         bRunning = false;
-                        Log.i("auto", "run command process end");
+                        Timber.d("run command process end");
                     }
                 }
             });
             t3.start();
 
             if (bSynchronous) {
-                Log.i("auto", "run is go to end");
+                Timber.d("run is go to end");
                 t3.join();
-                Log.i("auto", "run is end");
+                Timber.d("run is end");
             }
         } catch (Exception e) {
-            Log.i("auto", "run command process exception:" + e.toString());
+            Timber.d("run command process exception:" + e.toString());
         }
         return this;
     }

@@ -1,7 +1,5 @@
 package com.lear7.showcase.net.helper;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lear7.showcase.constants.Urls;
@@ -15,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 @Singleton
 public class RxRetrofit {
@@ -34,7 +33,7 @@ public class RxRetrofit {
                 // 双重检查
                 if (instance == null) {
                     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor((string) ->
-                            Log.e("OKHttp", string));
+                            Timber.d(string));
                     interceptor.level(HttpLoggingInterceptor.Level.BODY);
 
                     OkHttpClient client = new OkHttpClient.Builder()

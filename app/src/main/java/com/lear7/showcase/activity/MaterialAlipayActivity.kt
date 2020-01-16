@@ -1,14 +1,12 @@
 package com.lear7.showcase.activity
 
 import android.graphics.Color
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.appbar.AppBarLayout
-import com.lear7.showcase.App
 import com.lear7.showcase.R
 import com.lear7.showcase.adapter.CommonAdapter
 import com.lear7.showcase.constants.Routers.Act_MaterialAlipay
@@ -18,6 +16,7 @@ import kotlinx.android.synthetic.main.layout_life_pay.*
 import kotlinx.android.synthetic.main.toolbar_expand.*
 import org.jetbrains.anko.px2dip
 import org.jetbrains.anko.toast
+import timber.log.Timber
 
 @Route(path = Act_MaterialAlipay)
 class MaterialAlipayActivity : BaseActivity(), CommonAdapter.ItemClick, AppBarLayout.OnOffsetChangedListener {
@@ -55,7 +54,7 @@ class MaterialAlipayActivity : BaseActivity(), CommonAdapter.ItemClick, AppBarLa
     override fun onOffsetChanged(appBarLayout: AppBarLayout, verticalOffset: Int) {
         val offset = Math.abs(verticalOffset)
         val total = appBarLayout.totalScrollRange
-        Log.e(App.TAG, "total range: $total, offset: $offset")
+        Timber.d("total range: $total, offset: $offset")
         val alphaIn = (px2dip(offset) * 2).toInt()
         val alphaOut = if (200 - alphaIn < 0) 0 else 200 - alphaIn
         //计算淡入时候的遮罩透明度

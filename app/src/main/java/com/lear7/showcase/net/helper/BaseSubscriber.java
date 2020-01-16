@@ -1,10 +1,7 @@
 package com.lear7.showcase.net.helper;
 
-import android.util.Log;
-
-import com.lear7.showcase.App;
-
 import io.reactivex.observers.DisposableObserver;
+import timber.log.Timber;
 
 public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
 
@@ -19,7 +16,7 @@ public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
 
     @Override
     public void onError(Throwable t) {
-        Log.e(App.TAG, "error");
+        Timber.e("error");
     }
 
     @Override

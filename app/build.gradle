@@ -225,8 +225,29 @@ dependencies {
     implementation "org.koin:koin-android-scope:$versions.koinVersion"
     implementation "org.koin:koin-android-viewmodel:$versions.koinVersion"
 
+    // 常用
     // Anko
     implementation "org.jetbrains.anko:anko:$versions.ankoVersion"
+    // Timber
+    implementation "com.jakewharton.timber:timber:$versions.timberVersion"
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$versions.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$versions.glideVersion"
+    // rxjava
+    implementation "io.reactivex.rxjava2:rxandroid:$versions.rxandroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$versions.rxjavaVersion"
+    // okhttp
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"
+    // Arouter
+    implementation "com.alibaba:arouter-api:1.5.0"
+    kapt "com.alibaba:arouter-compiler:1.2.2"
+    // statusbar
+    implementation "com.jaeger.statusbarutil:library:1.5.1"
 
     // butter knife, 10.2 is latest
     implementation "com.jakewharton:butterknife:$versions.butterknifeVersion"
@@ -238,10 +259,6 @@ dependencies {
     // blockcanary
     implementation "com.github.markzhai:blockcanary-android:$versions.blockcanaryVersion"
 
-    //  glide
-    implementation "com.github.bumptech.glide:glide:$versions.glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$versions.glideVersion"
-
     // fresco
     implementation "com.facebook.fresco:fresco:$versions.frescoVersion"
     // 支持 GIF 动图，需要添加
@@ -251,19 +268,6 @@ dependencies {
     implementation "com.facebook.fresco:webpsupport:$versions.frescoVersion"
     // 仅支持 WebP 静态图，需要添加
     implementation "com.facebook.fresco:webpsupport:$versions.frescoVersion"
-
-    // rxjava
-    implementation "io.reactivex.rxjava2:rxandroid:$versions.rxandroidVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$versions.rxjavaVersion"
-
-    // okhttp
-    implementation "com.squareup.okhttp3:okhttp:$versions.okhttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
-
-    // retrofit
-    implementation "com.squareup.retrofit2:retrofit:$versions.retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"
 
     // event bus
     implementation "org.greenrobot:eventbus:$versions.eventbusVersion"
@@ -275,10 +279,6 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$versions.daggerVersion"
     // for kotlin with dagger2
     implementation "com.google.code.findbugs:jsr305:3.0.2"
-
-    // Arouter
-    implementation "com.alibaba:arouter-api:1.5.0"
-    kapt "com.alibaba:arouter-compiler:1.2.2"
 
     // leancloud
     implementation('cn.leancloud:storage-android:6.1.8') {
@@ -300,9 +300,6 @@ dependencies {
     // video
     implementation "com.shuyu:GSYVideoPlayer:7.1.1"
     implementation "com.google.android.exoplayer:exoplayer:r2.5.4"
-
-    // statusbar
-    implementation "com.jaeger.statusbarutil:library:1.5.1"
 
 }
 

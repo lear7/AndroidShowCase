@@ -1,6 +1,5 @@
 package com.lear7.showcase.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.Gravity;

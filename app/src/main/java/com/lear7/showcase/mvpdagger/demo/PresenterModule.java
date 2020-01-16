@@ -9,7 +9,7 @@ import dagger.Provides;
 @Module
 public class PresenterModule {
     @Provides
-    Presenter providePresenter(){
+    Presenter providePresenter() {
         return new Presenter();
     }
 

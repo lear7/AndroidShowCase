@@ -3,15 +3,13 @@ package com.lear7.showcase.activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
-import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
 
-import com.lear7.showcase.App;
 import com.lear7.showcase.R;
+import com.lear7.showcase.constants.Urls;
 import com.lear7.showcase.net.api.ApiService;
 import com.lear7.showcase.net.helper.BaseSubscriber;
-import com.lear7.showcase.constants.Urls;
 import com.lear7.showcase.net.helper.RxRetrofit;
 
 import java.io.ByteArrayInputStream;
@@ -22,6 +20,7 @@ import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
+import timber.log.Timber;
 
 public class FullScreenActivity extends BaseActivity {
 
@@ -96,12 +95,12 @@ public class FullScreenActivity extends BaseActivity {
 //            runOnUiThread(new Runnable() {//开启主线程更新UI
 //                @Override
 //                public void run() {
-//                    Log.e(App.TAG, "Show image, current thread is: " + Thread.currentThread().getName());
+//                    Timber.d( "Show image, current thread is: " + Thread.currentThread().getName());
 //                    imageView3.setImageBitmap(bitmap);
 //                }
 //            });
 //        } else {
-        Log.e(App.TAG, "Download....current thread is: " + Thread.currentThread().getName());
+        Timber.d("Download....current thread is: " + Thread.currentThread().getName());
         RxRetrofit.getInstance()
                 .create(ApiService.class)
                 .downloadImg2(Urls.BIG_IMAGE)
@@ -111,7 +110,7 @@ public class FullScreenActivity extends BaseActivity {
 
                     @Override
                     public void onNext(ResponseBody value) {
-                        Log.e(App.TAG, "Download finish, current thread is: " + Thread.currentThread().getName());
+                        Timber.d("Download finish, current thread is: " + Thread.currentThread().getName());
                         // data of image
                         try {
                             //注意：把byte[]转换为bitmap时，也是耗时操作，也必须在子线程
@@ -124,14 +123,14 @@ public class FullScreenActivity extends BaseActivity {
                                     int width = imageView3.getWidth();
                                     int height = imageView3.getHeight();
                                     addBitmapToMemoryCache(Urls.BIG_IMAGE, bitmap);
-                                    Log.e(App.TAG, "Show image, current thread is: " + Thread.currentThread().getName());
+                                    Timber.d("Show image, current thread is: " + Thread.currentThread().getName());
                                     Bitmap small = Bitmap.createScaledBitmap(bitmap, width, height, false);
                                     bitmap = null;
 //                                    imageView3.setImageBitmap(small);
 //                                    try {//调用saveFile方法
-//                                        Log.e(App.TAG, "Saving image...");
+//                                        Timber.d( "Saving image...");
 //                                        Utils.saveBitmap(FullScreenActivity.this, bitmap);
-//                                        Log.e(App.TAG, "Image saved!");
+//                                        Timber.d( "Image saved!");
 //                                    } catch (IOException e) {
 //                                        e.printStackTrace();
 //                                    }

@@ -1,34 +1,27 @@
 package com.lear7.showcase.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.demo.li.vc_room_out.ui.RoomOutVideoActivity;
-import com.demo.li.vc_room_out.ui.RoomOutSettingActivity;
 import com.demo.li.vc_room_out.net.HeartbeatThread;
 import com.demo.li.vc_room_out.net.SocketHelper;
 import com.demo.li.vc_room_out.net.VisitReceiver;
+import com.demo.li.vc_room_out.ui.RoomOutSettingActivity;
+import com.demo.li.vc_room_out.ui.RoomOutVideoActivity;
 import com.demo.video_library.Global;
 import com.demo.video_library.entity.CallOff;
 import com.demo.video_library.entity.CallRequest;

@@ -1,8 +1,8 @@
 package com.lear7.showcase.mvpdagger.base.component;
 
 import com.lear7.showcase.activity.MvpDaggerActivity;
-import com.lear7.showcase.mvpdagger.base.scope.PerActivity;
 import com.lear7.showcase.mvpdagger.base.module.ActivityModule;
+import com.lear7.showcase.mvpdagger.base.scope.PerActivity;
 
 import dagger.Component;
 

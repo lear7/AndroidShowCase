@@ -1,10 +1,5 @@
 package com.lear7.showcase.activity;
 
-import android.app.Activity;
-import android.app.Application;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,7 +18,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
-import com.demo.video_library.BuildConfig;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -35,11 +29,7 @@ import com.lear7.showcase.fragment.JavaFragment;
 import com.lear7.showcase.fragment.JetpackFragment;
 import com.lear7.showcase.fragment.MvpFragment;
 import com.lear7.showcase.fragment.UiFragment;
-import com.lear7.showcase.utils.CrashHandler;
-import com.lear7.showcase.utils.FileUtils;
-import com.lear7.showcase.utils.shell.BoardHelper;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

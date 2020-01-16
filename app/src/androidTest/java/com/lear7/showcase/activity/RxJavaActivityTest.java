@@ -7,6 +7,8 @@ import com.lear7.showcase.App;
 import org.junit.Before;
 import org.junit.Test;
 
+import timber.log.Timber;
+
 import static org.junit.Assert.*;
 
 public class RxJavaActivityTest {
@@ -17,6 +19,6 @@ public class RxJavaActivityTest {
 
     @Test
     public void onResume() {
-        Log.e(App.TAG,"Testing!");
+        Timber.e("Testing!");
     }
 }

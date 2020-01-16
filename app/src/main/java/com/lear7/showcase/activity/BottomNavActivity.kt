@@ -1,6 +1,5 @@
 package com.lear7.showcase.activity
 
-import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI

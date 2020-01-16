@@ -9,10 +9,9 @@ import android.os.Build
 import android.os.Environment
 import android.os.Looper
 import android.os.Process
-import android.util.Log
 import android.widget.Toast
-import com.lear7.showcase.App
 import com.lear7.showcase.utils.shell.Shell
+import timber.log.Timber
 import java.io.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -53,7 +52,7 @@ class CrashHandlerKT private constructor(private val mContext: Context) :
             try {
                 Thread.sleep(1000)
             } catch (e: InterruptedException) {
-                Log.e(TAG, "error : ", e)
+                Timber.e("error : ", e)
             }
             //退出程序
             System.exit(1)
@@ -103,16 +102,16 @@ class CrashHandlerKT private constructor(private val mContext: Context) :
                 infos["versionCode"] = versionCode
             }
         } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(TAG, "an error occured when collect package info", e)
+            Timber.e("an error occured when collect package info", e)
         }
         val fields = Build::class.java.declaredFields
         for (field in fields) {
             try {
                 field.isAccessible = true
                 infos[field.name] = field[null].toString()
-                Log.d(TAG, field.name + " : " + field[null])
+                Timber.d(field.name + " : " + field[null])
             } catch (e: Exception) {
-                Log.e(TAG, "an error occured when collect crash info", e)
+                Timber.e("an error occured when collect crash info", e)
             }
         }
     }
@@ -139,7 +138,7 @@ class CrashHandlerKT private constructor(private val mContext: Context) :
         printWriter.close()
         val result = writer.toString()
         sb.append(result)
-        Log.e(TAG, result)
+        Timber.d(result)
         // 保存文件
         return saveFileOld(result)
     }
@@ -208,7 +207,7 @@ class CrashHandlerKT private constructor(private val mContext: Context) :
                 try { // 保存到SD卡根目录或内部存储的qj_crash目录， /storage/emulated/0/qj_crash
                     val dir =
                             File(Environment.getExternalStorageDirectory().absolutePath + File.separator + "qj_crash")
-                    Log.i("CrashHandlerKT", dir.toString())
+                    Timber.d(dir.toString())
                     if (!dir.exists()) {
                         dir.mkdir()
                     }
@@ -233,11 +232,11 @@ class CrashHandlerKT private constructor(private val mContext: Context) :
 
             val cmd =
                     "find " + Environment.getExternalStorageDirectory().absolutePath + File.separator + "qj_crash" + " -mtime +" + day.toString() + " -type f -name \"*.log\" | xargs rm -rf"
-            Log.d(TAG, cmd)
+            Timber.d(cmd)
 
             val result2 = Shell.SH.run(cmd)
             if (result2.isSuccessful) {
-                Log.d(TAG, day.toString() + "天前的旧日志清理成功")
+                Timber.d(day.toString() + "天前的旧日志清理成功")
             }
 
         }).start()

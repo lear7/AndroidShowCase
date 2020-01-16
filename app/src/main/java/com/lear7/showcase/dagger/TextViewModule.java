@@ -3,7 +3,6 @@ package com.lear7.showcase.dagger;
 import android.content.Context;
 import android.widget.TextView;
 
-import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 

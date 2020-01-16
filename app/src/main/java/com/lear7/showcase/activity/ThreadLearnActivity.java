@@ -12,7 +12,6 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.lear7.showcase.App;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.events.BaseEvent;
@@ -50,6 +48,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @Route(path = Routers.Act_ThreadLearning)
 public class ThreadLearnActivity extends BaseActivity {
@@ -195,7 +194,7 @@ public class ThreadLearnActivity extends BaseActivity {
         ServiceConnection connection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                Log.e(App.TAG, "Service connected");
+                Timber.d("Service connected");
                 aBinder = (WeatherService.ServiceBinder) iBinder;
                 if (aBinder != null) {
                     setWeatherInfo(aBinder.getService().getTempData());
@@ -206,7 +205,7 @@ public class ThreadLearnActivity extends BaseActivity {
 
             @Override
             public void onServiceDisconnected(ComponentName componentName) {
-                Log.e(App.TAG, "Service disconnected");
+                Timber.d("Service disconnected");
                 aBinder = null;
             }
         };
@@ -267,49 +266,49 @@ public class ThreadLearnActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(App.TAG, "onPause");
+        Timber.d("onPause");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(App.TAG, "oneResume");
+        Timber.d("oneResume");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e(App.TAG, "onStop");
+        Timber.d("onStop");
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(App.TAG, "onCreate");
+        Timber.d("onCreate");
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.e(App.TAG, "onConfigurationChanged");
+        Timber.d("onConfigurationChanged");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(App.TAG, "onStart");
+        Timber.d("onStart");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(App.TAG, "onDestroy");
+        Timber.d("onDestroy");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.e(App.TAG, "onRestart");
+        Timber.d("onRestart");
     }
 
     @Override

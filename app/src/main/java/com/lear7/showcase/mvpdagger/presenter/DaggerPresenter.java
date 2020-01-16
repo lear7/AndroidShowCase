@@ -1,7 +1,7 @@
 package com.lear7.showcase.mvpdagger.presenter;
 
-import com.lear7.showcase.mvpdagger.iview.DaggerView;
 import com.lear7.showcase.mvp.demo2.base.BasePresenter;
+import com.lear7.showcase.mvpdagger.iview.DaggerView;
 
 import javax.inject.Inject;
 

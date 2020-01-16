@@ -1,8 +1,5 @@
 package com.lear7.showcase.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.PersistableBundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers

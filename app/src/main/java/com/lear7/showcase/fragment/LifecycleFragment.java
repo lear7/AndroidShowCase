@@ -1,6 +1,5 @@
 package com.lear7.showcase.fragment;
 
-import android.util.Log;
 import android.widget.TextView;
 
 import androidx.lifecycle.Lifecycle;
@@ -15,6 +14,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class LifecycleFragment extends BaseFragment {
 
@@ -27,7 +27,7 @@ public class LifecycleFragment extends BaseFragment {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
         public void onResume() {
-            Log.e("TAG", "onCreate");
+            Timber.d("onCreate");
             // 每隔1s执行一次事件
             disposable = Observable.interval(1, TimeUnit.SECONDS)
                     .subscribeOn(Schedulers.io())
@@ -39,7 +39,7 @@ public class LifecycleFragment extends BaseFragment {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
         public void onPause() {
-            Log.e("TAG", "onPause");
+            Timber.d("onPause");
             if (!disposable.isDisposed()) {
                 disposable.dispose();
             }

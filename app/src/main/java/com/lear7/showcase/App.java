@@ -1,32 +1,18 @@
 package com.lear7.showcase;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.alibaba.fastjson.parser.ParserConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.github.moduth.blockcanary.BlockCanary;
-import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
-import com.lear7.showcase.utils.ActivityStackManager;
 import com.lear7.showcase.utils.AppLifeCallback;
 import com.lear7.showcase.utils.CrashHandler;
-import com.lear7.showcase.utils.shell.CommandResult;
-import com.lear7.showcase.utils.shell.Shell;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.CsvFormatStrategy;
 import com.orhanobut.logger.DiskLogAdapter;
@@ -37,6 +23,7 @@ import com.orhanobut.logger.PrettyFormatStrategy;
 
 import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
+import timber.log.Timber;
 
 //import com.lear7.showcase.mvpdagger.base.component.DaggerApplicationComponent;
 
@@ -75,6 +62,8 @@ public class App extends Application {
                     .build();
 
             StrictMode.setThreadPolicy(policy);
+
+            Timber.plant(new Timber.DebugTree());
         }
         CrashHandler.getInstance(this);
 //        BlockCanary.install(this, new AppContext()).start();
@@ -125,12 +114,12 @@ public class App extends Application {
 
     private void initLeanCloud() {
         try {
-            Log.e(TAG, "LeanCloud initialling...");
+            Timber.d("LeanCloud initialling...");
             AVOSCloud.setLogLevel(AVLogger.Level.DEBUG);
             AVOSCloud.initialize(this, "E8V5scDOSn22Xfd1L9GFdTMv-9Nh9j0Va", "OJGURyEenUmSzSyciKGSWG89", "https://api.lear7.cc");
-            Log.e(TAG, "LeanCloud initialized!");
+            Timber.d("LeanCloud initialized!");
         } catch (Exception e) {
-            Log.e(TAG, "LeanCloud init error!");
+            Timber.d("LeanCloud init error!");
         }
     }
 
@@ -146,10 +135,10 @@ public class App extends Application {
 
             if (app_version.equals("test")) {
                 //测试版
-                Log.e(App.TAG, "test version");
+                Timber.d("test version");
             } else {
                 //正式版
-                Log.e(App.TAG, "release version");
+                Timber.d("release version");
             }
             // Toast.makeText(this, app_version + " " + market, Toast.LENGTH_LONG).show();
         } catch (PackageManager.NameNotFoundException e) {

@@ -5,8 +5,8 @@ import android.content.Intent;
 
 import androidx.annotation.Nullable;
 
-import com.lear7.showcase.net.helper.DataUtils;
 import com.lear7.showcase.events.BaseEvent;
+import com.lear7.showcase.net.helper.DataUtils;
 
 import org.greenrobot.eventbus.EventBus;
 

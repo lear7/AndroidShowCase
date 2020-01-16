@@ -66,11 +66,11 @@ public class MoveGestureDetector extends BaseGestureDetector {
         mPrePointer = caculateFocalPointer(prev);
         mCurrentPointer = caculateFocalPointer(event);
 
-        //Log.e("TAG", mPrePointer.toString() + " ,  " + mCurrentPointer);
+        //Timber.d( mPrePointer.toString() + " ,  " + mCurrentPointer);
 
         boolean mSkipThisMoveEvent = prev.getPointerCount() != event.getPointerCount();
 
-        //Log.e("TAG", "mSkipThisMoveEvent = " + mSkipThisMoveEvent);
+        //Timber.d("mSkipThisMoveEvent = " + mSkipThisMoveEvent);
         mExtenalPointer.x = mSkipThisMoveEvent ? 0 : mCurrentPointer.x - mPrePointer.x;
         mExtenalPointer.y = mSkipThisMoveEvent ? 0 : mCurrentPointer.y - mPrePointer.y;
 

@@ -8,8 +8,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.mvpdagger.base.BaseDaggerActivity;
-import com.lear7.showcase.mvpdagger.presenter.DaggerPresenter;
 import com.lear7.showcase.mvpdagger.iview.DaggerView;
+import com.lear7.showcase.mvpdagger.presenter.DaggerPresenter;
 
 import javax.inject.Inject;
 

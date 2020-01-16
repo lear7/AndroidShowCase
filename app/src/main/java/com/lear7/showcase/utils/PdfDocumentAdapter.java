@@ -8,7 +8,6 @@ import android.print.PageRange;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintDocumentInfo;
-import android.util.Log;
 
 import com.orhanobut.logger.Logger;
 
@@ -18,8 +17,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import static com.lear7.showcase.App.TAG;
 
 public class PdfDocumentAdapter extends PrintDocumentAdapter {
 

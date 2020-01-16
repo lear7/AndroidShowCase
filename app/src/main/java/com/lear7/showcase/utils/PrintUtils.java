@@ -1,6 +1,5 @@
 package com.lear7.showcase.utils;
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

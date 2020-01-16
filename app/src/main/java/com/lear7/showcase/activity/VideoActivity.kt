@@ -3,15 +3,12 @@ package com.lear7.showcase.activity
 import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
-import android.os.Environment
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.jaeger.library.StatusBarUtil
-import com.lear7.showcase.App
 import com.lear7.showcase.R
 import com.lear7.showcase.beans.AnimalMain
 import com.lear7.showcase.constants.Routers.Act_Video
@@ -20,6 +17,7 @@ import com.lear7.showcase.utils.FileUtils
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import kotlinx.android.synthetic.main.activity_video.*
+import timber.log.Timber
 
 
 @Route(path = Act_Video)
@@ -34,7 +32,7 @@ class VideoActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
-        Log.e(App.TAG, "initialing")
+        Timber.d("initialing")
 
         var animal = AnimalMain(this, "Duck", AnimalMain.FEMALE)
         AnimalMain.getSex(animal.name)
@@ -42,8 +40,8 @@ class VideoActivity : BaseActivity() {
 //        video_player.post {
 //            var width = video_player.layoutParams.width
 //            var height = width / 16 * 9
-//            Log.e(App.TAG, "new height: ${height}")
-//            Log.e(App.TAG, "new width: ${width}")
+//            Timber.d( "new height: ${height}")
+//            Timber.d( "new width: ${width}")
 //            video_player.layoutParams = LinearLayout.LayoutParams(width, height)
 //        }
 

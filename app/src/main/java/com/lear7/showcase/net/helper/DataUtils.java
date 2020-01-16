@@ -1,15 +1,13 @@
 package com.lear7.showcase.net.helper;
 
 import com.lear7.showcase.beans.WeatherBean;
-import com.lear7.showcase.events.BaseEvent;
 import com.lear7.showcase.constants.Urls;
+import com.lear7.showcase.events.BaseEvent;
 import com.lear7.showcase.net.api.ApiService;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
-
-import javax.inject.Singleton;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

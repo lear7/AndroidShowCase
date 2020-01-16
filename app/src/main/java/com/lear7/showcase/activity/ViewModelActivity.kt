@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
-import kotlinx.android.synthetic.main.activity_view_model.*
 import com.lear7.showcase.viewmodel.TimeViewModel
+import kotlinx.android.synthetic.main.activity_view_model.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit

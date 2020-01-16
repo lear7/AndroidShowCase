@@ -2,13 +2,14 @@ package com.lear7.showcase.mvpdagger.base;
 
 import com.lear7.showcase.App;
 import com.lear7.showcase.activity.BaseActivity;
-import com.lear7.showcase.mvpdagger.base.component.ActivityComponent;
-import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
-//import com.lear7.showcase.injection.base.getComponent.DaggerActivityComponent;
-import com.lear7.showcase.mvpdagger.base.component.DaggerActivityComponent;
-import com.lear7.showcase.mvpdagger.base.module.ActivityModule;
 import com.lear7.showcase.mvp.demo2.base.BasePresenter;
 import com.lear7.showcase.mvp.demo2.base.BaseView;
+import com.lear7.showcase.mvpdagger.base.component.ActivityComponent;
+import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
+import com.lear7.showcase.mvpdagger.base.component.DaggerActivityComponent;
+import com.lear7.showcase.mvpdagger.base.module.ActivityModule;
+
+//import com.lear7.showcase.injection.base.getComponent.DaggerActivityComponent;
 
 
 /**

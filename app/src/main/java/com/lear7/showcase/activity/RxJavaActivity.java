@@ -1,11 +1,9 @@
 package com.lear7.showcase.activity;
 
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.lear7.showcase.App;
 import com.lear7.showcase.R;
 import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.net.helper.DataUtils;
@@ -20,6 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @Route(path = Routers.Act_RxJava)
 public class RxJavaActivity extends BaseActivity {
@@ -63,7 +62,7 @@ public class RxJavaActivity extends BaseActivity {
         Observer<String> observer = new Observer<String>() {
             @Override
             public void onSubscribe(Disposable d) {
-                Log.e(App.TAG, "onSubscribe");
+                Timber.d("onSubscribe");
             }
 
             @Override
@@ -73,12 +72,12 @@ public class RxJavaActivity extends BaseActivity {
 
             @Override
             public void onError(Throwable e) {
-                Log.d(App.TAG, "onError");
+                Timber.d("onError");
             }
 
             @Override
             public void onComplete() {
-                Log.d(App.TAG, "onComplete");
+                Timber.d("onComplete");
             }
         };
 
