@@ -48,7 +48,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.MovieAppActivity" />
+        <activity android:name=".activity.MovieAppActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.RxJavaActivity" />
         <activity android:name=".activity.CustomerViewActivity" />
         <activity android:name=".activity.LifecycleActivity" />

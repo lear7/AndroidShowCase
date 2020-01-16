@@ -21,7 +21,7 @@
 
         <Button
             android:id="@+id/btn_movie_app"
-            android:text="Movie App" />
+            android:text="BottomNavigationView" />
 
         <Button
             android:id="@+id/btn_nav_demo"
@@ -29,7 +29,7 @@
 
         <Button
             android:id="@+id/btn_bottom_nav"
-            android:text="BottomNavigationUI" />
+            android:text="Navagation Host Fragment" />
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>
