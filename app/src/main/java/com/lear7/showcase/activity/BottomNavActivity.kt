@@ -1,5 +1,7 @@
 package com.lear7.showcase.activity
 
+import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -27,6 +29,12 @@ class BottomNavActivity : BaseActivity() {
         // 生成Nav
         NavigationUI.setupWithNavController(nav_bottom_view,
                 navHostFragment!!.navController);
+
+        // 屏蔽返回事件
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {}
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
     }
 
 
