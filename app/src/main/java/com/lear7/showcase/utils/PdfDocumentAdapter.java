@@ -9,14 +9,14 @@ import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintDocumentInfo;
 
-import com.orhanobut.logger.Logger;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import timber.log.Timber;
 
 public class PdfDocumentAdapter extends PrintDocumentAdapter {
 
@@ -67,13 +67,13 @@ public class PdfDocumentAdapter extends PrintDocumentAdapter {
             }
         } catch (Exception e) {
             writeResultCallback.onWriteFailed(e.getMessage());
-            Logger.e(e.getMessage());
+            Timber.e(e.getMessage());
         } finally {
             try {
                 in.close();
                 out.close();
             } catch (IOException e) {
-                Logger.e(e.getMessage());
+                Timber.e(e.getMessage());
             }
         }
     }

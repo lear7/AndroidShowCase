@@ -21,7 +21,7 @@ class MoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_login.setOnClickListener {
-            val action = MoreFragmentDirections.actionMoreToHome()
+            val action = MoreFragmentDirections.actionMoreToLogin()
             view.findNavController().navigate(action)
         }
     }

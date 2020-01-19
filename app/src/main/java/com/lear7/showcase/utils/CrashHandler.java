@@ -241,7 +241,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
     }
 
     // 删除一个月前的log
-
     private void cleanHistoryLog(int day) {
         new Thread(() -> {
             String cmd =

@@ -15,6 +15,7 @@ public class Routers {
     public static final String Act_VideoCall = "/activity/video_call";
     public static final String Act_Video = "/activity/video";
     public static final String Act_Video2 = "/activity/video2";
+    public static final String Act_Coroutine = "/activity/coroutine";
 
     // Material Design
     public static final String Act_Fragment = "/activity/fragment";

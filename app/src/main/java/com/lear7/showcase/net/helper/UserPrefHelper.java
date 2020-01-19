@@ -9,13 +9,13 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class UserPreHelper {
+public class UserPrefHelper {
 
     private final SharedPreferences mPref;
     private static final String PRE_FILE_NAME = "userConfig";
 
     @Inject
-    public UserPreHelper(@ApplicationContext Context context) {
+    public UserPrefHelper(@ApplicationContext Context context) {
         mPref = context.getSharedPreferences(PRE_FILE_NAME, Context.MODE_PRIVATE);
     }
 

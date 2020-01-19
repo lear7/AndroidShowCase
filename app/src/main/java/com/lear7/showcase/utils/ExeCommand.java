@@ -1,7 +1,5 @@
 package com.lear7.showcase.utils;
 
-import com.orhanobut.logger.Logger;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -95,7 +93,7 @@ public class ExeCommand {
         try {
             process = getRuntime().exec("su");//看情况可能是su
         } catch (Exception e) {
-            Logger.e(e.toString());
+            Timber.e(e.toString());
             return this;
         }
         bRunning = true;

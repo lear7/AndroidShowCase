@@ -18,7 +18,6 @@ import com.hp.mss.hpprint.model.PrintItem;
 import com.hp.mss.hpprint.model.PrintJobData;
 import com.hp.mss.hpprint.model.asset.PDFAsset;
 import com.hp.mss.hpprint.util.PrintUtil;
-import com.orhanobut.logger.Logger;
 import com.shockwave.pdfium.PdfiumCore;
 
 import java.io.File;
@@ -27,6 +26,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import timber.log.Timber;
 
 /**
  * Created by wyl on 2018/12/29.
@@ -60,9 +61,6 @@ public class PrintUtils {
     static String PDFCommand = "@PJL ENTER LANGUAGE=PDF\r\n";
 
     public static void write(String path, File pdf) {
-//        Logger.i(JOBStart + PJLCommand1 + "\"PDF Printing Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
-//        Logger.i(JOBStart + PJLCommand1 + "\"PDF Printing Job\"\r\n" + PJLCommand2 + PCLCommand + PDFCommand + JOBEnd + UEL);
-
         try {
             FileInputStream fis = new FileInputStream(path);
             FileOutputStream fos = new FileOutputStream(pdf);
@@ -87,10 +85,10 @@ public class PrintUtils {
             fis.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Logger.e(e.getMessage());
+            Timber.e(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
-            Logger.e(e.getMessage());
+            Timber.e(e.getMessage());
         }
 
     }
@@ -108,7 +106,7 @@ public class PrintUtils {
                 String execStr = "cp " + printFile + " /dev/usblp0";
                 new ExeCommand(true).run(execStr, 10000);
             } catch (Exception e) {
-                Logger.e(e.getMessage());
+                Timber.e(e.getMessage());
                 e.printStackTrace();
             }
 
@@ -125,7 +123,7 @@ public class PrintUtils {
                 String execStr = "cp " + imageFile + " /dev/usblp0";
                 new ExeCommand(true).run(execStr, 10000);
             } catch (Exception e) {
-                Logger.e(e.getMessage());
+                Timber.e(e.getMessage());
                 e.printStackTrace();
             }
         }

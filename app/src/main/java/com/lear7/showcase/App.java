@@ -13,13 +13,6 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
 import com.lear7.showcase.utils.AppLifeCallback;
 import com.lear7.showcase.utils.CrashHandler;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.CsvFormatStrategy;
-import com.orhanobut.logger.DiskLogAdapter;
-import com.orhanobut.logger.FormatStrategy;
-import com.orhanobut.logger.LogcatLogStrategy;
-import com.orhanobut.logger.Logger;
-import com.orhanobut.logger.PrettyFormatStrategy;
 
 import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
@@ -31,6 +24,11 @@ public class App extends Application {
 
     public static final String TAG = "LEAR";
     private ApplicationComponent component;
+    private static App instance;
+
+    public static App getInstance() {
+        return instance;
+    }
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -54,6 +52,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        instance = this;
         // Strict Mode
         if (BuildConfig.DEBUG) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -67,21 +66,6 @@ public class App extends Application {
         }
         CrashHandler.getInstance(this);
 //        BlockCanary.install(this, new AppContext()).start();
-
-        // disk log
-        FormatStrategy diskFormatStrategy = CsvFormatStrategy.newBuilder()
-                .tag("AndroidShowcase")
-                .build();
-        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(true)  // (Optional) Whether to show thread info or not. Default true
-                .methodCount(2)         // (Optional) How many method line to show. Default 2
-                .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
-                .logStrategy(new LogcatLogStrategy()) // (Optional) Changes the log strategy to print out. Default LogCat
-                .tag("AndroidShowcase")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
-                .build();
-
-        Logger.addLogAdapter(new DiskLogAdapter(diskFormatStrategy));
-        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
         // Fresco
         Fresco.initialize(this);
@@ -131,14 +115,14 @@ public class App extends Application {
             String market = info.metaData.getString("market");
 
             // build.gradle文件里自动生成
-            Logger.e("String from auto generated" + BuildConfig.API_URL);
+            Timber.i("String from auto generated " + BuildConfig.API_URL);
 
             if (app_version.equals("test")) {
                 //测试版
-                Timber.d("test version");
+                Timber.i("test version");
             } else {
                 //正式版
-                Timber.d("release version");
+                Timber.i("release version");
             }
             // Toast.makeText(this, app_version + " " + market, Toast.LENGTH_LONG).show();
         } catch (PackageManager.NameNotFoundException e) {

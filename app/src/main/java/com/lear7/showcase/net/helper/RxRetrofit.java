@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lear7.showcase.constants.Urls;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -32,8 +34,12 @@ public class RxRetrofit {
             synchronized (RxRetrofit.class) {
                 // 双重检查
                 if (instance == null) {
-                    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor((string) ->
-                            Timber.d(string));
+                    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+                        @Override
+                        public void log(@NotNull String s) {
+                            Timber.d(s);
+                        }
+                    });
                     interceptor.level(HttpLoggingInterceptor.Level.BODY);
 
                     OkHttpClient client = new OkHttpClient.Builder()

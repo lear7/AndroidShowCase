@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.constants.Routers
 import kotlinx.android.synthetic.main.activity_bottom_nav.*
+import timber.log.Timber
 
 
 @Route(path = Routers.Act_BottomNav)
@@ -29,9 +30,12 @@ class BottomNavActivity : BaseActivity() {
         NavigationUI.setupWithNavController(nav_bottom_view,
                 navHostFragment!!.navController);
 
-        // 屏蔽返回事件
+        // 重写返回事件，直接返回
         val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {}
+            override fun handleOnBackPressed() {
+                Timber.d(navHostFragment.navController.currentDestination.toString())
+                finish()
+            }
         }
         onBackPressedDispatcher.addCallback(this, callback)
     }

@@ -36,6 +36,10 @@
             android:text="RxJava Demo" />
 
         <Button
+            android:id="@+id/btn_coroutine"
+            android:text="Coroutine Demo" />
+
+        <Button
             android:id="@+id/btn_video_call"
             android:text="Make Call" />
 

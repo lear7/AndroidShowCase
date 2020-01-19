@@ -101,10 +101,10 @@
             app:layout_constraintStart_toStartOf="@+id/btn_get_weather_loader"
             app:layout_constraintTop_toBottomOf="@+id/btn_get_weather_async" />
 
-
         <Button
             android:id="@+id/btn_get_by_callable"
             android:text="By Callable/FutureTask" />
+
 
     </TableLayout>
 

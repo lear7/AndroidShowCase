@@ -18,7 +18,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.lear7.showcase.events.BaseEvent;
 import com.lear7.showcase.fragment.BaseFragment;
-import com.orhanobut.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -27,6 +26,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -107,7 +107,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void addFragment(FragmentManager manager, Class<? extends BaseFragment> aClass, int containerId, Bundle args) {
 
         String tag = aClass.getName();
-        Logger.i("%s add fragment %s", tag, aClass.getSimpleName());
+        Timber.i("%s add fragment %s", tag, aClass.getSimpleName());
 
         Fragment fragment = manager.findFragmentByTag(tag);
         FragmentTransaction transaction = manager.beginTransaction(); // 开启一个事务

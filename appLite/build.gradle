@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "kotlin-kapt"
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.example.mvvm"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0.${releaseTime()}"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlinVersion"
+    implementation "androidx.appcompat:appcompat:$versions.appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayoutVersion"
+
+
+    implementation "androidx.legacy:legacy-support-v4:$versions.legacySupport"
+
+    //Architecture components
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigationVersion"
+
+    //Room
+    implementation "androidx.room:room-runtime:$versions.roomVersion"
+    kapt "androidx.room:room-compiler:$versions.roomVersion"
+    implementation "androidx.room:room-ktx:$versions.roomVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retrofitAdapter"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttpVersion"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttpVersion"
+
+    // Koin for dependency injection
+    implementation "org.koin:koin-core:$versions.koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$versions.koinVersion"
+
+    // image
+    implementation "com.squareup.picasso:picasso:$versions.picassoVersion"
+    implementation "com.makeramen:roundedimageview:$versions.roundedImageViewVersion"
+}

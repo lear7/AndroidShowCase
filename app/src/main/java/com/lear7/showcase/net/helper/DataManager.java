@@ -19,7 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DataUtils {
+public class DataManager {
 
     public static String getWeatherByRetrofit(String header) {
         Retrofit retrofit = new Retrofit.Builder()

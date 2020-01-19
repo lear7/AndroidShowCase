@@ -25,9 +25,13 @@ import androidx.loader.content.Loader;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
+import com.lear7.showcase.beans.WeatherBean;
 import com.lear7.showcase.constants.Routers;
 import com.lear7.showcase.events.BaseEvent;
-import com.lear7.showcase.net.helper.DataUtils;
+import com.lear7.showcase.net.api.ApiService;
+import com.lear7.showcase.net.helper.BaseSubscriber;
+import com.lear7.showcase.net.helper.DataManager;
+import com.lear7.showcase.net.helper.RxRetrofit;
 import com.lear7.showcase.service.WeatherIntentService;
 import com.lear7.showcase.service.WeatherService;
 
@@ -124,6 +128,9 @@ public class ThreadLearnActivity extends BaseActivity {
         } else if (view == btnGetByCallable) {
             textView.setText("");
             getByCallable();
+        } else if (view == btnGetByCallable) {
+            textView.setText("");
+            getByCallable();
         }
     }
 
@@ -132,7 +139,7 @@ public class ThreadLearnActivity extends BaseActivity {
         Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                emitter.onNext(DataUtils.getWeatherByOkHttp("From RxJava\n"));
+                emitter.onNext(DataManager.getWeatherByOkHttp("From RxJava\n"));
             }
         });
 
@@ -150,18 +157,31 @@ public class ThreadLearnActivity extends BaseActivity {
                 .subscribe(consumer);
 
         // 简单写法
-        Observable.create(emitter -> emitter.onNext(DataUtils.getWeatherByOkHttp("From RxJava\n")))
+        Observable.create(emitter -> emitter.onNext(DataManager.getWeatherByOkHttp("From RxJava\n")))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> setWeatherInfo((String) response));
     }
 
     private void getWeatherByRetrofit() {
-        DataUtils.getWeatherByRetrofit("From Retrofit\n");
+        DataManager.getWeatherByRetrofit("From Retrofit\n");
     }
 
     private void getWeatherByRxRetrofit() {
-        DataUtils.getWeatherByRxRetrofit("From RxRetrofit\n");
+        // DataManager.getWeatherByRxRetrofit("From RxRetrofit\n");
+
+        RxRetrofit.getInstance()
+                .create(ApiService.class)
+                .getWeatherInfoRx("101280101", "19251592", "5cUief7V")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSubscriber<WeatherBean>() {
+
+                    @Override
+                    public void onNext(WeatherBean o) {
+                        setWeatherInfo("From RxRetrofit\n" + o.getCity());
+                    }
+                });
     }
 
     private void getWeatherByHandlerThread() {
@@ -177,7 +197,7 @@ public class ThreadLearnActivity extends BaseActivity {
         };
 
         handler.post(() -> {
-            String weather = DataUtils.getWeatherByOkHttp("From HandlerThread\n");
+            String weather = DataManager.getWeatherByOkHttp("From HandlerThread\n");
             // 这里是另一个线程，不能直接与UI线程进行交互
             // * setWeatherInfo(weather);
             EventBus.getDefault().post(new BaseEvent(weather));
@@ -240,7 +260,7 @@ public class ThreadLearnActivity extends BaseActivity {
 
         @Override
         protected String doInBackground(Void... voids) {
-            return DataUtils.getWeatherByOkHttp("From AsyncTask\n");
+            return DataManager.getWeatherByOkHttp("From AsyncTask\n");
         }
 
         @Override
@@ -352,7 +372,7 @@ public class ThreadLearnActivity extends BaseActivity {
         @Nullable
         @Override
         public String loadInBackground() {
-            return DataUtils.getWeatherByOkHttp("From AsyncTaskLoader\n");
+            return DataManager.getWeatherByOkHttp("From AsyncTaskLoader\n");
         }
 
         // 这两个方法一定要加，否则不启动
@@ -408,12 +428,12 @@ public class ThreadLearnActivity extends BaseActivity {
     public class GetWeatherCallable implements Callable<String> {
         @Override
         public String call() {
-            return DataUtils.getWeatherByOkHttp("From Callable:\n");
+            return DataManager.getWeatherByOkHttp("From Callable:\n");
         }
     }
 
     private void getByCallable() {
-        Callable<String> task = () -> DataUtils.getWeatherByOkHttp("From Callable:\n");
+        Callable<String> task = () -> DataManager.getWeatherByOkHttp("From Callable:\n");
 
         //  1. 通过线程池+Callable+Future接口
         ExecutorService executor1 = Executors.newCachedThreadPool();

@@ -12,8 +12,8 @@ import com.lear7.showcase.constants.Routers.Act_Printer
 import com.lear7.showcase.utils.FileUtils
 import com.lear7.showcase.utils.PdfDocumentAdapter
 import com.lear7.showcase.utils.PrintUtils
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.fragment_printer.*
+import timber.log.Timber
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
@@ -46,13 +46,13 @@ class PrinterActivity : BaseActivity() {
     private fun printFileContent(filePath: String) {
         var reader: BufferedReader? = null
         try {
-            Logger.i("以行为单位读取文件内容，一次读一行")
+            Timber.i("以行为单位读取文件内容，一次读一行")
             reader = BufferedReader(FileReader(filePath))
             var tempString: String? = null
             var line = 1
             //一次读一行，读入null时文件结束
             while (reader.readLine().also { tempString = it } != null) { //把当前行号显示出来
-                Logger.i("line $line: $tempString")
+                Timber.i("line $line: $tempString")
                 line++
             }
             reader.close()

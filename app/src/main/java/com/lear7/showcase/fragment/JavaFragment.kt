@@ -26,6 +26,7 @@ class JavaFragment : BaseFragment() {
         btn_rx_java.setOnClickListener { goTo(Routers.Act_RxJava) }
         btn_printer.setOnClickListener { goTo(Routers.Act_Printer) }
         btn_video_call.setOnClickListener { goTo(Routers.Act_VideoCall) }
+        btn_coroutine.setOnClickListener { goTo(Routers.Act_Coroutine) }
         btn_crash_handler.setOnClickListener { makeACrash() }
 
         doAsync {

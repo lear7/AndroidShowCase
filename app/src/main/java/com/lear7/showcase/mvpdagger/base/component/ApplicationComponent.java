@@ -21,5 +21,5 @@ public interface ApplicationComponent {
 
 //    DataManager dataManager();
 //
-//    UserPreHelper userHelper();
+//    UserPrefHelper userHelper();
 }

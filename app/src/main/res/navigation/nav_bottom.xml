@@ -29,7 +29,16 @@
         android:label="fragment_more"
         tools:layout="@layout/fragment_bottom_nav_more">
         <action
-            android:id="@+id/action_more_to_home"
-            app:destination="@id/home" />
+            android:id="@+id/action_more_to_login"
+            app:destination="@id/login"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.lear7.showcase.nav.demo.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_nav_login">
     </fragment>
 </navigation>
