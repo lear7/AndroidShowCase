@@ -7,8 +7,8 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-import com.lear7.showcase.events.BaseEvent;
-import com.lear7.showcase.net.helper.DataManager;
+import com.lear7.showcase.common.events.BaseEvent;
+import com.lear7.showcase.common.net.helper.DataManager;
 
 import org.greenrobot.eventbus.EventBus;
 

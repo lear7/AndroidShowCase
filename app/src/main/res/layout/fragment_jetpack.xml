@@ -31,5 +31,9 @@
             android:id="@+id/btn_bottom_nav"
             android:text="Navagation Host Fragment" />
 
+        <Button
+            android:id="@+id/btn_room_demo"
+            android:text="Room Demo" />
+
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

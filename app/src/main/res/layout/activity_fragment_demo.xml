@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/margin_normal_24"
-    tools:context="com.lear7.showcase.activity.FragmentDemoActivity">
+    tools:context="com.lear7.showcase.ui.activity.FragmentDemoActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.lear7.showcase.widget.SecButton
+        <com.lear7.showcase.ui.widget.SecButton
             android:id="@+id/fragment_btn1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

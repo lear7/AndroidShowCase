@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lear7.showcase.activity.RxJavaActivity">
+    tools:context="com.lear7.showcase.ui.activity.RxJavaActivity">
 
     <TextView
         android:id="@+id/rxjava_text"

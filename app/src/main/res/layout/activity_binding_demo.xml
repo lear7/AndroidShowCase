@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.lear7.showcase.activity.BindingDemoActivity">
+    tools:context="com.lear7.showcase.ui.activity.BindingDemoActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -67,11 +67,11 @@
 
         <variable
             name="user"
-            type="com.lear7.showcase.beans.User" />
+            type="com.lear7.showcase.model.User" />
 
         <variable
             name="handler"
-            type="com.lear7.showcase.activity.BindingDemoActivity.Handler" />
+            type="com.lear7.showcase.ui.activity.BindingDemoActivity.Handler" />
 
     </data>
 </layout>

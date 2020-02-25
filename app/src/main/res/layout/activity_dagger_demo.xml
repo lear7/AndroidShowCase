@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lear7.showcase.activity.DaggerDemoActivity">
+    tools:context="com.lear7.showcase.ui.activity.DaggerDemoActivity">
 
     <TextView
         android:id="@+id/text_title"

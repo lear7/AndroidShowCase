@@ -1,6 +1,6 @@
 package com.lear7.showcase.di
 
-import com.lear7.showcase.viewmodel.TimeViewModel
+import com.lear7.showcase.learn.mvvm.TimerViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -10,5 +10,5 @@ import org.koin.dsl.module
 @date 2019/12/27 19:19
  */
 val appleModule = module {
-    viewModel { TimeViewModel() }
+    viewModel { TimerViewModel() }
 }

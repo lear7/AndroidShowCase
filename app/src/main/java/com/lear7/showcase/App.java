@@ -10,15 +10,15 @@ import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.lear7.showcase.mvpdagger.base.component.ApplicationComponent;
-import com.lear7.showcase.utils.AppLifeCallback;
-import com.lear7.showcase.utils.CrashHandler;
+import com.lear7.showcase.learn.mvpdagger.base.component.ApplicationComponent;
+import com.lear7.showcase.common.utils.AppLifeCallback;
+import com.lear7.showcase.common.utils.CrashHandler;
 
 import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
 import timber.log.Timber;
 
-//import com.lear7.showcase.mvpdagger.base.component.DaggerApplicationComponent;
+//import com.lear7.showcase.learn.mvpdagger.base.component.DaggerApplicationComponent;
 
 public class App extends Application {
 

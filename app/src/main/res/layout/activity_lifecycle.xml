@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lear7.showcase.activity.LifecycleActivity">
+    tools:context="com.lear7.showcase.ui.activity.LifecycleActivity">
 
     <Button
         android:id="@+id/btn_switch_fragment"

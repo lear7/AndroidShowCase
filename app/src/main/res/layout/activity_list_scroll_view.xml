@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lear7.showcase.activity.ListScrollView">
+    tools:context="com.lear7.showcase.ui.activity.ListScrollView">
 
     <Button
         android:id="@+id/button3"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.lear7.showcase.widget.ExpandedListView
+            <com.lear7.showcase.ui.widget.ExpandedListView
                 android:id="@+id/list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

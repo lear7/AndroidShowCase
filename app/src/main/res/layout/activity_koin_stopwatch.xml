@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lear7.showcase.activity.KoinStopwatchActivity">
+    tools:context="com.lear7.showcase.ui.activity.KoinStopwatchActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

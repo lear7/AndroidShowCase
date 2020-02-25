@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lear7.showcase.activity.VideoPlayer2Activity">
+    tools:context="com.lear7.showcase.ui.activity.VideoPlayer2Activity">
 
     <Button
         android:id="@+id/button9"
