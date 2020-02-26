@@ -6,10 +6,10 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
-import com.lear7.showcase.learn.mvp.demo2.MvpPresenter;
-import com.lear7.showcase.learn.mvp.demo2.MvpView;
-import com.lear7.showcase.learn.mvp.demo2.base.BaseMvpActivity;
+import com.lear7.showcase.routing.Routers;
+import com.lear7.showcase.component.mvp.demo2.MvpPresenter;
+import com.lear7.showcase.component.mvp.demo2.MvpView;
+import com.lear7.showcase.component.mvp.demo2.base.BaseMvpActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

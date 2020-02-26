@@ -2,7 +2,7 @@ package com.lear7.showcase.ui.fragment
 
 import cn.leancloud.AVObject
 import com.lear7.showcase.R
-import com.lear7.showcase.common.Routers
+import com.lear7.showcase.routing.Routers
 import com.lear7.showcase.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_java.*
 import org.jetbrains.anko.doAsync

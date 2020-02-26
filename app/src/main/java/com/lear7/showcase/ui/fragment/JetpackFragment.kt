@@ -1,7 +1,7 @@
 package com.lear7.showcase.ui.fragment
 
 import com.lear7.showcase.R
-import com.lear7.showcase.common.Routers
+import com.lear7.showcase.routing.Routers
 import com.lear7.showcase.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_jetpack.*
 
@@ -20,5 +20,6 @@ class JetpackFragment : BaseFragment() {
         btn_nav_demo.setOnClickListener { goTo(Routers.Act_NAV) }
         btn_bottom_nav.setOnClickListener { goTo(Routers.Act_BottomNav) }
         btn_room_demo.setOnClickListener { goTo(Routers.Act_RoomDemo) }
+        btn_object_box.setOnClickListener { goTo(Routers.Act_ObjectBoxDemo) }
     }
 }

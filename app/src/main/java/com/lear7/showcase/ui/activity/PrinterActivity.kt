@@ -8,7 +8,7 @@ import android.print.PrintManager
 import androidx.print.PrintHelper
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
-import com.lear7.showcase.common.Routers.Act_Printer
+import com.lear7.showcase.routing.Routers.Act_Printer
 import com.lear7.showcase.common.utils.FileUtils
 import com.lear7.showcase.common.utils.PdfDocumentAdapter
 import com.lear7.showcase.common.utils.PrintUtils

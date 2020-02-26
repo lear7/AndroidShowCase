@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
-import com.lear7.showcase.learn.dagger.DaggerTextViewComponent;
-import com.lear7.showcase.learn.dagger.DemoUser;
-import com.lear7.showcase.learn.dagger.TextViewModule;
+import com.lear7.showcase.routing.Routers;
+import com.lear7.showcase.component.dagger.DaggerTextViewComponent;
+import com.lear7.showcase.component.dagger.DemoUser;
+import com.lear7.showcase.component.dagger.TextViewModule;
 import com.lear7.showcase.ui.base.BaseActivity;
 
 import javax.inject.Inject;

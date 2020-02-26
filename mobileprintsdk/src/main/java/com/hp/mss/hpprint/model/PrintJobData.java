@@ -130,10 +130,11 @@ public class PrintJobData implements Parcelable{
         if(printItem == null) {
             //get it for other orientation
             printItem = printItems.get(new PrintAttributes.MediaSize(mediaSize.getId(), mediaSize.getLabel(context.getPackageManager()),mediaSize.getHeightMils(), mediaSize.getWidthMils()));
-            if (printItem == null)
+            if (printItem == null) {
                 return defaultPrintItem;
-            else
+            } else {
                 return printItem;
+            }
 
         }
 

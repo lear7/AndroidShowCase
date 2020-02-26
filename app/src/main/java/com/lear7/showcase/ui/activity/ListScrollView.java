@@ -14,7 +14,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 
-import static com.lear7.showcase.common.Routers.Act_ListView;
+import static com.lear7.showcase.routing.Routers.Act_ListView;
 
 @Route(path = Act_ListView)
 public class ListScrollView extends BaseActivity {

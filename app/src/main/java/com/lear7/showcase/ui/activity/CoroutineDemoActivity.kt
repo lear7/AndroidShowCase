@@ -3,8 +3,8 @@ package com.lear7.showcase.ui.activity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.model.WeatherBean
-import com.lear7.showcase.common.Routers
-import com.lear7.showcase.common.net.helper.CoroutineRetrofit
+import com.lear7.showcase.routing.Routers
+import com.lear7.showcase.network.helper.CoroutineRetrofit
 import com.lear7.showcase.ui.base.BaseActivity
 import com.skydoves.whatif.whatIfNotNull
 import kotlinx.android.synthetic.main.activity_coroutine_demo.*

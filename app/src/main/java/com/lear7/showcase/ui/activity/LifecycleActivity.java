@@ -16,11 +16,11 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
 import com.lear7.showcase.ui.base.BaseActivity;
 import com.lear7.showcase.ui.fragment.LifecycleFragment;
-import com.lear7.showcase.learn.lifecycle.observer.ActivityObserver;
+import com.lear7.showcase.component.lifecycle.observer.ActivityObserver;
 
 import butterknife.BindView;
 
-import static com.lear7.showcase.common.Routers.Act_Lifecycle;
+import static com.lear7.showcase.routing.Routers.Act_Lifecycle;
 
 @Route(path = Act_Lifecycle)
 public class LifecycleActivity extends BaseActivity {

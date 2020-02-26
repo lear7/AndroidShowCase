@@ -11,7 +11,7 @@ import androidx.databinding.ObservableField;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
 import com.lear7.showcase.model.User;
-import com.lear7.showcase.common.Routers;
+import com.lear7.showcase.routing.Routers;
 import com.lear7.showcase.databinding.ActivityBindingDemoBinding;
 
 @Route(path = Routers.Act_DataBinding)

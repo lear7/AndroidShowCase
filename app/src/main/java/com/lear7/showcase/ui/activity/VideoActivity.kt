@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.jaeger.library.StatusBarUtil
 import com.lear7.showcase.R
 import com.lear7.showcase.model.AnimalMain
-import com.lear7.showcase.common.Routers.Act_Video
-import com.lear7.showcase.common.Urls
+import com.lear7.showcase.routing.Routers.Act_Video
+import com.lear7.showcase.network.Urls
 import com.lear7.showcase.common.utils.FileUtils
 import com.lear7.showcase.ui.base.BaseActivity
 import com.shuyu.gsyvideoplayer.GSYVideoManager

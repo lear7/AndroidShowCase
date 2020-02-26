@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.appbar.AppBarLayout
 import com.lear7.showcase.R
 import com.lear7.showcase.ui.base.CommonAdapter
-import com.lear7.showcase.common.Routers.Act_MaterialAlipay
+import com.lear7.showcase.routing.Routers.Act_MaterialAlipay
 import com.lear7.showcase.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_material_alipay.*
 import kotlinx.android.synthetic.main.item_recyclerview.view.*

@@ -28,7 +28,7 @@ import com.demo.video_library.entity.CallRequest;
 import com.demo.video_library.entity.CallRequestResult;
 import com.demo.video_library.entity.WarningInfo;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
+import com.lear7.showcase.routing.Routers;
 
 @Route(path = Routers.Act_VideoCall)
 public class VideoCallActivity extends AppCompatActivity implements VisitReceiver.VisitListener {

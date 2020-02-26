@@ -7,10 +7,10 @@ import android.util.LruCache;
 import android.widget.ImageView;
 
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Urls;
-import com.lear7.showcase.common.net.api.ApiService;
-import com.lear7.showcase.common.net.helper.BaseSubscriber;
-import com.lear7.showcase.common.net.helper.RxRetrofit;
+import com.lear7.showcase.network.Urls;
+import com.lear7.showcase.network.api.ApiService;
+import com.lear7.showcase.network.helper.BaseSubscriber;
+import com.lear7.showcase.network.helper.RxRetrofit;
 import com.lear7.showcase.ui.base.BaseActivity;
 
 import java.io.ByteArrayInputStream;

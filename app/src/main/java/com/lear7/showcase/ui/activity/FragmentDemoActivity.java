@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
+import com.lear7.showcase.routing.Routers;
 import com.lear7.showcase.ui.base.BaseActivity;
 import com.lear7.showcase.ui.base.BaseFragment;
 import com.lear7.showcase.ui.fragment.FragmentTest1;

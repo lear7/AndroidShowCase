@@ -1,6 +1,6 @@
 package com.lear7.showcase.di
 
-import com.lear7.showcase.learn.mvvm.TimerViewModel
+import com.lear7.showcase.component.mvvm.TimerViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

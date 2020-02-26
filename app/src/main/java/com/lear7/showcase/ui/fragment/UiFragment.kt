@@ -3,7 +3,7 @@ package com.lear7.showcase.ui.fragment
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lear7.showcase.R
-import com.lear7.showcase.common.Routers
+import com.lear7.showcase.routing.Routers
 import com.lear7.showcase.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_ui.*
 import kotlinx.android.synthetic.main.layout_bottom.*

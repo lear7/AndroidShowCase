@@ -33,11 +33,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.lear7.showcase.ui.activity.CoroutineDemoActivity"></activity>
-        <activity android:name="com.lear7.showcase.ui.activity.NavDemoActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.VideoPlayer2Activity" />
-        <activity android:name="com.lear7.showcase.ui.activity.FragmentDemoActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.VideoCallActivity" />
+        <activity android:name=".component.objectbox.ObjectBoxActivity"></activity>
+        <activity android:name=".ui.activity.CoroutineDemoActivity" />
+        <activity android:name=".ui.activity.NavDemoActivity" />
+        <activity android:name=".ui.activity.VideoPlayer2Activity" />
+        <activity android:name=".ui.activity.FragmentDemoActivity" />
+        <activity android:name=".ui.activity.VideoCallActivity" />
 
         <service
             android:name=".service.RemoteService"
@@ -50,15 +51,15 @@
         </service>
 
         <activity
-            android:name="com.lear7.showcase.ui.activity.MovieAppActivity"
+            android:name=".ui.activity.MovieAppActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.lear7.showcase.ui.activity.RxJavaActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.CustomerViewActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.LifecycleActivity" />
-        <activity android:name="com.lear7.showcase.learn.mvvm.TimerActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.DaggerDemoActivity" />
+        <activity android:name=".ui.activity.RxJavaActivity" />
+        <activity android:name=".ui.activity.CustomerViewActivity" />
+        <activity android:name=".ui.activity.LifecycleActivity" />
+        <activity android:name=".component.mvvm.TimerActivity" />
+        <activity android:name=".ui.activity.DaggerDemoActivity" />
         <activity
-            android:name="com.lear7.showcase.ui.activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -68,41 +69,41 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lear7.showcase.ui.activity.MaterialActivity"
+            android:name=".ui.activity.MaterialActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.lear7.showcase.ui.activity.VideoActivity"
+            android:name=".ui.activity.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.lear7.showcase.ui.activity.MaterialAlipayActivity"
+            android:name=".ui.activity.MaterialAlipayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.lear7.showcase.ui.activity.ListScrollView" />
-        <activity android:name="com.lear7.showcase.ui.activity.BindingDemoActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.MvpDemoActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.MvpDemo2Activity" />
-        <activity android:name="com.lear7.showcase.ui.activity.MvpDaggerActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.PrinterActivity">
+        <activity android:name=".ui.activity.ListScrollView" />
+        <activity android:name=".ui.activity.BindingDemoActivity" />
+        <activity android:name=".ui.activity.MvpDemoActivity" />
+        <activity android:name=".ui.activity.MvpDemo2Activity" />
+        <activity android:name=".ui.activity.MvpDaggerActivity" />
+        <activity android:name=".ui.activity.PrinterActivity">
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/usbs" />
         </activity>
         <activity
-            android:name="com.lear7.showcase.ui.activity.FullScreenActivity"
+            android:name=".ui.activity.FullScreenActivity"
             android:configChanges="orientation" />
         <activity
-            android:name="com.lear7.showcase.learn.room.RoomActivity"
+            android:name=".component.room.RoomActivity"
             android:configChanges="orientation" />
         <activity
-            android:name="com.lear7.showcase.ui.activity.DownloadTestActivity"
+            android:name=".ui.activity.DownloadTestActivity"
             android:configChanges="orientation" />
-        <activity android:name="com.lear7.showcase.ui.activity.ThreadTestActivity" />
+        <activity android:name=".ui.activity.ThreadTestActivity" />
         <activity
-            android:name="com.lear7.showcase.ui.activity.ThreadLearnActivity"
+            android:name=".ui.activity.ThreadLearnActivity"
             android:persistableMode="persistAcrossReboots" />
-        <activity android:name="com.lear7.showcase.ui.activity.ConstaintActivity" />
-        <activity android:name="com.lear7.showcase.ui.activity.UIAdaptionActivity" />
+        <activity android:name=".ui.activity.ConstaintActivity" />
+        <activity android:name=".ui.activity.UIAdaptionActivity" />
 
         <meta-data
             android:name="app_version"

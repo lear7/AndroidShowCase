@@ -6,10 +6,10 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
-import com.lear7.showcase.learn.mvpdagger.base.BaseDaggerActivity;
-import com.lear7.showcase.learn.mvpdagger.iview.DaggerView;
-import com.lear7.showcase.learn.mvpdagger.presenter.DaggerPresenter;
+import com.lear7.showcase.routing.Routers;
+import com.lear7.showcase.component.mvpdagger.base.BaseDaggerActivity;
+import com.lear7.showcase.component.mvpdagger.iview.DaggerView;
+import com.lear7.showcase.component.mvpdagger.presenter.DaggerPresenter;
 
 import javax.inject.Inject;
 

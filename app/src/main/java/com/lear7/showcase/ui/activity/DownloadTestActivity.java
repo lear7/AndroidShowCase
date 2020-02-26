@@ -13,8 +13,8 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipeline;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
-import com.lear7.showcase.common.Urls;
+import com.lear7.showcase.routing.Routers;
+import com.lear7.showcase.network.Urls;
 import com.lear7.showcase.ui.base.BaseActivity;
 
 import butterknife.BindView;

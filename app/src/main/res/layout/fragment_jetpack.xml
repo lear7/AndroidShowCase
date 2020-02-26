@@ -34,6 +34,9 @@
         <Button
             android:id="@+id/btn_room_demo"
             android:text="Room Demo" />
+        <Button
+            android:id="@+id/btn_object_box"
+            android:text="ObjectBox Demo" />
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

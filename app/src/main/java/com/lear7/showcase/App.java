@@ -10,9 +10,10 @@ import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.lear7.showcase.learn.mvpdagger.base.component.ApplicationComponent;
+import com.lear7.showcase.component.mvpdagger.base.component.ApplicationComponent;
 import com.lear7.showcase.common.utils.AppLifeCallback;
 import com.lear7.showcase.common.utils.CrashHandler;
+import com.lear7.showcase.component.objectbox.ObjectBox;
 
 import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
@@ -90,6 +91,11 @@ public class App extends Application {
         initVersion();
 
         initLifecycleCallbacks();
+        initObjetBox();
+    }
+
+    private void initObjetBox(){
+        ObjectBox.INSTANCE.init(this);
     }
 
     private void initLifecycleCallbacks() {

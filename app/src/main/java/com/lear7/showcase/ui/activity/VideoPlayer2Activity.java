@@ -28,7 +28,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.Util;
 import com.lear7.showcase.R;
-import com.lear7.showcase.common.Routers;
+import com.lear7.showcase.routing.Routers;
 import com.lear7.showcase.common.utils.FileUtilsJ;
 
 import java.io.File;

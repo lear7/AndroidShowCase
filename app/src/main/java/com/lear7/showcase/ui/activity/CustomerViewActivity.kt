@@ -3,7 +3,7 @@ package com.lear7.showcase.ui.activity
 import android.view.animation.AnimationUtils
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
-import com.lear7.showcase.common.Routers
+import com.lear7.showcase.routing.Routers
 import com.lear7.showcase.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_customer_view.*
 
