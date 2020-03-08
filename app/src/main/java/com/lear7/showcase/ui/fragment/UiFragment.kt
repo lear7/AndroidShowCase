@@ -22,6 +22,7 @@ class UiFragment : BaseFragment() {
         btn_material_alipay.setOnClickListener { goTo(Routers.Act_MaterialAlipay) }
         btn_listview.setOnClickListener { goTo(Routers.Act_ListView) }
         btn_ui_adaption.setOnClickListener { goTo(Routers.Act_UIAdaption) }
+        btn_auto_load_listview.setOnClickListener { goTo(Routers.Act_AutoLoadListView) }
 
         var bottomSheetBehavior = BottomSheetBehavior.from(layout_bottom_sheet)
         btn_bottom_sheet1.setOnClickListener {

@@ -80,6 +80,7 @@
             android:name=".ui.activity.MaterialAlipayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.activity.ListScrollView" />
+        <activity android:name=".ui.activity.LoadModeListView" />
         <activity android:name=".ui.activity.BindingDemoActivity" />
         <activity android:name=".ui.activity.MvpDemoActivity" />
         <activity android:name=".ui.activity.MvpDemo2Activity" />

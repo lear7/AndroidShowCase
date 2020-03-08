@@ -24,6 +24,7 @@ public class Routers {
     public static final String Act_MaterialAlipay = "/activity/materialalipay";
     public static final String Act_ListView = "/activity/listView";
     public static final String Act_UIAdaption = "/activity/uiadaption";
+    public static final String Act_AutoLoadListView = "/activity/autoloadlistview";
     public static final String Act_BottomSheet = "/activity/bottomsheet";
     public static final String Act_BottomSheetModal = "/activity/bottomsheetmodal";
 

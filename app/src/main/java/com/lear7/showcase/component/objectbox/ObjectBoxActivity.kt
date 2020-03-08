@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_object_box.*
 import kotlinx.android.synthetic.main.activity_room_demo.btn_add_user
 import kotlinx.android.synthetic.main.activity_room_demo.room_root_view
 import kotlinx.android.synthetic.main.activity_room_demo.user_list_view
+import kotlinx.android.synthetic.main.item_recyclerview.*
 
 @Route(path = Routers.Act_ObjectBoxDemo)
 class ObjectBoxActivity : BaseActivity() {
@@ -55,7 +56,7 @@ class ObjectBoxActivity : BaseActivity() {
     }
 
     fun showError(@StringRes errorMessage: Int, rootView: View) =
-        snackbar(errorMessage, rootView)
+            snackbar(errorMessage, rootView)
 
     fun snackbar(@StringRes message: Int, rootView: View) = Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show()
 

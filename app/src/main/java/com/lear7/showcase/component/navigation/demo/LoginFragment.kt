@@ -27,10 +27,13 @@ class LoginFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_nav_login, container, false)
+        return inflater.inflate(R.layout.fragment_nav_login, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         btn_sign_in.setOnClickListener({ login() })
 
-        return view
     }
 
     fun login() {

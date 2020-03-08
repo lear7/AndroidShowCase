@@ -20,12 +20,14 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_nav_home, container, false)
+        return inflater.inflate(R.layout.fragment_nav_home, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         btn_logout.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToStartFragment()
             view.findNavController().navigate(action)
         }
-
-        return view
     }
 }
