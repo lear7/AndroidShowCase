@@ -40,7 +40,7 @@ class LoadModeListView : BaseActivity() {
     }
 
     private fun initAdapter() {
-        adapter = GenericAdapter(R.layout.item_recyclerview, datas) { view: View, data: String?, _: Int ->
+        adapter = GenericAdapter(R.layout.item_recyclerview, datas) { view, data, _ ->
             (view.findViewById<View>(R.id.item_recycler_title) as TextView).text = data
         }
         adapter.setEnableLoadingMore(auto_listview, object : GenericAdapter.LoadMoreListener {
