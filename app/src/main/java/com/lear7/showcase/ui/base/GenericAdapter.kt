@@ -42,7 +42,12 @@ class GenericAdapter<T>(@LayoutRes private val layoutId: Int, private var datas:
                         val lastVisibleItem = linearLayoutManager
                                 .findLastVisibleItemPosition();
                         if (totalItemCount <= (lastVisibleItem + visibleThreshold)) {
-                            loadMoreListener?.onLoadMore()
+                            loadMoreListener?.let {
+                                datas.add(null)
+                                // insert the last second one but not the last one
+                                this@GenericAdapter.notifyItemInserted(datas.size - 1)
+                                it.onLoadMore()
+                            }
                             isLoading = true
                         }
                     }
@@ -53,6 +58,17 @@ class GenericAdapter<T>(@LayoutRes private val layoutId: Int, private var datas:
     fun setEnableLoadingMore(recyclerView: RecyclerView, listener: LoadMoreListener) {
         this.recyclerView = recyclerView
         this.loadMoreListener = listener
+    }
+
+    fun setLoading() {
+        // remove the loading item
+        if (datas == null || datas.size == 0)
+            return
+        datas.removeAt(datas.size - 1)
+        // get the data size
+        val scrollPosition = datas.size
+        // notify remove action
+        this.notifyItemRemoved(scrollPosition)
     }
 
     fun setLoaded() {

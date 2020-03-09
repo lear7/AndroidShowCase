@@ -72,18 +72,15 @@ class LoadModeListView : BaseActivity() {
     }
 
     private fun loadMore() { // begin loading
-        datas.add(null)
-        // insert the last second one but not the last one
-        adapter.notifyItemInserted(datas.size - 1)
+//        datas.add(null)
+//        // insert the last second one but not the last one
+//        adapter.notifyItemInserted(datas.size - 1)
 
         val handler = Handler()
         handler.postDelayed({
-            // remove the loading itme
-            datas.removeAt(datas.size - 1)
-            // get the data size
+            adapter.setLoading()
             val scrollPosition = datas.size
-            // notify remove action
-            adapter.notifyItemRemoved(scrollPosition)
+
             // get current name
             var currentSize = scrollPosition
             val newSize = 10
