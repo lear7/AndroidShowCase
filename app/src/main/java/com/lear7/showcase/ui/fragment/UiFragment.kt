@@ -1,13 +1,11 @@
 package com.lear7.showcase.ui.fragment
 
 import android.view.View
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.lear7.showcase.R
 import com.lear7.showcase.routing.Routers
 import com.lear7.showcase.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_ui.*
-import kotlinx.android.synthetic.main.layout_bottom.*
-import timber.log.Timber
 
 class UiFragment : BaseFragment() {
     override fun getLayoutId(): Int {
@@ -23,40 +21,6 @@ class UiFragment : BaseFragment() {
         btn_listview.setOnClickListener { goTo(Routers.Act_ListView) }
         btn_ui_adaption.setOnClickListener { goTo(Routers.Act_UIAdaption) }
         btn_auto_load_listview.setOnClickListener { goTo(Routers.Act_AutoLoadListView) }
-
-        var bottomSheetBehavior = BottomSheetBehavior.from(layout_bottom_sheet)
-        btn_bottom_sheet1.setOnClickListener {
-            bottomSheetBehavior.apply {
-                if (this.state != BottomSheetBehavior.STATE_EXPANDED) {
-                    this.setState(BottomSheetBehavior.STATE_EXPANDED)
-                } else {
-                    this.setState(BottomSheetBehavior.STATE_COLLAPSED)
-                }
-            }
-        }
-
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                // React to state change
-                when (newState) {
-                    BottomSheetBehavior.STATE_HIDDEN -> {
-                        Timber.d("BottomSheet Hidden")
-                    }
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                        Timber.d("BottomSheet Expanded")
-                    }
-                    BottomSheetBehavior.STATE_COLLAPSED -> {
-                    }
-                    BottomSheetBehavior.STATE_DRAGGING -> {
-                    }
-                    BottomSheetBehavior.STATE_SETTLING -> {
-                    }
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                // React to dragging events
-            }
-        })
+        btn_bottom_sheet.setOnClickListener { goTo(Routers.Act_BottomSheet) }
     }
 }

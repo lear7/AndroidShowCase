@@ -1,53 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_fragment"
+            android:text="Fragment Demo" />
 
-            <Button
-                android:id="@+id/btn_fragment"
-                android:text="Fragment Demo" />
+        <Button
+            android:id="@+id/btn_constraint"
+            android:text="ConstraintLayout" />
 
-            <Button
-                android:id="@+id/btn_constraint"
-                android:text="ConstraintLayout" />
+        <Button
+            android:id="@+id/btn_material"
+            android:text="Material Demo" />
 
-            <Button
-                android:id="@+id/btn_material"
-                android:text="Material Demo" />
+        <Button
+            android:id="@+id/btn_material_alipay"
+            android:text="Material Alipay" />
 
-            <Button
-                android:id="@+id/btn_material_alipay"
-                android:text="Material Alipay" />
+        <Button
+            android:id="@+id/btn_ui_adaption"
+            android:text="UI Adaption" />
 
-            <Button
-                android:id="@+id/btn_listview"
-                android:text="ListView in ScrollView" />
+        <Button
+            android:id="@+id/btn_listview"
+            android:text="ListView in ScrollView" />
 
-            <Button
-                android:id="@+id/btn_bottom_sheet1"
-                android:text="BottomSheets" />
+        <Button
+            android:id="@+id/btn_auto_load_listview"
+            android:text="Auto Load ListView" />
 
-            <Button
-                android:id="@+id/btn_bottom_sheet2"
-                android:text="Modal BottomSheets" />
+        <Button
+            android:id="@+id/btn_bottom_sheet"
+            android:text="Bottom Sheets" />
+    </TableLayout>
 
-            <Button
-                android:id="@+id/btn_ui_adaption"
-                android:text="UI Adaption" />
-
-            <Button
-                android:id="@+id/btn_auto_load_listview"
-                android:text="Auto Load ListView" />
-        </TableLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <include layout="@layout/layout_bottom" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

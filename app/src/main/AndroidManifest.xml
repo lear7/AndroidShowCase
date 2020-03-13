@@ -39,6 +39,7 @@
         <activity android:name=".ui.activity.VideoPlayer2Activity" />
         <activity android:name=".ui.activity.FragmentDemoActivity" />
         <activity android:name=".ui.activity.VideoCallActivity" />
+        <activity android:name=".ui.activity.BottomSheetActivity" />
 
         <service
             android:name=".service.RemoteService"
