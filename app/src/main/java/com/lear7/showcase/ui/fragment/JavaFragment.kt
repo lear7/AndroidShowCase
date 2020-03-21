@@ -10,11 +10,15 @@ import org.jetbrains.anko.support.v4.toast
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class JavaFragment : BaseFragment() {
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_java
+    }
+
+    private fun testPrice() {
+        val payAmount: Long = Arith.mul(568.93.toDouble(), 100.toDouble(), 0).toLong()
+        toast("Pass price is: " + payAmount)
     }
 
     override fun initView() {
@@ -29,6 +33,9 @@ class JavaFragment : BaseFragment() {
         btn_video_call.setOnClickListener { goTo(Routers.Act_VideoCall) }
         btn_coroutine.setOnClickListener { goTo(Routers.Act_Coroutine) }
         btn_crash_handler.setOnClickListener { makeACrash() }
+        btn_test_price.setOnClickListener {
+            testPrice()
+        }
 
         doAsync {
             val testObject = AVObject("TestObject")

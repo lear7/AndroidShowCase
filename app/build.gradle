@@ -220,6 +220,7 @@ dependencies {
     // jetpack
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$versions.navigationVersion"
+    implementation "android.arch.paging:runtime:$versions.pagingVersion"
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlinVersion"
@@ -251,23 +252,18 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retrofitAdapter"
-
     // Arouter
     implementation "com.alibaba:arouter-api:1.5.0"
     kapt "com.alibaba:arouter-compiler:1.2.2"
     // statusbar
     implementation "com.jaeger.statusbarutil:library:1.5.1"
-
     // butter knife, 10.2 is latest
     implementation "com.jakewharton:butterknife:$versions.butterknifeVersion"
     kapt "com.jakewharton:butterknife-compiler:$versions.butterknifeVersion"
-
     // leakcanary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakcanaryVersion"
-
     // blockcanary
     implementation "com.github.markzhai:blockcanary-android:$versions.blockcanaryVersion"
-
     // fresco
     implementation "com.facebook.fresco:fresco:$versions.frescoVersion"
     // 支持 GIF 动图，需要添加
@@ -277,10 +273,8 @@ dependencies {
     implementation "com.facebook.fresco:webpsupport:$versions.frescoVersion"
     // 仅支持 WebP 静态图，需要添加
     implementation "com.facebook.fresco:webpsupport:$versions.frescoVersion"
-
     // event bus
     implementation "org.greenrobot:eventbus:$versions.eventbusVersion"
-
     // dagger2
     implementation "com.google.dagger:dagger:$versions.daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$versions.daggerVersion"

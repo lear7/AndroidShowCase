@@ -21,5 +21,6 @@ class JetpackFragment : BaseFragment() {
         btn_bottom_nav.setOnClickListener { goTo(Routers.Act_BottomNav) }
         btn_room_demo.setOnClickListener { goTo(Routers.Act_RoomDemo) }
         btn_object_box.setOnClickListener { goTo(Routers.Act_ObjectBoxDemo) }
+        btn_paging.setOnClickListener { goTo(Routers.Act_Paging) }
     }
 }

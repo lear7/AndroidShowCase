@@ -47,6 +47,10 @@
             android:id="@+id/btn_printer"
             android:text="Start Printer" />
 
+        <Button
+            android:id="@+id/btn_test_price"
+            android:text="Test Price" />
+
 
     </TableLayout>
 </androidx.core.widget.NestedScrollView>

@@ -42,6 +42,7 @@ public class Routers {
     public static final String Act_BottomNav = "/activity/bottomnavdemo";
     public static final String Act_RoomDemo = "/activity/roomdemo";
     public static final String Act_ObjectBoxDemo = "/activity/objectboxdemo";
+    public static final String Act_Paging = "/activity/paging";
 
 }
 

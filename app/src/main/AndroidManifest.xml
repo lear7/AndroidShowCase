@@ -106,6 +106,7 @@
             android:persistableMode="persistAcrossReboots" />
         <activity android:name=".ui.activity.ConstaintActivity" />
         <activity android:name=".ui.activity.UIAdaptionActivity" />
+        <activity android:name=".ui.activity.PagingActivity" />
 
         <meta-data
             android:name="app_version"

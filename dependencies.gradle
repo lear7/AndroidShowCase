@@ -81,6 +81,7 @@ ext.versions = [
         blockcanaryVersion     : '1.5.0',
         // image
         picassoVersion         : '2.71828',
-        roundedImageViewVersion: '2.3.0'
+        roundedImageViewVersion: '2.3.0',
+        pageVersion            : '1.0.0'
 
 ]
