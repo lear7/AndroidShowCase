@@ -8,7 +8,7 @@ import androidx.paging.PagedList
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lear7.showcase.R
 import com.lear7.showcase.component.paging.CustomAdapter
-import com.lear7.showcase.component.paging.CustomPageDataSourceFactory
+import com.lear7.showcase.component.paging.CustomDataSourceFactory
 import com.lear7.showcase.component.paging.DataRepository
 import com.lear7.showcase.routing.Routers
 import kotlinx.android.synthetic.main.activity_paging.*
@@ -23,7 +23,7 @@ class PagingActivity : AppCompatActivity() {
         val adapter = CustomAdapter()
         user_list_view.adapter = adapter
 
-        val data = LivePagedListBuilder(CustomPageDataSourceFactory(DataRepository()), PagedList.Config.Builder()
+        val data = LivePagedListBuilder(CustomDataSourceFactory(DataRepository()), PagedList.Config.Builder()
                 .setPageSize(20)
                 .setEnablePlaceholders(true)
                 .setInitialLoadSizeHint(20)

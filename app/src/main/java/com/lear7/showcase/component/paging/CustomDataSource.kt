@@ -1,10 +1,17 @@
 package com.lear7.showcase.component.paging
 
+import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-class CustomPageDataSource(val repository: DataRepository) : PageKeyedDataSource<Int, DataBean>(), AnkoLogger {
+class CustomDataSourceFactory(val repository: DataRepository) : DataSource.Factory<Int, DataBean>() {
+    override fun create(): DataSource<Int, DataBean> {
+        return CustomDataSource(repository)
+    }
+}
+
+class CustomDataSource(val repository: DataRepository) : PageKeyedDataSource<Int, DataBean>(), AnkoLogger {
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, DataBean>) {
         info("loadInitial size : ${params.requestedLoadSize} ")
         val data = repository.loadData(params.requestedLoadSize)
@@ -26,5 +33,4 @@ class CustomPageDataSource(val repository: DataRepository) : PageKeyedDataSource
             callback.onResult(data, params.key - 1)
         }
     }
-
 }

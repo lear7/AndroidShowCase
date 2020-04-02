@@ -31,7 +31,6 @@ class CustomAdapter : PagedListAdapter<DataBean, CustomViewHolder>(DIFF_CALLBACK
 
 }
 
-
 class CustomViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_listview, parent, false)) {
     private val nameView = itemView.findViewById<TextView>(R.id.item_title)

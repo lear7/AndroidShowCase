@@ -3,8 +3,7 @@ package com.lear7.showcase.component.paging
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-//数据类
-data class DataBean(var id: Long, var name: String)
+
 
 class DataRepository : AnkoLogger {
 
