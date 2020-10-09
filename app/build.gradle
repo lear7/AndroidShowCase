@@ -96,7 +96,8 @@ android {
                     app_version_key: "release"
             ]
 
-            // 指定不同的flavor使用不同的签名
+            // 指定不同的flavor使用不同
+            // 的签名
             productFlavors.client.signingConfig signingConfigs.release
             productFlavors.dev.signingConfig signingConfigs.debug
         }

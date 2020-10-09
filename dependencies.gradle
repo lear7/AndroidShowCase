@@ -9,7 +9,7 @@ ext.versions = [
         //build tools的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于你的sdk目录/build-tools/下
         buildToolsVersion      : '29.0.2',
         // build tool
-        gradleBuildTool        : '3.5.3',
+        gradleBuildTool        : '4.0.2',
         versionPlugin          : '0.23.0',
 
         //objectbox
