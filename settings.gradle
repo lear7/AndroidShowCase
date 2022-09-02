@@ -1,2 +1,2 @@
-include ':app', ':aidl', ":mobileprintsdk", ':mvvm'
+include ':app', ':aidl', ':mvvm'
 rootProject.name = 'AndroidShowCase'

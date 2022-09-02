@@ -1,87 +1,90 @@
 // Define versions in a single place
 ext.versions = [
         // 编译sdk的版本，也就是API Level，例如API-19、API-20、API-21等等。
-        compileSdkVersion      : 29,
+        compileSdkVersion        : 33,
         //最小sdk版本，如果设备小于这个版本或者大于 maxSdkVersion(一般不用)将无法安装这个应用
-        minSdkVersion          : 22,
+        minSdkVersion            : 22,
         //目标sdk版本，如果设备等于这个版本那么android平台，就不进行兼容性检查，运行效率会高一点
-        targetSdkVersion       : 22,
+        targetSdkVersion         : 33,
         //build tools的版本，其中包括了打包工具aapt、dx等等。这个工具的目录位于你的sdk目录/build-tools/下
-        buildToolsVersion      : '29.0.2',
+        buildToolsVersion        : '33.0.3',
         // build tool
-        gradleBuildTool        : '4.0.2',
-        versionPlugin          : '0.23.0',
+        gradleBuildTool          : '7.2.1',
+        versionPlugin            : '0.23.0',
 
         //objectbox
-        objectboxVersion       : '2.5.1',
+        objectboxVersion         : '2.5.1',
 
         // support library
-        appCompatVersion       : '1.1.0',
-        androidxVersion        : '1.0.0',
-        legacySupport          : '1.0.0',
+        appCompatVersion         : '1.5.0',
+        androidxVersion          : '1.0.0',
+        legacySupport            : '1.0.0',
 
         // ui support
-        materialVersion        : '1.2.0-alpha03',
-        navigationVersion      : '2.1.0',
-        recyclerViewVersion    : '1.1.0',
-        viewPagerVersion       : '1.0.0-beta05',
-        fragmentVersion        : '1.2.0-beta01',
-        constraintLayoutVersion: '2.0.0-beta4',
+        materialVersion          : '1.6.1',
+        navigationVersion        : '2.5.1',
+        recyclerViewVersion      : '1.2.1',
+        viewPagerVersion         : '1.0.0-beta05',
+        fragmentVersion          : '1.2.0-beta01',
+        constraintLayoutVersion  : '2.2.0-alpha03',
+        pagingVersion            : '3.1.1',
 
         // test tool
-        junitVersion           : '4.13',
-        espressoVersion        : '3.2.0',
-        androidJunitVersion    : '1.1.1',
-        runnerVersion          : '1.2.0',
+        junitVersion             : '4.13',
+        espressoVersion          : '3.4.0',
+        androidJunitVersion      : '1.1.3',
+        runnerVersion            : '1.4.0',
 
         // architecture components
-        archCompomentVersion   : '2.1.0',
-        lifecycleVersion       : '2.2.0-rc03',
-        roomVersion            : '2.2.3',
+        archCompomentVersion     : '2.1.0',
+        lifecycleVersion         : '2.5.1',
+        lifecycleExtensionVersion: '2.2.0',
+        roomVersion              : '2.4.3',
 
         // kotlin
-        kotlinVersion          : '1.3.61',
-        ankoVersion            : '0.10.8',
-        ktlintVersion          : '0.33.0',
-        ktxVersion             : '1.1.0',
-        coroutinesVersion      : '1.3.0',
-        koinVersion            : '2.0.1',
-        androidAptVersion      : '1.8',
-        retrofitAdapter        : '0.9.2',
+        kotlinVersion            : '1.3.61',
+        ankoVersion              : '0.10.8',
+        ktlintVersion            : '0.33.0',
+        ktxVersion               : '1.1.0',
+        coroutinesVersion        : '1.3.0',
+        koinVersion              : '2.0.1',
+        androidAptVersion        : '1.8',
+        retrofitAdapter          : '0.9.2',
 
         // debugging
-        timberVersion          : '4.7.1',
+        timberVersion            : '4.7.1',
 
         // glide
-        glideVersion           : '4.10.0',
+        glideVersion             : '4.10.0',
         // fresco
-        frescoVersion          : '2.0.0',
+        frescoVersion            : '2.0.0',
         // butterknife
-        butterknifeVersion     : '10.2.1',
+        butterknifeVersion       : '10.2.1',
 
         // multidex
-        multidexVersion        : '2.0.0',
+        multidexVersion          : '2.0.1',
+        multidexInstruVersion    : '2.0.0',
 
         // rxjava
-        rxandroidVersion       : '2.1.1',
-        rxjavaVersion          : '2.2.12',
+        rxandroidVersion         : '2.1.1',
+        rxjavaVersion            : '2.2.12',
 
         // okhttp
-        okhttpVersion          : '4.3.1',
+        okhttpVersion            : '4.3.1',
         // retrofit
-        retrofitVersion        : '2.7.1',
+        retrofitVersion          : '2.7.1',
         // eventbus
-        eventbusVersion        : '3.1.1',
+        eventbusVersion          : '3.1.1',
         // dagger
-        daggerVersion          : '2.25.4',
+        daggerVersion            : '2.25.4',
 
         // leakcanary
-        leakcanaryVersion      : '2.0-beta-3',
+        leakcanaryVersion        : '2.0-beta-3',
         // blockcanary
-        blockcanaryVersion     : '1.5.0',
+        blockcanaryVersion       : '1.5.0',
         // image
-        picassoVersion         : '2.71828',
-        roundedImageViewVersion: '2.3.0',
-        pageVersion            : '1.0.0'
+        picassoVersion           : '2.71828',
+        roundedImageViewVersion  : '2.3.0',
+        pageVersion              : '1.0.0'
 
 ]

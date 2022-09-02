@@ -42,10 +42,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-def releaseTime() {
-    return new Date().format("YYMMdd", TimeZone.getTimeZone("UTC"))
-}
-
 // 解决中文问题
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"

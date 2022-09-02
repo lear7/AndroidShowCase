@@ -11,7 +11,6 @@ public class Routers {
     public static final String Act_DownloadTest = "/activity/download";
     public static final String Act_CustomerView = "/activity/customerview";
     public static final String Act_RxJava = "/activity/rxjava";
-    public static final String Act_Printer = "/activity/printer";
     public static final String Act_VideoCall = "/activity/video_call";
     public static final String Act_Video = "/activity/video";
     public static final String Act_Video2 = "/activity/video2";

@@ -1,23 +1,20 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
-apply plugin: "kotlin-kapt"
-
-apply plugin: "androidx.navigation.safeargs.kotlin"
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id "kotlin-kapt"
+    id "androidx.navigation.safeargs.kotlin"
+}
 
 android {
-    compileSdkVersion versions.compileSdkVersion
-    buildToolsVersion versions.buildToolsVersion
+    compileSdk versions.compileSdkVersion
 
     defaultConfig {
         applicationId "com.example.mvvm"
-        minSdkVersion versions.minSdkVersion
-        targetSdkVersion versions.targetSdkVersion
+        minSdk versions.minSdkVersion
+        targetSdk versions.targetSdkVersion
         versionCode 1
-        versionName "1.0.0.${releaseTime()}"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -45,7 +42,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$versions.legacySupport"
 
     //Architecture components
-    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleExtensionVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigationVersion"

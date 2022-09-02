@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lear7.showcase">
     <!-- for file operation -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,26 +27,43 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:exported="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".component.objectbox.ObjectBoxActivity"></activity>
-        <activity android:name=".ui.activity.CoroutineDemoActivity" />
-        <activity android:name=".ui.activity.NavDemoActivity" />
-        <activity android:name=".ui.activity.VideoPlayer2Activity" />
-        <activity android:name=".ui.activity.FragmentDemoActivity" />
-        <activity android:name=".ui.activity.VideoCallActivity" />
-        <activity android:name=".ui.activity.BottomSheetActivity" />
+        <activity
+            android:name=".component.objectbox.ObjectBoxActivity"
+            android:exported="false"
+            tools:node="merge" />
+        <activity
+            android:name=".ui.activity.CoroutineDemoActivity"
+            android:exported="false"
+            tools:node="merge" />
+        <activity
+            android:name=".ui.activity.NavDemoActivity"
+            android:exported="false"
+            tools:node="merge" />
+        <activity
+            android:name=".ui.activity.FragmentDemoActivity"
+            android:exported="false"
+            tools:node="merge" />
+        <activity
+            android:name=".ui.activity.VideoCallActivity"
+            android:exported="false"
+            tools:node="merge" />
+        <activity
+            android:name=".ui.activity.BottomSheetActivity"
+            android:exported="false"
+            tools:node="merge" />
 
         <service
             android:name=".service.RemoteService"
             android:enabled="true"
-            android:exported="true"
-            android:process=":remote_proc">
+            android:exported="false"
+            android:process=":remote_proc"
+            tools:node="merge">
             <intent-filter>
                 <action android:name="com.lear7.action.BindRemoteService" />
             </intent-filter>
@@ -53,14 +71,26 @@
 
         <activity
             android:name=".ui.activity.MovieAppActivity"
+            android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.activity.RxJavaActivity" />
-        <activity android:name=".ui.activity.CustomerViewActivity" />
-        <activity android:name=".ui.activity.LifecycleActivity" />
-        <activity android:name=".component.mvvm.TimerActivity" />
-        <activity android:name=".ui.activity.DaggerDemoActivity" />
+        <activity
+            android:name=".ui.activity.RxJavaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CustomerViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LifecycleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.mvvm.TimerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.DaggerDemoActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.MainActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -71,42 +101,64 @@
         </activity>
         <activity
             android:name=".ui.activity.MaterialActivity"
+            android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.MaterialAlipayActivity"
+            android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.activity.ListScrollView" />
-        <activity android:name=".ui.activity.LoadModeListView" />
-        <activity android:name=".ui.activity.BindingDemoActivity" />
-        <activity android:name=".ui.activity.MvpDemoActivity" />
-        <activity android:name=".ui.activity.MvpDemo2Activity" />
-        <activity android:name=".ui.activity.MvpDaggerActivity" />
-        <activity android:name=".ui.activity.PrinterActivity">
-            <meta-data
-                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                android:resource="@xml/usbs" />
-        </activity>
+        <activity
+            android:name=".ui.activity.ListScrollView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LoadModeListView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.BindingDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MvpDemoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MvpDemo2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MvpDaggerActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.FullScreenActivity"
-            android:configChanges="orientation" />
+            android:configChanges="orientation"
+            android:exported="false" />
         <activity
             android:name=".component.room.RoomActivity"
-            android:configChanges="orientation" />
+            android:configChanges="orientation"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.DownloadTestActivity"
-            android:configChanges="orientation" />
-        <activity android:name=".ui.activity.ThreadTestActivity" />
+            android:configChanges="orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ThreadTestActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.ThreadLearnActivity"
+            android:exported="false"
             android:persistableMode="persistAcrossReboots" />
-        <activity android:name=".ui.activity.ConstaintActivity" />
-        <activity android:name=".ui.activity.UIAdaptionActivity" />
-        <activity android:name=".ui.activity.PagingActivity" />
+        <activity
+            android:name=".ui.activity.ConstaintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.UIAdaptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.PagingActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="app_version"
@@ -115,8 +167,12 @@
             android:name="market"
             android:value="${market_key}" />
 
-        <service android:name=".service.WeatherService" />
-        <service android:name=".service.WeatherIntentService" />
+        <service
+            android:name=".service.WeatherService"
+            android:exported="false" />
+        <service
+            android:name=".service.WeatherIntentService"
+            android:exported="false" />
     </application>
 
 </manifest>
