@@ -25,6 +25,7 @@ public class Routers {
     public static final String Act_UIAdaption = "/activity/uiadaption";
     public static final String Act_AutoLoadListView = "/activity/autoloadlistview";
     public static final String Act_BottomSheet = "/activity/bottomsheet";
+    public static final String Act_Transition = "/activity/transition";
 
     // pattern
     public static final String Act_MvpDemo = "/activity/mvpdemo";

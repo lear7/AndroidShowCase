@@ -159,6 +159,9 @@
         <activity
             android:name=".ui.activity.PagingActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.activity.TransitionActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="app_version"

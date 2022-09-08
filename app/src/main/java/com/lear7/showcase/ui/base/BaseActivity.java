@@ -17,7 +17,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.lear7.showcase.common.events.BaseEvent;
-import com.lear7.showcase.ui.base.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

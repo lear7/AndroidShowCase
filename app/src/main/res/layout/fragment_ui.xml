@@ -39,6 +39,10 @@
         <Button
             android:id="@+id/btn_bottom_sheet"
             android:text="Bottom Sheets" />
+
+        <Button
+            android:id="@+id/btn_transition"
+            android:text="Transition" />
     </TableLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

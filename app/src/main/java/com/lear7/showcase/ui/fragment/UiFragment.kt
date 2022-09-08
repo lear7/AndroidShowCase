@@ -1,7 +1,5 @@
 package com.lear7.showcase.ui.fragment
 
-import android.view.View
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.lear7.showcase.R
 import com.lear7.showcase.routing.Routers
 import com.lear7.showcase.ui.base.BaseFragment
@@ -22,5 +20,6 @@ class UiFragment : BaseFragment() {
         btn_ui_adaption.setOnClickListener { goTo(Routers.Act_UIAdaption) }
         btn_auto_load_listview.setOnClickListener { goTo(Routers.Act_AutoLoadListView) }
         btn_bottom_sheet.setOnClickListener { goTo(Routers.Act_BottomSheet) }
+        btn_transition.setOnClickListener { goTo(Routers.Act_Transition) }
     }
 }

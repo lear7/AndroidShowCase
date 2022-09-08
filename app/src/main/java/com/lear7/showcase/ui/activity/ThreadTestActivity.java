@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lear7.showcase.R;
-import com.lear7.showcase.routing.Routers;
 import com.lear7.showcase.network.Urls;
+import com.lear7.showcase.routing.Routers;
 import com.lear7.showcase.ui.base.BaseActivity;
 
 import java.io.IOException;
